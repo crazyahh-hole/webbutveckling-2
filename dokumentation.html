@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projektdokumentation | Webbutveckling 2</title>
+  <meta name="description" content="Dokumentation av projektarbetet i Webbutveckling 2 - planering, genomförande, resultat och analys.">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            'sans': ['Inter', 'system-ui', 'sans-serif'],
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-20px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .glass-effect {
+      backdrop-filter: blur(20px);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .dark .glass-effect {
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .nav-blur {
+      backdrop-filter: blur(20px) saturate(180%);
+      background: rgba(255, 255, 255, 0.8);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .dark .nav-blur {
+      background: rgba(0, 0, 0, 0.8);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .text-gradient {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .card-hover {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-8px) scale(1.02);
+    }
+  </style>
+</head>
+
+<body class="font-sans text-gray-800 bg-gray-50 dark:bg-gray-900 dark:text-gray-100 overflow-x-hidden">
+
+  <!-- Decorative background -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute -top-40 -right-40 w-80 h-80 bg-indigo-300 dark:bg-indigo-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float"></div>
+    <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-300 dark:bg-purple-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: 2s;"></div>
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-pink-300 dark:bg-pink-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: 4s;"></div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="fixed inset-x-0 top-0 z-50 nav-blur">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="/html/index.html" class="flex items-center gap-3 group">
+          <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+            <img src="relogo.png" alt="">
+          </div>
+          <div>
+            <h1 class="text-xl font-bold text-gradient">Waleeds Web</h1>
+            <p class="text-xs text-gray-500 dark:text-gray-400" data-lang-sv="Utbildningswebb" data-lang-en="Educational Website">Utbildningswebb</p>
+          </div>
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-8 text-sm font-medium" aria-label="Primary">
+          <a href="/html/index.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Hem" data-lang-en="Home">
+            Hem
+            <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+          </a>
+          <a href="/html/syfte.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Syfte & krav" data-lang-en="Purpose">
+            Syfte & krav
+            <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+          </a>
+          <a href="/html/historia.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Historia" data-lang-en="History">
+            Historia
+            <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+          </a>
+          <a href="/html/dokumentation.html" class="text-blue-600 dark:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Dokumentation" data-lang-en="Documentation">
+            Dokumentation
+            <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-100 transition-transform duration-200"></span>
+          </a>
+        </nav>
+
+        <div class="flex items-center gap-4">
+          <button id="theme-toggle" class="p-2 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 hover:scale-105" aria-label="Växla mörkt läge">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path class="dark:hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+              <path class="hidden dark:block" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+          </button>
+
+          <div class="flex items-center bg-gray-100 dark:bg-gray-800 rounded-xl p-1">
+            <button id="btnSv" class="px-3 py-1 text-sm font-semibold rounded-lg transition-all duration-200 bg-blue-600 text-white shadow-md">SV</button>
+            <button id="btnEn" class="px-3 py-1 text-sm font-semibold rounded-lg transition-all duration-200 text-gray-600 dark:text-gray-300">EN</button>
+          </div>
+
+          <button id="mobileToggle" class="lg:hidden p-2 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300" aria-expanded="false" aria-label="Öppna meny">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="lg:hidden hidden glass-effect border-t border-gray-200 dark:border-gray-700">
+      <div class="px-4 py-6 space-y-4">
+        <a href="/html/index.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 transition-colors" data-lang-sv="Hem" data-lang-en="Home">Hem</a>
+        <a href="/html/syfte.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 transition-colors" data-lang-sv="Syfte & krav" data-lang-en="Purpose">Syfte & krav</a>
+        <a href="/html/historia.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 transition-colors" data-lang-sv="Historia" data-lang-en="History">Historia</a>
+        <a href="/html/dokumentation.html" class="block py-3 px-4 rounded-xl bg-blue-600 text-white" data-lang-sv="Dokumentation" data-lang-en="Documentation">Dokumentation</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-[70vh] flex items-center justify-center text-white overflow-hidden pt-20">
+    <div class="absolute inset-0 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600"></div>
+    <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+
+    <div class="relative z-10 text-center px-4 max-w-5xl mx-auto py-20" data-aos="fade-up">
+      <div class="inline-block mb-6">
+        <div class="w-20 h-20 bg-white/10 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto animate-float">
+          <span class="text-5xl">📘</span>
+        </div>
+      </div>
+      <h1 class="text-5xl md:text-6xl font-bold mb-6" data-lang-sv="Projektdokumentation" data-lang-en="Project Documentation">
+        Projektdokumentation
+      </h1>
+      <p class="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto mb-8" data-lang-sv="Webb 2 Projektarbete - Från planering till färdig webbplats" data-lang-en="Web 2 Project Work - From Planning to Finished Website">
+        Webb 2 Projektarbete - Från planering till färdig webbplats
+      </p>
+      <div class="inline-block bg-white/20 px-6 py-3 rounded-full text-lg">
+        Vecka 35-40, 2025
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="relative bg-white dark:bg-gray-900">
+
+    <!-- Introduction -->
+    <section class="py-20 px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="Inledning" data-lang-en="Introduction">
+            Inledning
+          </h2>
+          <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mb-8 rounded-full"></div>
+        </div>
+
+        <div class="prose prose-lg max-w-none text-gray-600 dark:text-gray-300 space-y-6" data-aos="fade-up">
+          <p class="text-xl leading-relaxed" data-lang-sv="Syftet med projektet var att planera, skapa och analysera en egen webbplats. En viktig del av uppgiften var att webbplatsen skulle beskriva kursens syfte och mål, alltså vad man ska lära sig i Webbutveckling 2." data-lang-en="The purpose of the project was to plan, create and analyze our own website. An important part of the task was that the website should describe the course's purpose and goals, i.e. what you should learn in Web Development 2.">
+            Syftet med projektet var att planera, skapa och analysera en egen webbplats. En viktig del av uppgiften var att webbplatsen skulle beskriva kursens syfte och mål, alltså vad man ska lära sig i Webbutveckling 2.
+          </p>
+          
+          <p class="text-xl leading-relaxed" data-lang-sv="Dessutom skulle jag visa webbens historia, funktion och betydelse, och jämföra webben med appar. Projektet tränade både tekniska färdigheter (HTML, CSS, JavaScript, Tailwind) och förståelse för hur webben påverkar samhället." data-lang-en="Additionally, I had to show the web's history, function and significance, and compare the web with apps. The project trained both technical skills (HTML, CSS, JavaScript, Tailwind) and understanding of how the web affects society.">
+            Dessutom skulle jag visa webbens historia, funktion och betydelse, och jämföra webben med appar. Projektet tränade både tekniska färdigheter (HTML, CSS, JavaScript, Tailwind) och förståelse för hur webben påverkar samhället.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Course Requirements -->
+    <section class="py-20 bg-gray-50 dark:bg-gray-800/50">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="Kursens krav och hur de uppfyllts" data-lang-en="Course Requirements and Fulfillment">
+            Kursens krav och hur de uppfyllts
+          </h2>
+          <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full"></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Beskriva -->
+          <div class="card-hover bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border-t-4 border-blue-500" data-aos="fade-up" data-aos-delay="100">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center">
+                <span class="text-2xl">📝</span>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white" data-lang-sv="Beskriva" data-lang-en="Describe">Beskriva</h3>
+            </div>
+            <ul class="space-y-3 text-gray-600 dark:text-gray-300">
+              <li class="flex items-start gap-2">
+                <span class="text-blue-500 mt-1">✓</span>
+                <span data-lang-sv="Webbens historia, funktion och betydelse" data-lang-en="Web's history, function and significance">Webbens historia, funktion och betydelse</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-blue-500 mt-1">✓</span>
+                <span data-lang-sv="Kursens mål och centralt innehåll (syfte.html)" data-lang-en="Course goals and central content (syfte.html)">Kursens mål och centralt innehåll (syfte.html)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-blue-500 mt-1">✓</span>
+                <span data-lang-sv="Jämförelse mellan webb och appar" data-lang-en="Comparison between web and apps">Jämförelse mellan webb och appar</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Planera -->
+          <div class="card-hover bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border-t-4 border-purple-500" data-aos="fade-up" data-aos-delay="200">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center">
+                <span class="text-2xl">📅</span>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white" data-lang-sv="Planera" data-lang-en="Plan">Planera</h3>
+            </div>
+            <ul class="space-y-3 text-gray-600 dark:text-gray-300">
+              <li class="flex items-start gap-2">
+                <span class="text-purple-500 mt-1">✓</span>
+                <span data-lang-sv="Projektplan vecka för vecka (v. 35-40)" data-lang-en="Project plan week by week (w. 35-40)">Projektplan vecka för vecka (v. 35-40)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-purple-500 mt-1">✓</span>
+                <span data-lang-sv="Wireframe och sitemap" data-lang-en="Wireframe and sitemap">Wireframe och sitemap</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-purple-500 mt-1">✓</span>
+                <span data-lang-sv="Organiserat arbetsflöde" data-lang-en="Organized workflow">Organiserat arbetsflöde</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Utveckla -->
+          <div class="card-hover bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border-t-4 border-green-500" data-aos="fade-up" data-aos-delay="300">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center">
+                <span class="text-2xl">💻</span>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white" data-lang-sv="Utveckla" data-lang-en="Develop">Utveckla</h3>
+            </div>
+            <ul class="space-y-3 text-gray-600 dark:text-gray-300">
+              <li class="flex items-start gap-2">
+                <span class="text-green-500 mt-1">✓</span>
+                <span>HTML5, CSS, JavaScript</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-green-500 mt-1">✓</span>
+                <span data-lang-sv="Ombyggnad med Tailwind CSS (v. 38)" data-lang-en="Rebuild with Tailwind CSS (w. 38)">Ombyggnad med Tailwind CSS (v. 38)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-green-500 mt-1">✓</span>
+                <span data-lang-sv="Dark mode, språkbyte, animationer" data-lang-en="Dark mode, language switch, animations">Dark mode, språkbyte, animationer</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Standarder och tekniker -->
+          <div class="card-hover bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border-t-4 border-orange-500" data-aos="fade-up" data-aos-delay="400">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-xl flex items-center justify-center">
+                <span class="text-2xl">⚙️</span>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white" data-lang-sv="Standarder" data-lang-en="Standards">Standarder</h3>
+            </div>
+            <ul class="space-y-3 text-gray-600 dark:text-gray-300">
+              <li class="flex items-start gap-2">
+                <span class="text-orange-500 mt-1">✓</span>
+                <span>ARIA-taggar, W3C-standarder</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-orange-500 mt-1">✓</span>
+                <span>AOS-animationer, Google Fonts</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-orange-500 mt-1">✓</span>
+                <span data-lang-sv="Semantisk HTML5-struktur" data-lang-en="Semantic HTML5 structure">Semantisk HTML5-struktur</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Funktionalitet -->
+          <div class="card-hover bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border-t-4 border-pink-500" data-aos="fade-up" data-aos-delay="500">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-12 h-12 bg-pink-100 dark:bg-pink-900/30 rounded-xl flex items-center justify-center">
+                <span class="text-2xl">🎯</span>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white" data-lang-sv="Funktionalitet" data-lang-en="Functionality">Funktionalitet</h3>
+            </div>
+            <ul class="space-y-3 text-gray-600 dark:text-gray-300">
+              <li class="flex items-start gap-2">
+                <span class="text-pink-500 mt-1">✓</span>
+                <span data-lang-sv="Dark mode-växling" data-lang-en="Dark mode toggle">Dark mode-växling</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-pink-500 mt-1">✓</span>
+                <span data-lang-sv="Språkbyte (SV/EN)" data-lang-en="Language switch (SV/EN)">Språkbyte (SV/EN)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-pink-500 mt-1">✓</span>
+                <span data-lang-sv="Responsiv design" data-lang-en="Responsive design">Responsiv design</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Tillgänglighet och Lagar -->
+          <div class="card-hover bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border-t-4 border-indigo-500" data-aos="fade-up" data-aos-delay="600">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-xl flex items-center justify-center">
+                <span class="text-2xl">⚖️</span>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white" data-lang-sv="Lagar & Tillgänglighet" data-lang-en="Laws & Accessibility">Lagar & Tillgänglighet</h3>
+            </div>
+            <ul class="space-y-3 text-gray-600 dark:text-gray-300">
+              <li class="flex items-start gap-2">
+                <span class="text-indigo-500 mt-1">✓</span>
+                <span>WCAG 2.2 (nivå A)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-indigo-500 mt-1">✓</span>
+                <span>GDPR, upphovsrätt, cookielagen</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-indigo-500 mt-1">✓</span>
+                <span data-lang-sv="Alt-texter och kontrast" data-lang-en="Alt texts and contrast">Alt-texter och kontrast</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Timeline -->
+    <section class="py-20 px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="Genomförande - Tidsplan" data-lang-en="Implementation - Timeline">
+            Genomförande - Tidsplan
+          </h2>
+          <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full"></div>
+        </div>
+
+        <div class="space-y-8">
+          <!-- Week 35-36 -->
+          <div class="relative pl-8 border-l-4 border-blue-500" data-aos="fade-right">
+            <div class="absolute -left-3 top-0 w-6 h-6 bg-blue-500 rounded-full"></div>
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+              <div class="flex flex-wrap items-center gap-4 mb-4">
+                <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 px-4 py-2 rounded-full font-bold text-sm">
+                  <span data-lang-sv="Vecka 35-36" data-lang-en="Week 35-36">Vecka 35-36</span>
+                </span>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white" data-lang-sv="Planering och Design" data-lang-en="Planning and Design">Planering och Design</h3>
+              </div>
+              <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-500">→</span>
+                  <span data-lang-sv="Skapade projektplan och wireframe" data-lang-en="Created project plan and wireframe">Skapade projektplan och wireframe</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-500">→</span>
+                  <span data-lang-sv="Utvecklade sitemap och innehållsstruktur" data-lang-en="Developed sitemap and content structure">Utvecklade sitemap och innehållsstruktur</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-500">→</span>
+                  <span data-lang-sv="Började skriva text om we
+<span data-lang-sv="Började skriva text om webbens historia" data-lang-en="Started writing text about web history">Började skriva text om webbens historia</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Week 37 -->
+          <div class="relative pl-8 border-l-4 border-purple-500" data-aos="fade-right">
+            <div class="absolute -left-3 top-0 w-6 h-6 bg-purple-500 rounded-full"></div>
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+              <div class="flex flex-wrap items-center gap-4 mb-4">
+                <span class="bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 px-4 py-2 rounded-full font-bold text-sm">
+                  <span data-lang-sv="Vecka 37" data-lang-en="Week 37">Vecka 37</span>
+                </span>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white" data-lang-sv="Beta-version" data-lang-en="Beta Version">Beta-version</h3>
+              </div>
+              <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                <li class="flex items-start gap-2">
+                  <span class="text-purple-500">→</span>
+                  <span data-lang-sv="Skapade första versionen av webbplatsen" data-lang-en="Created first version of the website">Skapade första versionen av webbplatsen</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-purple-500">→</span>
+                  <span data-lang-sv="Grundläggande HTML och CSS-struktur" data-lang-en="Basic HTML and CSS structure">Grundläggande HTML och CSS-struktur</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-purple-500">→</span>
+                  <span data-lang-sv="Testade navigation och layout" data-lang-en="Tested navigation and layout">Testade navigation och layout</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Week 38 -->
+          <div class="relative pl-8 border-l-4 border-red-500" data-aos="fade-right">
+            <div class="absolute -left-3 top-0 w-6 h-6 bg-red-500 rounded-full"></div>
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+              <div class="flex flex-wrap items-center gap-4 mb-4">
+                <span class="bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300 px-4 py-2 rounded-full font-bold text-sm">
+                  <span data-lang-sv="Vecka 38" data-lang-en="Week 38">Vecka 38</span>
+                </span>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white" data-lang-sv="Ombyggnad & Förbättring" data-lang-en="Rebuild & Improvement">Ombyggnad & Förbättring</h3>
+              </div>
+              <div class="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 p-4 mb-4 rounded">
+                <p class="text-red-800 dark:text-red-300 font-semibold mb-2" data-lang-sv="⚠️ Problem upptäckt:" data-lang-en="⚠️ Problem discovered:">⚠️ Problem upptäckt:</p>
+                <p class="text-gray-700 dark:text-gray-300 text-sm" data-lang-sv="Designen fungerade dåligt på mobiler - allt hamnade ovanpå varandra" data-lang-en="Design didn't work well on mobile - everything stacked on top of each other">Designen fungerade dåligt på mobiler - allt hamnade ovanpå varandra</p>
+              </div>
+              <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                <li class="flex items-start gap-2">
+                  <span class="text-red-500">→</span>
+                  <span data-lang-sv="Byggde om hela strukturen med Tailwind CSS" data-lang-en="Rebuilt entire structure with Tailwind CSS">Byggde om hela strukturen med Tailwind CSS</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-red-500">→</span>
+                  <span data-lang-sv="Implementerade mobile-first-principer" data-lang-en="Implemented mobile-first principles">Implementerade mobile-first-principer</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-red-500">→</span>
+                  <span data-lang-sv="Lade till dark mode och språkbyte" data-lang-en="Added dark mode and language switch">Lade till dark mode och språkbyte</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Week 39 -->
+          <div class="relative pl-8 border-l-4 border-green-500" data-aos="fade-right">
+            <div class="absolute -left-3 top-0 w-6 h-6 bg-green-500 rounded-full"></div>
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+              <div class="flex flex-wrap items-center gap-4 mb-4">
+                <span class="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 px-4 py-2 rounded-full font-bold text-sm">
+                  <span data-lang-sv="Vecka 39" data-lang-en="Week 39">Vecka 39</span>
+                </span>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white" data-lang-sv="Testning & Optimering" data-lang-en="Testing & Optimization">Testning & Optimering</h3>
+              </div>
+              <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                <li class="flex items-start gap-2">
+                  <span class="text-green-500">→</span>
+                  <span data-lang-sv="Testade på olika enheter och webbläsare" data-lang-en="Tested on different devices and browsers">Testade på olika enheter och webbläsare</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-green-500">→</span>
+                  <span data-lang-sv="Använde Lighthouse för prestandamätning" data-lang-en="Used Lighthouse for performance measurement">Använde Lighthouse för prestandamätning</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-green-500">→</span>
+                  <span data-lang-sv="Tillgänglighetsjusteringar och förbättringar" data-lang-en="Accessibility adjustments and improvements">Tillgänglighetsjusteringar och förbättringar</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Week 40 -->
+          <div class="relative pl-8 border-l-4 border-indigo-500" data-aos="fade-right">
+            <div class="absolute -left-3 top-0 w-6 h-6 bg-indigo-500 rounded-full"></div>
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+              <div class="flex flex-wrap items-center gap-4 mb-4">
+                <span class="bg-indigo-100 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-300 px-4 py-2 rounded-full font-bold text-sm">
+                  <span data-lang-sv="Vecka 40" data-lang-en="Week 40">Vecka 40</span>
+                </span>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white" data-lang-sv="Färdigställande" data-lang-en="Finalization">Färdigställande</h3>
+              </div>
+              <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                <li class="flex items-start gap-2">
+                  <span class="text-indigo-500">→</span>
+                  <span data-lang-sv="Sluttest av alla funktioner" data-lang-en="Final test of all functions">Sluttest av alla funktioner</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-indigo-500">→</span>
+                  <span data-lang-sv="Skrev dokumentation och analys" data-lang-en="Wrote documentation and analysis">Skrev dokumentation och analys</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-indigo-500">→</span>
+                  <span data-lang-sv="Inlämning av färdigt projekt" data-lang-en="Submission of completed project">Inlämning av färdigt projekt</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technologies Used -->
+    <section class="py-20 bg-gray-50 dark:bg-gray-800/50">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="Använda teknologier" data-lang-en="Technologies Used">
+            Använda teknologier
+          </h2>
+          <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full"></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 text-center" data-aos="fade-up" data-aos-delay="100">
+            <div class="text-5xl mb-4">🏗️</div>
+            <h3 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">Frontend</h3>
+            <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+              <li>HTML5</li>
+              <li>Tailwind CSS</li>
+              <li>JavaScript (ES6+)</li>
+              <li>AOS Animations</li>
+              <li>Google Fonts</li>
+            </ul>
+          </div>
+
+          <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 text-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="text-5xl mb-4">🎨</div>
+            <h3 class="text-xl font-bold mb-4 text-gray-900 dark:text-white" data-lang-sv="Design" data-lang-en="Design">Design</h3>
+            <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+              <li data-lang-sv="Responsiv design" data-lang-en="Responsive design">Responsiv design</li>
+              <li>Dark mode</li>
+              <li data-lang-sv="Glassmorfism-effekter" data-lang-en="Glassmorphism effects">Glassmorfism-effekter</li>
+              <li data-lang-sv="Gradienter" data-lang-en="Gradients">Gradienter</li>
+              <li data-lang-sv="Animationer" data-lang-en="Animations">Animationer</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section class="py-20 px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="Resultat" data-lang-en="Results">
+            Resultat
+          </h2>
+          <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full"></div>
+        </div>
+
+        <div class="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl shadow-xl p-8 mb-12" data-aos="fade-up">
+          <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="Webbplatsen innehåller:" data-lang-en="The website contains:">Webbplatsen innehåller:</h3>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="flex items-start gap-3">
+              <span class="text-blue-500 text-xl mt-1">✓</span>
+              <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Webbens historia, funktion och betydelse" data-lang-en="Web's history, function and significance">Webbens historia, funktion och betydelse</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-blue-500 text-xl mt-1">✓</span>
+              <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Kursens syfte och krav (egen sida)" data-lang-en="Course purpose and requirements (separate page)">Kursens syfte och krav (egen sida)</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-blue-500 text-xl mt-1">✓</span>
+              <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Jämförelse mellan webb och appar" data-lang-en="Comparison between web and apps">Jämförelse mellan webb och appar</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-blue-500 text-xl mt-1">✓</span>
+              <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Information om lagar, etik och säkerhet" data-lang-en="Information about laws, ethics and security">Information om lagar, etik och säkerhet</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-blue-500 text-xl mt-1">✓</span>
+              <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Modern design med responsivitet" data-lang-en="Modern design with responsiveness">Modern design med responsivitet</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-blue-500 text-xl mt-1">✓</span>
+              <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Interaktiva funktioner och animationer" data-lang-en="Interactive features and animations">Interaktiva funktioner och animationer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 text-center" data-aos="fade-up" data-aos-delay="100">
+            <div class="text-5xl font-bold text-green-600 mb-2">100%</div>
+            <p class="text-gray-600 dark:text-gray-300" data-lang-sv="Uppfyller kurskrav" data-lang-en="Meets course requirements">Uppfyller kurskrav</p>
+          </div>
+
+          <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 text-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="text-5xl font-bold text-blue-600 mb-2">2</div>
+            <p class="text-gray-600 dark:text-gray-300" data-lang-sv="Språk (SV/EN)" data-lang-en="Languages (SV/EN)">Språk (SV/EN)</p>
+          </div>
+
+          <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 text-center" data-aos="fade-up" data-aos-delay="300">
+            <div class="text-5xl font-bold text-purple-600 mb-2">10</div>
+            <p class="text-gray-600 dark:text-gray-300" data-lang-sv="Olika sidor" data-lang-en="Different pages">Olika sidor</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Analysis -->
+    <section class="py-20 bg-gray-50 dark:bg-gray-800/50">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="Analys" data-lang-en="Analysis">
+            Analys
+          </h2>
+          <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full"></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+          <!-- Strengths -->
+          <div class="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl shadow-xl p-8 border-l-4 border-green-500" data-aos="fade-right">
+            <div class="flex items-center gap-3 mb-6">
+              <span class="text-4xl">💪</span>
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white" data-lang-sv="Styrkor" data-lang-en="Strengths">Styrkor</h3>
+            </div>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3">
+                <span class="text-green-500 text-xl mt-1">✓</span>
+                <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Följer projektplanen tydligt" data-lang-en="Clearly follows the project plan">Följer projektplanen tydligt</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-green-500 text-xl mt-1">✓</span>
+                <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Innehåller kursens syfte och mål" data-lang-en="Contains course purpose and goals">Innehåller kursens syfte och mål</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-green-500 text-xl mt-1">✓</span>
+                <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Responsiv design med flera funktioner" data-lang-en="Responsive design with multiple features">Responsiv design med flera funktioner</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-green-500 text-xl mt-1">✓</span>
+                <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Tillgänglig och säker" data-lang-en="Accessible and secure">Tillgänglig och säker</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-green-500 text-xl mt-1">✓</span>
+                <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Visar utveckling från första till sista version" data-lang-en="Shows development from first to last version">Visar utveckling från första till sista version</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Weaknesses -->
+          <div class="bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 rounded-2xl shadow-xl p-8 border-l-4 border-orange-500" data-aos="fade-left">
+            <div class="flex items-center gap-3 mb-6">
+              <span class="text-4xl">⚠️</span>
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white" data-lang-sv="Svagheter & Förbättringsområden" data-lang-en="Weaknesses & Areas for Improvement">Svagheter & Förbättringsområden</h3>
+            </div>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3">
+                <span class="text-orange-500 text-xl mt-1">→</span>
+                <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Första designen fungerade dåligt i mobil" data-lang-en="First design didn't work well on mobile">Första designen fungerade dåligt i mobil</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-orange-500 text-xl mt-1">→</span>
+                <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Kunna lägga till fler JavaScript-funktioner" data-lang-en="Could add more JavaScript functions">Kunna lägga till fler JavaScript-funktioner</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-orange-500 text-xl mt-1">→</span>
+                <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Bättre testning i tidigare faser" data-lang-en="Better testing in earlier phases">Bättre testning i tidigare faser</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Learnings -->
+        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl shadow-xl p-8 border-l-4 border-blue-500" data-aos="fade-up">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="text-4xl">🎓</span>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white" data-lang-sv="Lärdomar" data-lang-en="Learnings">Lärdomar</h3>
+          </div>
+          <div class="prose prose-lg max-w-none text-gray-700 dark:text-gray-300">
+            <p data-lang-sv="Jag lärde mig hur viktigt det är att planera noga, testa ofta och tänka på användbarhet. Genom att stöta på problem med mobildesignen i vecka 38 förstod jag värdet av mobile-first-utveckling och tidig testning på olika enheter." data-lang-en="I learned how important it is to plan carefully, test often and think about usability. By encountering problems with mobile design in week 38, I understood the value of mobile-first development and early testing on different devices.">
+                Under det här projektet lärde jag mig mycket om hur man planerar, bygger och förbättrar en webbsida. Jag insåg hur viktigt det är att planera noggrant redan från början, men också att vara flexibel när något inte fungerar som man tänkt.
+
+                När jag märkte i vecka 38 att min första design inte fungerade bra på olika skärmstorlekar lärde jag mig verkligen hur viktigt responsiv design och mobile-first-tänkande är. Jag förstod att man måste testa tidigt och ofta, inte bara på datorn utan också på andra enheter som mobil och surfplatta. Den erfarenheten gjorde att jag förbättrade layouten och skapade en sida som fungerar bättre för fler användare.
+                
+                Jag lärde mig också mer om tillgänglighet och användbarhet — att det inte bara handlar om hur en webbsida ser ut, utan om hur lätt den är att använda för alla. Genom att använda tydliga rubriker, bra kontraster och enkelt språk skapade jag en sida som fler kan ta del av.
+                
+                En annan viktig lärdom var att teknik, lagar och etik hör ihop. Jag förstod att webbutveckling inte bara handlar om kod, utan också om ansvar. Det är viktigt att tänka på upphovsrätt, säkerhet, integritet och dataskydd. Webben är öppen för alla, och därför måste man bygga med respekt för användaren och samhället.
+            </p>
+            <p data-lang-sv="Jag förstod också hur webben påverkar samhället och varför lagar, tillgänglighet och etik är viktiga. Att skapa en webbplats är inte bara tekniskt arbete - det handlar om att skapa något som är användbart, tillgängligt och säkert för alla." data-lang-en="I also understood how the web affects society and why laws, accessibility and ethics are important. Creating a website is not just technical work - it's about creating something that is useful, accessible and safe for everyone.">
+              Jag förstod också hur webben påverkar samhället och varför lagar, tillgänglighet och etik är viktiga. Att skapa en webbplats är inte bara tekniskt arbete - det handlar om att skapa något som är användbart, tillgängligt och säkert för alla.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="py-20 px-4">
+      <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+        <div class="bg-gradient-to-br from-indigo-600 to-purple-600 rounded-3xl p-12 text-white shadow-2xl">
+          <div class="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto mb-6">
+            <span class="text-5xl">🎯</span>
+          </div>
+          <h2 class="text-4xl font-bold mb-6" data-lang-sv="Slutsats" data-lang-en="Conclusion">
+            Slutsats
+          </h2>
+          <p class="text-xl opacity-90 leading-relaxed mb-8" data-lang-sv="Jag har genomfört hela projektet från planering till färdig webbplats. Sidan visar både kursens syfte och webbens betydelse, och den uppfyller samtliga delar av bedömningsmatrisen. Jag har lärt mig att arbeta mer självständigt, lösa problem och skapa en webbplats som fungerar, ser bra ut och följer regler." data-lang-en="I have completed the entire project from planning to finished website. The site shows both the course's purpose and the web's significance, and it meets all parts of the assessment matrix. I have learned to work more independently, solve problems and create a website that works, looks good and follows rules.">
+            Jag har genomfört hela projektet från planering till färdig webbplats. Sidan visar både kursens syfte och webbens betydelse, och den uppfyller samtliga delar av bedömningsmatrisen. Jag har lärt mig att arbeta mer självständigt, lösa problem och skapa en webbplats som fungerar, ser bra ut och följer regler.
+          </p>
+          <div class="flex flex-wrap gap-4 justify-center">
+            <div class="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
+              <span data-lang-sv="Planering ✓" data-lang-en="Planning ✓">Planering ✓</span>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
+              <span data-lang-sv="Utveckling ✓" data-lang-en="Development ✓">Utveckling ✓</span>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
+              <span data-lang-sv="Testning ✓" data-lang-en="Testing ✓">Testning ✓</span>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
+              <span data-lang-sv="Dokumentation ✓" data-lang-en="Documentation ✓">Dokumentation ✓</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 dark:bg-gray-800 text-white py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8 mb-12">
+        <div class="col-span-2 md:col-span-1">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold">
+              <img src="relogo.png" alt="">
+            </div>
+            <div>
+              <h3 class="font-bold text-lg">Waleeds Web</h3>
+              <p class="text-sm text-gray-400" data-lang-sv="Utbildningsprojekt" data-lang-en="Educational Project">Utbildningsprojekt</p>
+            </div>
+          </div>
+          <p class="text-gray-400 text-sm leading-relaxed" data-lang-sv="En omfattande guide till webbens utveckling och betydelse för det moderna samhället." data-lang-en="A comprehensive guide to the web's development and significance for modern society.">
+            En omfattande guide till webbens utveckling och betydelse för det moderna samhället.
+          </p>
+        </div>
+        
+        <div>
+          <h4 class="font-semibold mb-4" data-lang-sv="Navigation" data-lang-en="Navigation">Navigation</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/html/index.html" class="text-gray-400 hover:text-white transition-colors" data-lang-sv="Hem" data-lang-en="Home">Hem</a></li>
+            <li><a href="/html/syfte.html" class="text-gray-400 hover:text-white transition-colors" data-lang-sv="Syfte & krav" data-lang-en="Purpose">Syfte & krav</a></li>
+            <li><a href="/html/historia.html" class="text-gray-400 hover:text-white transition-colors" data-lang-sv="Historia" data-lang-en="History">Historia</a></li>
+            <li><a href="/html/funktionalitet.html" class="text-gray-400 hover:text-white transition-colors" data-lang-sv="Funktionalitet" data-lang-en="Functionality">Funktionalitet</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-semibold mb-4" data-lang-sv="Projekt" data-lang-en="Project">Projekt</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/html/dokumentation.html" class="text-gray-400 hover:text-white transition-colors" data-lang-sv="Dokumentation" data-lang-en="Documentation">Dokumentation</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors" data-lang-sv="Testning" data-lang-en="Testing">Testning</a></li>
+            <li><a href="/html/analys.html" class="text-gray-400 hover:text-white transition-colors" data-lang-sv="Analys" data-lang-en="Analysis">Analys</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-semibold mb-4" data-lang-sv="Upptäcka" data-lang-en="Discover">Upptäcka</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/projektplan/" class="text-gray-400 hover:text-white transition-colors">Projektplan</a></li>
+            <li><a href="/tester/" class="text-gray-400 hover:text-white transition-colors">Tester</a></li>
+            <li><a href="/html/dokumentation.html" class="text-gray-400 hover:text-white transition-colors">Dokumentation</a></li>
+            <li><a href="/html/analys.html" class="text-gray-400 hover:text-white transition-colors">Analys</a></li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // AOS initialization
+    if (typeof AOS !== 'undefined') {
+      AOS.init({ 
+        once: true, 
+        duration: 800, 
+        easing: 'ease-out-cubic',
+        offset: 50
+      });
+    }
+
+    // Dark mode toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    if (currentTheme === 'dark') {
+      html.classList.add('dark');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      const theme = html.classList.contains('dark') ? 'dark' : 'light';
+      localStorage.setItem('theme', theme);
+    });
+
+    // Mobile menu toggle
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    mobileToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      const isExpanded = !mobileMenu.classList.contains('hidden');
+      mobileToggle.setAttribute('aria-expanded', isExpanded);
+    });
+
+    // Language toggle
+    const btnSv = document.getElementById('btnSv');
+    const btnEn = document.getElementById('btnEn');
+    let currentLang = 'sv';
+
+    function switchLanguage(lang) {
+      currentLang = lang;
+
+      if (lang === 'sv') {
+        btnSv.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+        btnSv.classList.remove('text-gray-600', 'dark:text-gray-300');
+        btnEn.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+        btnEn.classList.add('text-gray-600', 'dark:text-gray-300');
+      } else {
+        btnEn.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+        btnEn.classList.remove('text-gray-600', 'dark:text-gray-300');
+        btnSv.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+        btnSv.classList.add('text-gray-600', 'dark:text-gray-300');
+      }
+
+      document.querySelectorAll('[data-lang-sv]').forEach(el => {
+        const svText = el.getAttribute('data-lang-sv');
+        const enText = el.getAttribute('data-lang-en');
+        el.textContent = lang === 'sv' ? svText : enText;
+      });
+
+      localStorage.setItem('language', lang);
+    }
+
+    btnSv.addEventListener('click', () => switchLanguage('sv'));
+    btnEn.addEventListener('click', () => switchLanguage('en'));
+
+    const savedLang = localStorage.getItem('language') || 'sv';
+    if (savedLang === 'en') {
+      switchLanguage('en');
+    }
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', e => {
+        const target = document.querySelector(anchor.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        const offset = 100;
+        const pos = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ 
+          top: pos, 
+          behavior: 'smooth' 
+        });
+      });
+    });
+  </script>
+</body>
+</html>

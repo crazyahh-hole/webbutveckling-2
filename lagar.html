@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lagar & Regler | Webben som plattform</title>
+<meta name="description" content="Lär dig om GDPR, upphovsrätt, WCAG 2.2 och andra juridiska krav för webbutveckling. Omfattande guide till webbens lagar och regler.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="/lagar-regler/">
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- AOS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script>
+tailwind.config = {
+darkMode: 'class',
+theme: {
+extend: {
+fontFamily: {
+'sans': ['Inter', 'system-ui', 'sans-serif'],
+},
+animation: {
+'float': 'float 6s ease-in-out infinite',
+'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+},
+keyframes: {
+float: {
+  '0%, 100%': { transform: 'translateY(0px)' },
+  '50%': { transform: 'translateY(-20px)' },
+}
+}
+}
+}
+}
+</script>
+
+<style>
+.glass-effect {
+backdrop-filter: blur(20px);
+background: rgba(255, 255, 255, 0.1);
+border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass-effect {
+background: rgba(0, 0, 0, 0.2);
+border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-blur {
+backdrop-filter: blur(20px) saturate(180%);
+background: rgba(255, 255, 255, 0.8);
+border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+transition: all 0.3s ease;
+}
+
+.dark .nav-blur {
+background: rgba(0, 0, 0, 0.8);
+border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.text-gradient {
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+.card-hover {
+transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+transform: translateY(-8px) scale(1.02);
+}
+
+* {
+transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+</style>
+</head>
+
+<body class="font-sans text-gray-800 bg-gray-50 dark:bg-gray-900 dark:text-gray-100 overflow-x-hidden">
+
+<!-- Decorative background -->
+<div class="fixed inset-0 overflow-hidden pointer-events-none">
+<div class="absolute -top-40 -right-40 w-80 h-80 bg-red-300 dark:bg-red-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float"></div>
+<div class="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-300 dark:bg-blue-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: 2s;"></div>
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-purple-300 dark:bg-purple-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: 4s;"></div>
+</div>
+
+<!-- HEADER -->
+<header class="fixed inset-x-0 top-0 z-50 nav-blur">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-20">
+<a href="index.html" class="flex items-center gap-3 group">
+<div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+<img src="relogo.png" alt="">
+</div>
+<div>
+<h1 class="text-xl font-bold text-gradient">Waleeds Web</h1>
+<p class="text-xs text-gray-500 dark:text-gray-400">Utbildningswebb</p>
+</div>
+</a>
+
+<nav class="hidden lg:flex items-center gap-8 text-sm font-medium" aria-label="Primary">
+<a href="/html/index.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Hem" data-lang-en="Home">
+Hem
+<span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+</a>
+<a href="/html/syfte.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Syfte & krav" data-lang-en="Purpose">
+Syfte & krav
+<span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+</a>
+<a href="/html/historia.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Historia" data-lang-en="History">
+Historia
+<span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+</a>
+<a href="/html/betydelse.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Betydelse" data-lang-en="Significance">
+Betydelse
+<span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+</a>
+<a href="/html/funktionalitet.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Funktionalitet" data-lang-en="Functionality">
+Funktionalitet
+<span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+</a>
+<a href="/html/lagar.html" class="text-blue-600 dark:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Lagar & regler" data-lang-en="Laws & Regulations">
+Lagar & regler
+<span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-100 transition-transform duration-200"></span>
+</a>
+</nav>
+
+<div class="flex items-center gap-4">
+<button id="theme-toggle" class="p-2 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 hover:scale-105" aria-label="Växla mörkt läge">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <path class="dark:hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+  <path class="hidden dark:block" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+</svg>
+</button>
+
+<div class="flex items-center bg-gray-100 dark:bg-gray-800 rounded-xl p-1">
+<button id="btnSv" class="px-3 py-1 text-sm font-semibold rounded-lg transition-all duration-200 bg-blue-600 text-white shadow-md">SV</button>
+<button id="btnEn" class="px-3 py-1 text-sm font-semibold rounded-lg transition-all duration-200 text-gray-600 dark:text-gray-300">EN</button>
+</div>
+
+<button id="mobileToggle" class="lg:hidden p-2 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300" aria-expanded="false" aria-label="Öppna meny">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+</svg>
+</button>
+</div>
+</div>
+</div>
+
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="lg:hidden hidden glass-effect border-t border-gray-200 dark:border-gray-700">
+<div class="px-4 py-6 space-y-4">
+<a href="/html/index.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 dark:hover:bg-black/10 transition-colors" data-lang-sv="Hem" data-lang-en="Home">Hem</a>
+<a href="/html/syfte.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 dark:hover:bg-black/10 transition-colors" data-lang-sv="Syfte & krav" data-lang-en="Purpose">Syfte & krav</a>
+<a href="/html/historia.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 dark:hover:bg-black/10 transition-colors" data-lang-sv="Historia" data-lang-en="History">Historia</a>
+<a href="/html/betydelse.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 dark:hover:bg-black/10 transition-colors" data-lang-sv="Betydelse" data-lang-en="Significance">Betydelse</a>
+<a href="/html/funktionalitet.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 dark:hover:bg-black/10 transition-colors" data-lang-sv="Funktionalitet" data-lang-en="Functionality">Funktionalitet</a>
+<a href="/html/lagar.html" class="block py-3 px-4 rounded-xl bg-blue-600 text-white" data-lang-sv="Lagar & regler" data-lang-en="Laws & Regulations">Lagar & regler</a>
+</div>
+</div>
+</header>
+
+<!-- Hero Section -->
+<section class="relative min-h-[70vh] flex items-center justify-center text-white overflow-hidden pt-20">
+<div class="absolute inset-0 bg-gradient-to-br from-red-600 via-purple-600 to-indigo-700"></div>
+<div class="absolute inset-0 bg-black bg-opacity-20"></div>
+
+<div class="relative z-10 text-center px-4 max-w-5xl mx-auto py-20" data-aos="fade-up">
+<div class="inline-block mb-6">
+<div class="w-20 h-20 bg-white/10 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto animate-float">
+<span class="text-5xl">⚖️</span>
+</div>
+</div>
+<h1 class="text-5xl md:text-6xl font-bold mb-6" data-lang-sv="Lagar & Regler" data-lang-en="Laws & Regulations">
+Lagar & Regler
+</h1>
+<p class="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto mb-8" data-lang-sv="Förstå de juridiska kraven för webbutveckling - från GDPR till upphovsrätt och tillgänglighet" data-lang-en="Understand the legal requirements for web development - from GDPR to copyright and accessibility">
+Förstå de juridiska kraven för webbutveckling - från GDPR till upphovsrätt och tillgänglighet
+</p>
+
+<!-- Breadcrumbs -->
+<nav class="flex justify-center items-center gap-2 text-sm text-white/80">
+<a href="/html/index.html" class="hover:text-white transition-colors" data-lang-sv="Hem" data-lang-en="Home">Hem</a>
+<span>›</span>
+<span class="text-white" data-lang-sv="Lagar & regler" data-lang-en="Laws & Regulations">Lagar & regler</span>
+</nav>
+</div>
+</section>
+
+<!-- Main Content -->
+<main class="relative bg-white dark:bg-gray-900">
+<!-- Introduction -->
+<section class="py-20 px-4">
+<div class="max-w-6xl mx-auto">
+<div class="text-center mb-16" data-aos="fade-up">
+<h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="Varför är lagar viktiga för webben?" data-lang-en="Why are laws important for the web?">
+Varför är lagar viktiga för webben?
+</h2>
+<p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto" data-lang-sv="Webben är inte laglös. Som webbutvecklare och webbplatsägare måste du följa flera viktiga lagar och regler för att skydda användare, respektera rättigheter och undvika juridiska konsekvenser." data-lang-en="The web is not lawless. As a web developer and website owner, you must follow several important laws and regulations to protect users, respect rights and avoid legal consequences.">
+Webben är inte laglös. Som webbutvecklare och webbplatsägare måste du följa flera viktiga lagar och regler för att skydda användare, respektera rättigheter och undvika juridiska konsekvenser.
+</p>
+</div>
+
+<!-- Key Laws Grid -->
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- GDPR -->
+<div class="card-hover bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border-t-4 border-blue-500" data-aos="fade-up" data-aos-delay="100">
+<div class="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center mb-6">
+  <span class="text-4xl">🔒</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white" data-lang-sv="GDPR" data-lang-en="GDPR">
+  GDPR
+</h3>
+<p class="text-gray-600 dark:text-gray-300 mb-4" data-lang-sv="Dataskyddsförordningen skyddar EU-medborgares personuppgifter och kräver samtycke för databehandling." data-lang-en="The General Data Protection Regulation protects EU citizens' personal data and requires consent for data processing.">
+  Dataskyddsförordningen skyddar EU-medborgares personuppgifter och kräver samtycke för databehandling.
+</p>
+<div class="flex items-center gap-2 text-sm text-blue-600 dark:text-blue-400 font-medium">
+  <span data-lang-sv="EU-förordning 2016/679" data-lang-en="EU Regulation 2016/679">EU-förordning 2016/679</span>
+</div>
+</div>
+
+<!-- Upphovsrätt -->
+<div class="card-hover bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border-t-4 border-purple-500" data-aos="fade-up" data-aos-delay="200">
+<div class="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center mb-6">
+  <span class="text-4xl">©️</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white" data-lang-sv="Upphovsrätt" data-lang-en="Copyright">
+  Upphovsrätt
+</h3>
+<p class="text-gray-600 dark:text-gray-300 mb-4" data-lang-sv="Skyddar skapares rättigheter till text, bilder, musik och annan kreativ content på webben." data-lang-en="Protects creators' rights to text, images, music and other creative content on the web.">
+  Skyddar skapares rättigheter till text, bilder, musik och annan kreativ content på webben.
+</p>
+<div class="flex items-center gap-2 text-sm text-purple-600 dark:text-purple-400 font-medium">
+  <span data-lang-sv="Upphovsrättslagen (1960:729)" data-lang-en="Copyright Act (1960:729)">Upphovsrättslagen (1960:729)</span>
+</div>
+</div>
+
+<!-- WCAG -->
+<div class="card-hover bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border-t-4 border-green-500" data-aos="fade-up" data-aos-delay="300">
+<div class="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-2xl flex items-center justify-center mb-6">
+  <span class="text-4xl">♿</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white" data-lang-sv="WCAG 2.2" data-lang-en="WCAG 2.2">
+  WCAG 2.2
+</h3>
+<p class="text-gray-600 dark:text-gray-300 mb-4" data-lang-sv="Riktlinjer för tillgänglig webbcontent som gör webben användbar för alla, inklusive personer med funktionsnedsättningar." data-lang-en="Guidelines for accessible web content that make the web usable for everyone, including people with disabilities.">
+  Riktlinjer för tillgänglig webbcontent som gör webben användbar för alla, inklusive personer med funktionsnedsättningar.
+</p>
+<div class="flex items-center gap-2 text-sm text-green-600 dark:text-green-400 font-medium">
+  <span data-lang-sv="W3C Standard" data-lang-en="W3C Standard">W3C Standard</span>
+</div>
+</div>
+
+<!-- E-handelslag -->
+<div class="card-hover bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border-t-4 border-orange-500" data-aos="fade-up" data-aos-delay="400">
+<div class="w-16 h-16 bg-orange-100 dark:bg-orange-900/30 rounded-2xl flex items-center justify-center mb-6">
+  <span class="text-4xl">🛒</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white" data-lang-sv="E-handelslag" data-lang-en="E-Commerce Law">
+  E-handelslag
+</h3>
+<p class="text-gray-600 dark:text-gray-300 mb-4" data-lang-sv="Reglerar elektronisk handel och kräver tydlig information om säljare, priser och ångerrätt." data-lang-en="Regulates electronic commerce and requires clear information about sellers, prices and right of withdrawal.">
+  Reglerar elektronisk handel och kräver tydlig information om säljare, priser och ångerrätt.
+</p>
+<div class="flex items-center gap-2 text-sm text-orange-600 dark:text-orange-400 font-medium">
+  <span data-lang-sv="Lag (2002:562)" data-lang-en="Law (2002:562)">Lag (2002:562)</span>
+</div>
+</div>
+
+<!-- Cookies -->
+<div class="card-hover bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border-t-4 border-pink-500" data-aos="fade-up" data-aos-delay="500">
+<div class="w-16 h-16 bg-pink-100 dark:bg-pink-900/30 rounded-2xl flex items-center justify-center mb-6">
+  <span class="text-4xl">🍪</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white" data-lang-sv="Cookielagen" data-lang-en="Cookie Law">
+  Cookielagen
+</h3>
+<p class="text-gray-600 dark:text-gray-300 mb-4" data-lang-sv="Kräver att webbplatser informerar om och får samtycke för användning av cookies och liknande tekniker." data-lang-en="Requires websites to inform about and obtain consent for the use of cookies and similar technologies.">
+  Kräver att webbplatser informerar om och får samtycke för användning av cookies och liknande tekniker.
+</p>
+<div class="flex items-center gap-2 text-sm text-pink-600 dark:text-pink-400 font-medium">
+  <span data-lang-sv="ePrivacy-direktivet" data-lang-en="ePrivacy Directive">ePrivacy-direktivet</span>
+</div>
+</div>
+
+<!-- Diskrimineringslag -->
+<div class="card-hover bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border-t-4 border-indigo-500" data-aos="fade-up" data-aos-delay="600">
+<div class="w-16 h-16 bg-indigo-100 dark:bg-indigo-900/30 rounded-2xl flex items-center justify-center mb-6">
+  <span class="text-4xl">⚖️</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white" data-lang-sv="Diskrimineringslag" data-lang-en="Discrimination Law">
+  Diskrimineringslag
+</h3>
+<p class="text-gray-600 dark:text-gray-300 mb-4" data-lang-sv="Förbjuder diskriminering av personer med funktionsnedsättning och kräver tillgänglig digital service." data-lang-en="Prohibits discrimination against people with disabilities and requires accessible digital services.">
+  Förbjuder diskriminering av personer med funktionsnedsättning och kräver tillgänglig digital service.
+</p>
+<div class="flex items-center gap-2 text-sm text-indigo-600 dark:text-indigo-400 font-medium">
+  <span data-lang-sv="Lag (2008:567)" data-lang-en="Law (2008:567)">Lag (2008:567)</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- GDPR Deep Dive -->
+<section class="py-20 bg-gray-50 dark:bg-gray-800/50">
+<div class="max-w-6xl mx-auto px-4">
+<div class="text-center mb-16" data-aos="fade-up">
+<h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="GDPR i detalj" data-lang-en="GDPR in Detail">
+GDPR i detalj
+</h2>
+<p class="text-xl text-gray-600 dark:text-gray-400" data-lang-sv="Den viktigaste dataskyddslagen för webbplatser" data-lang-en="The most important data protection law for websites">
+Den viktigaste dataskyddslagen för webbplatser
+</p>
+</div>
+
+<div class="grid md:grid-cols-2 gap-8 mb-12">
+<!-- GDPR Principles -->
+<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8" data-aos="fade-right">
+<h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="Grundläggande principer" data-lang-en="Basic Principles">
+Grundläggande principer
+</h3>
+<ul class="space-y-4">
+  <li class="flex items-start gap-3">
+    <span class="text-blue-500 text-xl mt-1">✓</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Laglighet och transparens" data-lang-en="Legality and Transparency">Laglighet och transparens</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Personuppgifter ska behandlas lagligt, rättvist och transparent" data-lang-en="Personal data must be processed lawfully, fairly and transparently">Personuppgifter ska behandlas lagligt, rättvist och transparent</p>
+    </div>
+  </li>
+  <li class="flex items-start gap-3">
+    <span class="text-blue-500 text-xl mt-1">✓</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Ändamålsbegränsning" data-lang-en="Purpose Limitation">Ändamålsbegränsning</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Data får endast samlas in för specifika, uttryckliga och berättigade ändamål" data-lang-en="Data may only be collected for specific, explicit and legitimate purposes">Data får endast samlas in för specifika, uttryckliga och berättigade ändamål</p>
+    </div>
+  </li>
+  <li class="flex items-start gap-3">
+    <span class="text-blue-500 text-xl mt-1">✓</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Dataminimering" data-lang-en="Data Minimization">Dataminimering</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Samla endast in data som är nödvändig för ändamålet" data-lang-en="Only collect data that is necessary for the purpose">Samla endast in data som är nödvändig för ändamålet</p>
+    </div>
+  </li>
+  <li class="flex items-start gap-3">
+    <span class="text-blue-500 text-xl mt-1">✓</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Riktighet" data-lang-en="Accuracy">Riktighet</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Personuppgifter ska vara korrekta och uppdaterade" data-lang-en="Personal data must be accurate and up to date">Personuppgifter ska vara korrekta och uppdaterade</p>
+    </div>
+  </li>
+  <li class="flex items-start gap-3">
+    <span class="text-blue-500 text-xl mt-1">✓</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Lagringsminimering" data-lang-en="Storage Limitation">Lagringsminimering</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Data får inte sparas längre än nödvändigt" data-lang-en="Data must not be stored longer than necessary">Data får inte sparas längre än nödvändigt</p>
+    </div>
+  </li>
+  <li class="flex items-start gap-3">
+    <span class="text-blue-500 text-xl mt-1">✓</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Integritet och säkerhet" data-lang-en="Integrity and Security">Integritet och säkerhet</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Personuppgifter ska behandlas säkert med tekniska och organisatoriska åtgärder" data-lang-en="Personal data must be processed securely with technical and organizational measures">Personuppgifter ska behandlas säkert med tekniska och organisatoriska åtgärder</p>
+    </div>
+  </li>
+</ul>
+</div>
+
+<!-- User Rights -->
+<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8" data-aos="fade-left">
+<h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="Användarrättigheter" data-lang-en="User Rights">
+Användarrättigheter
+</h3>
+<ul class="space-y-4">
+  <li class="flex items-start gap-3">
+    <span class="text-green-500 text-xl mt-1">→</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Rätt till information" data-lang-en="Right to Information">Rätt till information</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Veta vilka uppgifter som samlas in och varför" data-lang-en="Know what data is collected and why">Veta vilka uppgifter som samlas in och varför</p>
+    </div>
+  </li>
+  <li class="flex items-start gap-3">
+    <span class="text-green-500 text-xl mt-1">→</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Rätt till tillgång" data-lang-en="Right to Access">Rätt till tillgång</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Få en kopia av sina personuppgifter" data-lang-en="Get a copy of your personal data">Få en kopia av sina personuppgifter</p>
+    </div>
+  </li>
+  <li class="flex items-start gap-3">
+    <span class="text-green-500 text-xl mt-1">→</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Rätt till rättelse" data-lang-en="Right to Rectification">Rätt till rättelse</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Korrigera felaktiga eller ofullständiga uppgifter" data-lang-en="Correct incorrect or incomplete data">Korrigera felaktiga eller ofullständiga uppgifter</p>
+    </div>
+  </li>
+  <li class="flex items-start gap-3">
+    <span class="text-green-500 text-xl mt-1">→</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Rätt till radering" data-lang-en="Right to Erasure">Rätt till radering</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="'Rätten att bli glömd' - ta bort personuppgifter" data-lang-en="'Right to be forgotten' - delete personal data">'Rätten att bli glömd' - ta bort personuppgifter</p>
+    </div>
+  </li>
+  <li class="flex items-start gap-3">
+    <span class="text-green-500 text-xl mt-1">→</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Rätt till dataportabilitet" data-lang-en="Right to Data Portability">Rätt till dataportabilitet</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Flytta sina uppgifter mellan tjänster" data-lang-en="Move your data between services">Flytta sina uppgifter mellan tjänster</p>
+    </div>
+  </li>
+  <li class="flex items-start gap-3">
+    <span class="text-green-500 text-xl mt-1">→</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Rätt att invända" data-lang-en="Right to Object">Rätt att invända</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Motsätta sig behandling av personuppgifter" data-lang-en="Object to processing of personal data">Motsätta sig behandling av personuppgifter</p>
+    </div>
+  </li>
+</ul>
+</div>
+</div>
+
+<!-- What You Must Do -->
+<div class="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-8" data-aos="fade-up">
+<h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="Vad måste du göra som webbplatsägare?" data-lang-en="What must you do as a website owner?">
+Vad måste du göra som webbplatsägare?
+</h3>
+<div class="grid md:grid-cols-2 gap-6">
+  <div class="bg-white dark:bg-gray-800 rounded-xl p-6">
+    <div class="flex items-start gap-4">
+      <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
+        <span class="text-xl">📋</span>
+      </div>
+      <div>
+        <h4 class="font-bold text-gray-900 dark:text-white mb-2" data-lang-sv="Integritetspolicy" data-lang-en="Privacy Policy">Integritetspolicy</h4>
+        <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Ha en tydlig policy som förklarar vilka data du samlar in, varför och hur de används" data-lang-en="Have a clear policy explaining what data you collect, why and how it's used">Ha en tydlig policy som förklarar vilka data du samlar in, varför och hur de används</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="bg-white dark:bg-gray-800 rounded-xl p-6">
+    <div class="flex items-start gap-4">
+      <div class="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
+        <span class="text-xl">✅</span>
+      </div>
+      <div>
+        <h4 class="font-bold text-gray-900 dark:text-white mb-2" data-lang-sv="Samtycke" data-lang-en="Consent">Samtycke</h4>
+        <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Få aktivt samtycke innan du samlar in personuppgifter eller använder cookies" data-lang-en="Get active consent before collecting personal data or using cookies">Få aktivt samtycke innan du samlar in personuppgifter eller använder cookies</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="bg-white dark:bg-gray-800 rounded-xl p-6">
+    <div class="flex items-start gap-4">
+      <div class="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
+        <span class="text-xl">🔐</span>
+      </div>
+      <div>
+        <h4 class="font-bold text-gray-900 dark:text-white mb-2" data-lang-sv="Säkerhet" data-lang-en="Security">Säkerhet</h4>
+        <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Implementera tekniska och organisatoriska säkerhetsåtgärder för att skydda data" data-lang-en="Implement technical and organizational security measures to protect data">Implementera tekniska och organisatoriska säkerhetsåtgärder för att skydda data</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="bg-white dark:bg-gray-800 rounded-xl p-6">
+    <div class="flex items-start gap-4">
+      <div class="w-10 h-10 bg-red-100 dark:bg-red-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
+        <span class="text-xl">🚨</span>
+      </div>
+      <div>
+        <h4 class="font-bold text-gray-900 dark:text-white mb-2" data-lang-sv="Dataintrång" data-lang-en="Data Breach">Dataintrång</h4>
+        <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Rapportera personuppgiftsincidenter till tillsynsmyndigheten inom 72 timmar" data-lang-en="Report personal data incidents to the supervisory authority within 72 hours">Rapportera personuppgiftsincidenter till tillsynsmyndigheten inom 72 timmar</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- WCAG Accessibility -->
+<section class="py-20 px-4">
+<div class="max-w-6xl mx-auto">
+<div class="text-center mb-16" data-aos="fade-up">
+<h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="WCAG 2.2 - Tillgänglighetsstandarder" data-lang-en="WCAG 2.2 - Accessibility Standards">
+WCAG 2.2 - Tillgänglighetsstandarder
+</h2>
+<p class="text-xl text-gray-600 dark:text-gray-400" data-lang-sv="Gör din webbplats tillgänglig för alla användare" data-lang-en="Make your website accessible to all users">
+Gör din webbplats tillgänglig för alla användare
+</p>
+</div>
+
+<div class="grid md:grid-cols-2 gap-8 mb-12">
+<!-- WCAG Levels -->
+<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8" data-aos="fade-right">
+<h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="Konformitetsnivåer" data-lang-en="Conformance Levels">
+Konformitetsnivåer
+</h3>
+<div class="space-y-6">
+  <div class="border-l-4 border-orange-400 pl-4">
+    <h4 class="font-bold text-lg text-gray-900 dark:text-white mb-2">Nivå A (Minimum)</h4>
+    <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Grundläggande krav som måste uppfyllas för att webbplatsen ska vara någorlunda tillgänglig" data-lang-en="Basic requirements that must be met for the website to be somewhat accessible">Grundläggande krav som måste uppfyllas för att webbplatsen ska vara någorlunda tillgänglig</p>
+  </div>
+  
+  <div class="border-l-4 border-blue-400 pl-4">
+    <h4 class="font-bold text-lg text-gray-900 dark:text-white mb-2">Nivå AA (Rekommenderad)</h4>
+    <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Den nivå som de flesta offentliga och kommersiella webbplatser bör uppnå enligt lag" data-lang-en="The level that most public and commercial websites should achieve by law">Den nivå som de flesta offentliga och kommersiella webbplatser bör uppnå enligt lag</p>
+  </div>
+  
+  <div class="border-l-4 border-green-400 pl-4">
+    <h4 class="font-bold text-lg text-gray-900 dark:text-white mb-2">Nivå AAA (Optimal)</h4>
+    <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Högsta nivån av tillgänglighet, men inte alltid möjlig att uppnå för all content" data-lang-en="The highest level of accessibility, but not always possible to achieve for all content">Högsta nivån av tillgänglighet, men inte alltid möjlig att uppnå för all content</p>
+  </div>
+</div>
+</div>
+
+<!-- WCAG Principles -->
+<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8" data-aos="fade-left">
+<h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="Fyra grundprinciper (POUR)" data-lang-en="Four Basic Principles (POUR)">
+Fyra grundprinciper (POUR)
+</h3>
+<div class="space-y-4">
+  <div class="flex items-start gap-3">
+    <div class="w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
+      <span class="font-bold text-blue-600 dark:text-blue-400">P</span>
+    </div>
+    <div>
+      <h4 class="font-bold text-gray-900 dark:text-white" data-lang-sv="Perceivable (Uppfattningsbar)" data-lang-en="Perceivable">Perceivable (Uppfattningsbar)</h4>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Användare måste kunna uppfatta informationen" data-lang-en="Users must be able to perceive the information">Användare måste kunna uppfatta informationen</p>
+    </div>
+  </div>
+  
+  <div class="flex items-start gap-3">
+    <div class="w-8 h-8 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
+      <span class="font-bold text-purple-600 dark:text-purple-400">O</span>
+    </div>
+    <div>
+      <h4 class="font-bold text-gray-900 dark:text-white" data-lang-sv="Operable (Hanterbar)" data-lang-en="Operable">Operable (Hanterbar)</h4>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Gränssnittet måste kunna användas med olika hjälpmedel" data-lang-en="The interface must be usable with various assistive technologies">Gränssnittet måste kunna användas med olika hjälpmedel</p>
+    </div>
+  </div>
+  
+  <div class="flex items-start gap-3">
+    <div class="w-8 h-8 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
+      <span class="font-bold text-green-600 dark:text-green-400">U</span>
+    </div>
+    <div>
+      <h4 class="font-bold text-gray-900 dark:text-white" data-lang-sv="Understandable (Begriplig)" data-lang-en="Understandable">Understandable (Begriplig)</h4>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Information och funktionalitet måste vara lätt att förstå" data-lang-en="Information and functionality must be easy to understand">Information och funktionalitet måste vara lätt att förstå</p>
+    </div>
+  </div>
+  
+  <div class="flex items-start gap-3">
+    <div class="w-8 h-8 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
+      <span class="font-bold text-orange-600 dark:text-orange-400">R</span>
+    </div>
+    <div>
+      <h4 class="font-bold text-gray-900 dark:text-white" data-lang-sv="Robust (Robust)" data-lang-en="Robust">Robust (Robust)</h4>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Content måste fungera med olika tekniker och enheter" data-lang-en="Content must work with different technologies and devices">Content måste fungera med olika tekniker och enheter</p>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- Practical Accessibility Tips -->
+<div class="grid md:grid-cols-3 gap-6" data-aos="fade-up">
+<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6">
+  <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center mb-4">
+    <span class="text-2xl">🖼️</span>
+  </div>
+  <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2" data-lang-sv="Alt-texter" data-lang-en="Alt Texts">Alt-texter</h4>
+  <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Alla bilder måste ha beskrivande alternativtext för skärmläsare" data-lang-en="All images must have descriptive alternative text for screen readers">Alla bilder måste ha beskrivande alternativtext för skärmläsare</p>
+</div>
+
+<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6">
+  <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center mb-4">
+    <span class="text-2xl">🎨</span>
+  </div>
+  <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2" data-lang-sv="Färgkontrast" data-lang-en="Color Contrast">Färgkontrast</h4>
+  <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Minst 4.5:1 kontrast mellan text och bakgrund (AA-nivå)" data-lang-en="At least 4.5:1 contrast between text and background (AA level)">Minst 4.5:1 kontrast mellan text och bakgrund (AA-nivå)</p>
+</div>
+
+<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6">
+  <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center mb-4">
+    <span class="text-2xl">⌨️</span>
+  </div>
+  <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2" data-lang-sv="Tangentbordsnavigation" data-lang-en="Keyboard Navigation">Tangentbordsnavigation</h4>
+  <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="All funktionalitet måste gå att nå och använda med enbart tangentbord" data-lang-en="All functionality must be accessible and usable with keyboard only">All funktionalitet måste gå att nå och använda med enbart tangentbord</p>
+</div>
+
+<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6">
+  <div class="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-xl flex items-center justify-center mb-4">
+    <span class="text-2xl">📝</span>
+  </div>
+  <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2" data-lang-sv="Semantisk HTML" data-lang-en="Semantic HTML">Semantisk HTML</h4>
+  <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Använd rätt HTML-element för rätt syfte (header, nav, main, etc.)" data-lang-en="Use the right HTML elements for the right purpose (header, nav, main, etc.)">Använd rätt HTML-element för rätt syfte (header, nav, main, etc.)</p>
+</div>
+
+<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6">
+  <div class="w-12 h-12 bg-pink-100 dark:bg-pink-900/30 rounded-xl flex items-center justify-center mb-4">
+    <span class="text-2xl">🎬</span>
+  </div>
+  <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2" data-lang-sv="Multimedia" data-lang-en="Multimedia">Multimedia</h4>
+  <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Video måste ha textning och ljudbeskrivning för döva och hörselskadade" data-lang-en="Videos must have captions and audio description for deaf and hard of hearing">Video måste ha textning och ljudbeskrivning för döva och hörselskadade</p>
+</div>
+
+<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6">
+  <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-xl flex items-center justify-center mb-4">
+    <span class="text-2xl">📱</span>
+  </div>
+  <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2" data-lang-sv="Responsiv design" data-lang-en="Responsive Design">Responsiv design</h4>
+  <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Webbplatsen måste fungera på alla enheter och skärmstorlekar" data-lang-en="The website must work on all devices and screen sizes">Webbplatsen måste fungera på alla enheter och skärmstorlekar</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Copyright -->
+<section class="py-20 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20">
+<div class="max-w-6xl mx-auto px-4">
+<div class="text-center mb-16" data-aos="fade-up">
+<h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="Upphovsrätt på webben" data-lang-en="Copyright on the Web">
+Upphovsrätt på webben
+</h2>
+<p class="text-xl text-gray-600 dark:text-gray-400" data-lang-sv="Respektera skapares rättigheter" data-lang-en="Respect creators' rights">
+Respektera skapares rättigheter
+</p>
+</div>
+
+<div class="grid md:grid-cols-2 gap-8">
+<!-- What's Protected -->
+<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8" data-aos="fade-right">
+<h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="Vad skyddas?" data-lang-en="What's Protected?">
+Vad skyddas?
+</h3>
+<ul class="space-y-4">
+  <li class="flex items-start gap-3">
+    <span class="text-purple-500 text-xl mt-1">©</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Text och artiklar" data-lang-en="Text and Articles">Text och artiklar</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="All skriven content är automatiskt skyddad" data-lang-en="All written content is automatically protected">All skriven content är automatiskt skyddad</p>
+    </div>
+  </li>
+  <li class="flex items-start gap-3">
+    <span class="text-purple-500 text-xl mt-1">©</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Bilder och grafik" data-lang-en="Images and Graphics">Bilder och grafik</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Fotografier, illustrationer och logotyper" data-lang-en="Photographs, illustrations and logos">Fotografier, illustrationer och logotyper</p>
+    </div>
+  </li>
+  <li class="flex items-start gap-3">
+    <span class="text-purple-500 text-xl mt-1">©</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Musik och ljud" data-lang-en="Music and Sound">Musik och ljud</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Musikstycken, ljudeffekter och inspelningar" data-lang-en="Musical pieces, sound effects and recordings">Musikstycken, ljudeffekter och inspelningar</p>
+    </div>
+  </li>
+  <li class="flex items-start gap-3">
+    <span class="text-purple-500 text-xl mt-1">©</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Video och film" data-lang-en="Video and Film">Video och film</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Videoinspelningar och filmproduktioner" data-lang-en="Video recordings and film productions">Videoinspelningar och filmproduktioner</p>
+    </div>
+  </li>
+  <li class="flex items-start gap-3">
+    <span class="text-purple-500 text-xl mt-1">©</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Källkod" data-lang-en="Source Code">Källkod</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Programkod kan också skyddas av upphovsrätt" data-lang-en="Program code can also be protected by copyright">Programkod kan också skyddas av upphovsrätt</p>
+    </div>
+  </li>
+</ul>
+</div>
+
+<!-- How to Use Legally -->
+<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8" data-aos="fade-left">
+<h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="Hur använder du andras verk lagligt?" data-lang-en="How to Use Others' Work Legally?">
+Hur använder du andras verk lagligt?
+</h3>
+<div class="space-y-4">
+  <div class="border-l-4 border-green-400 pl-4">
+    <h4 class="font-bold text-gray-900 dark:text-white mb-2" data-lang-sv="1. Få tillstånd" data-lang-en="1. Get Permission">1. Få tillstånd</h4>
+    <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Kontakta upphovsrättsinnehavaren och be om licens eller tillstånd" data-lang-en="Contact the copyright holder and request a license or permission">Kontakta upphovsrättsinnehavaren och be om licens eller tillstånd</p>
+  </div>
+  
+  <div class="border-l-4 border-blue-400 pl-4">
+    <h4 class="font-bold text-gray-900 dark:text-white mb-2" data-lang-sv="2. Använd Creative Commons" data-lang-en="2. Use Creative Commons">2. Använd Creative Commons</h4>
+    <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Sök efter material med Creative Commons-licenser som tillåter återanvändning" data-lang-en="Search for material with Creative Commons licenses that allow reuse">Sök efter material med Creative Commons-licenser som tillåter återanvändning</p>
+  </div>
+  
+  <div class="border-l-4 border-purple-400 pl-4">
+    <h4 class="font-bold text-gray-900 dark:text-white mb-2" data-lang-sv="3. Public Domain" data-lang-en="3. Public Domain">3. Public Domain</h4>
+    <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Använd verk vars upphovsrätt har gått ut (ofta 70 år efter skaparens död)" data-lang-en="Use works whose copyright has expired (often 70 years after the creator's death)">Använd verk vars upphovsrätt har gått ut (ofta 70 år efter skaparens död)</p>
+  </div>
+  
+  <div class="border-l-4 border-orange-400 pl-4">
+    <h4 class="font-bold text-gray-900 dark:text-white mb-2" data-lang-sv="4. Skapa eget material" data-lang-en="4. Create Your Own">4. Skapa eget material</h4>
+    <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Det säkraste sättet är att skapa allt content själv eller anlita någon att göra det" data-lang-en="The safest way is to create all content yourself or hire someone to do it">Det säkraste sättet är att skapa allt content själv eller anlita någon att göra det</p>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- Creative Commons Info -->
+<div class="mt-12 bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8" data-aos="fade-up">
+<h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="Creative Commons-licenser" data-lang-en="Creative Commons Licenses">
+Creative Commons-licenser
+</h3>
+<p class="text-gray-600 dark:text-gray-300 mb-6" data-lang-sv="Creative Commons erbjuder flera typer av licenser som gör det enkelt att dela och använda kreativt material lagligt:" data-lang-en="Creative Commons offers several types of licenses that make it easy to share and use creative material legally:">
+Creative Commons erbjuder flera typer av licenser som gör det enkelt att dela och använda kreativt material lagligt:
+</p>
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+  <div class="border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+    <div class="text-2xl mb-2">🅭🅯</div>
+    <h4 class="font-bold text-gray-900 dark:text-white mb-2">CC BY</h4>
+    <p class="text-sm text-gray-600 dark:text-gray-300" data-lang-sv="Tillåt all användning med attribution" data-lang-en="Allow any use with attribution">Tillåt all användning med attribution</p>
+  </div>
+  
+  <div class="border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+    <div class="text-2xl mb-2">🅭🅯🄎</div>
+    <h4 class="font-bold text-gray-900 dark:text-white mb-2">CC BY-SA</h4>
+    <p class="text-sm text-gray-600 dark:text-gray-300" data-lang-sv="Attribution + dela lika" data-lang-en="Attribution + share alike">Attribution + dela lika</p>
+  </div>
+  
+  <div class="border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+    <div class="text-2xl mb-2">🅭🅯🄏</div>
+    <h4 class="font-bold text-gray-900 dark:text-white mb-2">CC BY-ND</h4>
+    <p class="text-sm text-gray-600 dark:text-gray-300" data-lang-sv="Attribution + inga bearbetningar" data-lang-en="Attribution + no derivatives">Attribution + inga bearbetningar</p>
+  </div>
+  
+  <div class="border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+    <div class="text-2xl mb-2">🅭🅯🄍</div>
+    <h4 class="font-bold text-gray-900 dark:text-white mb-2">CC BY-NC</h4>
+    <p class="text-sm text-gray-600 dark:text-gray-300" data-lang-sv="Attribution + icke-kommersiell" data-lang-en="Attribution + non-commercial">Attribution + icke-kommersiell</p>
+  </div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Penalties Section -->
+<section class="py-20 px-4">
+<div class="max-w-6xl mx-auto">
+<div class="text-center mb-16" data-aos="fade-up">
+<h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="Konsekvenser vid regelbrott" data-lang-en="Consequences of Violations">
+Konsekvenser vid regelbrott
+</h2>
+<p class="text-xl text-gray-600 dark:text-gray-400" data-lang-sv="Att bryta mot webblagar kan få allvarliga följder" data-lang-en="Breaking web laws can have serious consequences">
+Att bryta mot webblagar kan få allvarliga följder
+</p>
+</div>
+
+<div class="grid md:grid-cols-3 gap-8">
+<!-- GDPR Penalties -->
+<div class="bg-red-50 dark:bg-red-900/20 border-2 border-red-200 dark:border-red-800 rounded-2xl p-8" data-aos="fade-up" data-aos-delay="100">
+<div class="w-16 h-16 bg-red-100 dark:bg-red-900/30 rounded-2xl flex items-center justify-center mb-6">
+  <span class="text-4xl">⚠️</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white" data-lang-sv="GDPR-böter" data-lang-en="GDPR Fines">
+  GDPR-böter
+</h3>
+<p class="text-gray-700 dark:text-gray-300 mb-4" data-lang-sv="Böter upp till 20 miljoner euro eller 4% av global årsomsättning (det högsta beloppet gäller)" data-lang-en="Fines up to 20 million euros or 4% of global annual turnover (whichever is higher)">
+  Böter upp till 20 miljoner euro eller 4% av global årsomsättning (det högsta beloppet gäller)
+</p>
+<div class="bg-red-100 dark:bg-red-900/30 rounded-xl p-4">
+  <p class="text-sm font-bold text-red-800 dark:text-red-200" data-lang-sv="Exempel: Google fick 2019 en böter på 50 miljoner euro" data-lang-en="Example: Google received a fine of 50 million euros in 2019">Exempel: Google fick 2019 en böter på 50 miljoner euro</p>
+</div>
+</div>
+
+<!-- Copyright Penalties -->
+<div class="bg-orange-50 dark:bg-orange-900/20 border-2 border-orange-200 dark:border-orange-800 rounded-2xl p-8" data-aos="fade-up" data-aos-delay="200">
+<div class="w-16 h-16 bg-orange-100 dark:bg-orange-900/30 rounded-2xl flex items-center justify-center mb-6">
+  <span class="text-4xl">⚖️</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white" data-lang-sv="Upphovsrättsbrott" data-lang-en="Copyright Infringement">
+  Upphovsrättsbrott
+</h3>
+<p class="text-gray-700 dark:text-gray-300 mb-4" data-lang-sv="Skadestånd till upphovsrättsinnehavaren och eventuellt straffansvar vid grov överträdelse" data-lang-en="Damages to the copyright holder and possible criminal liability for serious violations">
+  Skadestånd till upphovsrättsinnehavaren och eventuellt straffansvar vid grov överträdelse
+</p>
+<div class="bg-orange-100 dark:bg-orange-900/30 rounded-xl p-4">
+  <p class="text-sm font-bold text-orange-800 dark:text-orange-200" data-lang-sv="Kan även leda till att webbplatsen stängs ner" data-lang-en="Can also lead to the website being shut down">Kan även leda till att webbplatsen stängs ner</p>
+</div>
+</div>
+
+<!-- Accessibility Penalties -->
+<div class="bg-yellow-50 dark:bg-yellow-900/20 border-2 border-yellow-200 dark:border-yellow-800 rounded-2xl p-8" data-aos="fade-up" data-aos-delay="300">
+<div class="w-16 h-16 bg-yellow-100 dark:bg-yellow-900/30 rounded-2xl flex items-center justify-center mb-6">
+  <span class="text-4xl">♿</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white" data-lang-sv="Tillgänglighetsbrott" data-lang-en="Accessibility Violations">
+  Tillgänglighetsbrott
+</h3>
+<p class="text-gray-700 dark:text-gray-300 mb-4" data-lang-sv="Diskrimineringsersättning och krav på att åtgärda bristerna. Offentliga myndigheter kan få vite." data-lang-en="Discrimination compensation and requirements to remedy deficiencies. Public authorities may be fined.">
+  Diskrimineringsersättning och krav på att åtgärda bristerna. Offentliga myndigheter kan få vite.
+</p>
+<div class="bg-yellow-100 dark:bg-yellow-900/30 rounded-xl p-4">
+  <p class="text-sm font-bold text-yellow-800 dark:text-yellow-200" data-lang-sv="Negativt rykte och förlust av användare" data-lang-en="Negative reputation and loss of users">Negativt rykte och förlust av användare</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Best Practices -->
+<section class="py-20 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20">
+<div class="max-w-6xl mx-auto px-4">
+<div class="text-center mb-16" data-aos="fade-up">
+<h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="Best practices för lagefterlevnad" data-lang-en="Best Practices for Compliance">
+Best practices för lagefterlevnad
+</h2>
+<p class="text-xl text-gray-600 dark:text-gray-400" data-lang-sv="Så bygger du en laglig och etisk webbplats" data-lang-en="How to build a legal and ethical website">
+Så bygger du en laglig och etisk webbplats
+</p>
+</div>
+
+<div class="grid md:grid-cols-2 gap-8">
+<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8" data-aos="fade-right">
+<h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="Tekniska åtgärder" data-lang-en="Technical Measures">
+Tekniska åtgärder
+</h3>
+<ul class="space-y-4">
+  <li class="flex items-start gap-3">
+    <span class="text-blue-500 text-xl mt-1">✓</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="HTTPS överallt" data-lang-en="HTTPS Everywhere">HTTPS överallt</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Använd SSL/TLS-certifikat för att kryptera all datatrafik" data-lang-en="Use SSL/TLS certificates to encrypt all data traffic">Använd SSL/TLS-certifikat för att kryptera all datatrafik</p>
+    </div>
+  </li>
+  <li class="flex items-start gap-3">
+    <span class="text-blue-500 text-xl mt-1">✓</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Cookie-banner" data-lang-en="Cookie Banner">Cookie-banner</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Implementera en tydlig cookie-banner som följer GDPR" data-lang-en="Implement a clear cookie banner that complies with GDPR">Implementera en tydlig cookie-banner som följer GDPR</p>
+    </div>
+  </li>
+  <li class="flex items-start gap-3">
+    <span class="text-blue-500 text-xl mt-1">✓</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Datakryptering" data-lang-en="Data Encryption">Datakryptering</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Kryptera känsliga personuppgifter både vid lagring och överföring" data-lang-en="Encrypt sensitive personal data both in storage and transmission">Kryptera känsliga personuppgifter både vid lagring och överföring</p>
+    </div>
+  </li>
+  <li class="flex items-start gap-3">
+    <span class="text-blue-500 text-xl mt-1">✓</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Tillgänglighetsverktyg" data-lang-en="Accessibility Tools">Tillgänglighetsverktyg</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Använd automatiska verktyg för att testa WCAG-efterlevnad" data-lang-en="Use automated tools to test WCAG compliance">Använd automatiska verktyg för att testa WCAG-efterlevnad</p>
+    </div>
+  </li>
+</ul>
+</div>
+
+<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8" data-aos="fade-left">
+<h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="Organisatoriska åtgärder" data-lang-en="Organizational Measures">
+Organisatoriska åtgärder
+</h3>
+<ul class="space-y-4">
+  <li class="flex items-start gap-3">
+    <span class="text-green-500 text-xl mt-1">✓</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Policydokument" data-lang-en="Policy Documents">Policydokument</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Skapa tydliga integritetspolicyer, användarvillkor och cookie-policyer" data-lang-en="Create clear privacy policies, terms of use and cookie policies">Skapa tydliga integritetspolicyer, användarvillkor och cookie-policyer</p>
+    </div>
+  </li>
+  <li class="flex items-start gap-3">
+    <span class="text-green-500 text-xl mt-1">✓</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Utbildning" data-lang-en="Training">Utbildning</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Se till att teamet förstår GDPR och andra relevanta lagar" data-lang-en="Ensure the team understands GDPR and other relevant laws">Se till att teamet förstår GDPR och andra relevanta lagar</p>
+    </div>
+  </li>
+  <li class="flex items-start gap-3">
+    <span class="text-green-500 text-xl mt-1">✓</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Dataskyddombud" data-lang-en="Data Protection Officer">Dataskyddombud</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Överväg att utse ett dataskyddsombud för större organisationer" data-lang-en="Consider appointing a data protection officer for larger organizations">Överväg att utse ett dataskyddsombud för större organisationer</p>
+    </div>
+  </li>
+  <li class="flex items-start gap-3">
+    <span class="text-green-500 text-xl mt-1">✓</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Regelbunden revision" data-lang-en="Regular Audit">Regelbunden revision</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Granska regelbundet efterlevnad och uppdatera policyer" data-lang-en="Regularly review compliance and update policies">Granska regelbundet efterlevnad och uppdatera policyer</p>
+    </div>
+  </li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-20 px-4">
+<div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+<div class="bg-gradient-to-br from-blue-600 to-purple-600 rounded-3xl p-12 text-white shadow-2xl">
+<div class="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto mb-6">
+<span class="text-5xl">📚</span>
+</div>
+<h2 class="text-4xl font-bold mb-6" data-lang-sv="Lär dig mer" data-lang-en="Learn More">
+Lär dig mer
+</h2>
+<p class="text-xl opacity-90 mb-8" data-lang-sv="Webblagar är komplexa och ändras ständigt. Håll dig uppdaterad genom att följa relevanta myndigheter och organisationer." data-lang-en="Web laws are complex and constantly changing. Stay updated by following relevant authorities and organizations.">
+Webblagar är komplexa och ändras ständigt. Håll dig uppdaterad genom att följa relevanta myndigheter och organisationer.
+</p>
+<div class="flex flex-wrap gap-4 justify-center">
+<a href="https://www.imy.se" target="_blank" rel="noopener" class="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-blue-50 transition-all duration-200 hover:scale-105 shadow-lg">
+  IMY (Integritetsskyddsmyndigheten)
+</a>
+<a href="https://www.w3.org/WAI/WCAG22/quickref/" target="_blank" rel="noopener" class="bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-bold hover:bg-white/20 transition-all duration-200 hover:scale-105 border-2 border-white/30">
+  WCAG 2.2 Quick Reference
+</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-300 py-12">
+<div class="max-w-6xl mx-auto px-4">
+<div class="grid md:grid-cols-4 gap-8 mb-8">
+<div>
+  <h3 class="text-white font-bold mb-4" data-lang-sv="Om projektet" data-lang-en="About">Om projektet</h3>
+  <p class="text-sm" data-lang-sv="En utbildningswebb om webben som plattform och dess lagar & regler." data-lang-en="An educational website about the web as a platform and its laws & regulations.">En utbildningswebb om webben som plattform och dess lagar & regler.</p>
+</div>
+<div>
+  <h3 class="text-white font-bold mb-4" data-lang-sv="Snabblänkar" data-lang-en="Quick Links">Snabblänkar</h3>
+  <ul class="space-y-2 text-sm">
+    <li><a href="/html/index.html" class="hover:text-white transition-colors" data-lang-sv="Hem" data-lang-en="Home">Hem</a></li>
+    <li><a href="/html/syfte.html" class="hover:text-white transition-colors" data-lang-sv="Syfte & krav" data-lang-en="Purpose">Syfte & krav</a></li>
+    <li><a href="/html/historia.html" class="hover:text-white transition-colors" data-lang-sv="Historia" data-lang-en="History">Historia</a></li>
+  </ul>
+</div>
+<div>
+  <h3 class="text-white font-bold mb-4" data-lang-sv="Resurser" data-lang-en="Resources">Resurser</h3>
+  <ul class="space-y-2 text-sm">
+    <li><a href="https://www.imy.se" target="_blank" rel="noopener" class="hover:text-white transition-colors">IMY</a></li>
+    <li><a href="https://www.w3.org/WAI/" target="_blank" rel="noopener" class="hover:text-white transition-colors">W3C WAI</a></li>
+    <li><a href="https://creativecommons.org" target="_blank" rel="noopener" class="hover:text-white transition-colors">Creative Commons</a></li>
+  </ul>
+</div>
+<div>
+  <h4 class="font-semibold mb-4" data-lang-sv="Upptäcka" data-lang-en="Discover">Upptäcka</h4>
+  <ul class="space-y-2 text-sm">
+    <li><a href="/projektplan/" class="text-gray-400 hover:text-white transition-colors">Projektplan</a></li>
+    <li><a href="/tester/" class="text-gray-400 hover:text-white transition-colors">Tester</a></li>
+    <li><a href="/html/dokumentation.html" class="text-gray-400 hover:text-white transition-colors">Dokumentation</a></li>
+    <li><a href="/html/analys.html" class="text-gray-400 hover:text-white transition-colors">Analys</a></li>
+    </ul>
+</div>
+</div>
+</footer>
+
+<!-- AOS Library -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+// Initialize AOS
+AOS.init({
+duration: 800,
+once: true,
+offset: 100
+});
+
+// Dark mode toggle
+const themeToggle = document.getElementById('theme-toggle');
+const html = document.documentElement;
+
+// Check for saved theme preference or default to light mode
+const currentTheme = localStorage.getItem('theme') || 'light';
+if (currentTheme === 'dark') {
+html.classList.add('dark');
+}
+
+themeToggle.addEventListener('click', () => {
+html.classList.toggle('dark');
+const theme = html.classList.contains('dark') ? 'dark' : 'light';
+localStorage.setItem('theme', theme);
+});
+
+// Mobile menu toggle
+const mobileToggle = document.getElementById('mobileToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+
+mobileToggle.addEventListener('click', () => {
+mobileMenu.classList.toggle('hidden');
+const isExpanded = !mobileMenu.classList.contains('hidden');
+mobileToggle.setAttribute('aria-expanded', isExpanded);
+});
+
+// Language toggle
+const btnSv = document.getElementById('btnSv');
+const btnEn = document.getElementById('btnEn');
+let currentLang = 'sv';
+
+function switchLanguage(lang) {
+currentLang = lang;
+
+// Update button states
+if (lang === 'sv') {
+btnSv.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+btnSv.classList.remove('text-gray-600', 'dark:text-gray-300');
+btnEn.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+btnEn.classList.add('text-gray-600', 'dark:text-gray-300');
+} else {
+btnEn.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+btnEn.classList.remove('text-gray-600', 'dark:text-gray-300');
+btnSv.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+btnSv.classList.add('text-gray-600', 'dark:text-gray-300');
+}
+
+// Update all elements with language attributes
+document.querySelectorAll('[data-lang-sv]').forEach(el => {
+const svText = el.getAttribute('data-lang-sv');
+const enText = el.getAttribute('data-lang-en');
+el.textContent = lang === 'sv' ? svText : enText;
+});
+
+localStorage.setItem('language', lang);
+}
+
+btnSv.addEventListener('click', () => switchLanguage('sv'));
+btnEn.addEventListener('click', () => switchLanguage('en'));
+
+// Load saved language preference
+const savedLang = localStorage.getItem('language') || 'sv';
+if (savedLang === 'en') {
+switchLanguage('en');
+}
+</script>
+
+</body>
+</html>

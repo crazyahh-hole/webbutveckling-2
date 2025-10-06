@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kursens syfte & krav | Webben som plattform</title>
+    <meta name="description" content="Lärandemål, bedömningsmatris och kurskrav för kursen Webben som plattform. Förstå vad som krävs för betygen E, C och A.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="/syfte-krav/">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Kursens syfte & krav | Webben som plattform">
+    <meta property="og:description" content="Lärandemål, bedömningsmatris och kurskrav för kursen Webben som plattform.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="/syfte-krav/">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Kursens syfte & krav">
+    <meta name="twitter:description" content="Lärandemål, bedömningsmatris och kurskrav för kursen Webben som plattform.">
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png">
+    
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+        
+        /* Skip link for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 1000;
+        }
+        
+        .skip-link:focus {
+            top: 6px;
+        }
+        
+        /* Header and navigation */
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .header__container {
+            max-width: 72rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header__logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .nav__list {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav__link {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .nav__link:hover,
+        .nav__link:focus {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        .nav__link--current {
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        /* Mobile menu toggle */
+        .nav__toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Breadcrumbs */
+        .breadcrumbs {
+            background: #ecf0f1;
+            padding: 1rem 0;
+        }
+        
+        .breadcrumbs__container {
+            max-width: 72rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .breadcrumbs__list {
+            list-style: none;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        
+        .breadcrumbs__link {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .breadcrumbs__link:hover {
+            text-decoration: underline;
+        }
+        
+        .breadcrumbs__separator {
+            color: #7f8c8d;
+        }
+        
+        .breadcrumbs__current {
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        
+        /* Main content */
+        .main {
+            max-width: 72rem;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        /* Page header */
+        .page-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .page-header__title {
+            font-size: 3rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .page-header__subtitle {
+            font-size: 1.3rem;
+            color: #7f8c8d;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Content sections */
+        .section {
+            margin-bottom: 4rem;
+        }
+        
+        .section__title {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section__content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        
+        /* Learning objectives */
+        .objectives {
+            background: #f8f9fa;
+            border-left: 5px solid #3498db;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .objectives__title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .objectives__list {
+            list-style: none;
+        }
+        
+        .objectives__item {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+        
+        .objectives__item::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* Assessment matrix table */
+        .matrix {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .matrix__header {
+            background: #2c3e50;
+            color: white;
+        }
+        
+        .matrix__cell {
+            padding: 1rem;
+            text-align: left;
+            vertical-align: top;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        .matrix__cell--header {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .matrix__row:hover {
+            background: #8ba7bb;
+        }
+        
+        .matrix__grade-e {
+            border-left: 4px solid #f39c12;
+        }
+        
+        .matrix__grade-c {
+            border-left: 4px solid #3498db;
+        }
+        
+        .matrix__grade-a {
+            border-left: 4px solid #27ae60;
+        }
+        
+        /* Alert/callout boxes */
+        .alert {
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-left: 5px solid;
+        }
+        
+        .alert--warning {
+            background: #fff3cd;
+            border-color: #f39c12;
+            color: #856404;
+        }
+        
+        .alert--info {
+            background: #d1ecf1;
+            border-color: #3498db;
+            color: #0c5460;
+        }
+        
+        .alert--success {
+            background: #d4edda;
+            border-color: #27ae60;
+            color: #155724;
+        }
+        
+        .alert__title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Navigation buttons */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 4rem;
+            gap: 1rem;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn--primary {
+            background: #2b396c;
+            color: white;
+        }
+        
+        .btn--primary:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .btn--secondary {
+            background: #95a5a6;
+            color: white;
+        }
+        
+        .btn--secondary:hover {
+            background: #7f8c8d;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+        
+        .footer__container {
+            max-width: 72rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+            text-align: center;
+        }
+        
+        .footer__links {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer__link {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer__link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .nav__list {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #2c3e50;
+                padding: 1rem;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            
+            .nav__list.nav__list--open {
+                display: flex;
+            }
+            
+            .nav__toggle {
+                display: block;
+            }
+            
+            .page-header__title {
+                font-size: 2rem;
+            }
+            
+            .section__title {
+                font-size: 1.8rem;
+            }
+            
+            .matrix {
+                font-size: 0.9rem;
+            }
+            
+            .matrix__cell {
+                padding: 0.8rem 0.5rem;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+            }
+            
+            .breadcrumbs__list {
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Print styles */
+        @media print {
+            .header, .footer, .nav-buttons, .breadcrumbs {
+                display: none;
+            }
+            
+            .main {
+                max-width: none;
+                margin: 0;
+                padding: 1rem;
+            }
+            
+            .alert {
+                border: 1px solid #ccc;
+                background: white !important;
+            }
+        }
+    </style>
+    
+    <!-- JSON-LD structured data for breadcrumbs -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            'sans': ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            primary: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            },
+            accent: {
+              50: '#fdf2f8',
+              100: '#fce7f3',
+              200: '#fbcfe8',
+              300: '#f9a8d4',
+              400: '#f472b6',
+              500: '#ec4899',
+              600: '#db2777',
+              700: '#be185d',
+              800: '#9d174d',
+              900: '#831843',
+            }
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'glow': 'glow 2s ease-in-out infinite alternate',
+            'slide-up': 'slideUp 0.5s ease-out',
+            'fade-in': 'fadeIn 0.5s ease-out',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-20px)' },
+            },
+            glow: {
+              '0%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.4)' },
+              '100%': { boxShadow: '0 0 30px rgba(59, 130, 246, 0.8)' },
+            },
+            slideUp: {
+              '0%': { transform: 'translateY(100px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' },
+            },
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            }
+          },
+          backgroundImage: {
+            'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+            'mesh-gradient': 'linear-gradient(45deg, #667eea 0%, #764ba2 50%, #f093fb 100%)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png">
+
+  <style>
+    .glass-effect {
+      backdrop-filter: blur(20px);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .dark .glass-effect {
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .hero-gradient {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+    }
+    
+    .card-hover {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-12px) scale(1.02);
+    }
+    
+    .floating-element {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .text-gradient {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .nav-blur {
+      backdrop-filter: blur(20px) saturate(180%);
+      background: rgba(255, 255, 255, 0.8);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .dark .nav-blur {
+      background: rgba(0, 0, 0, 0.8);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+
+<body class="font-sans text-gray-800 bg-gray-50 dark:bg-gray-900 dark:text-gray-100 overflow-x-hidden">
+
+  <!-- Decorative background elements -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute -top-40 -right-40 w-80 h-80 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float"></div>
+    <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: 2s;"></div>
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: 4s;"></div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="fixed inset-x-0 top-0 z-50 nav-blur">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="/html/index.html" class="flex items-center gap-3 group">
+          <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+            <img src="relogo.png" alt="">
+          </div>
+          <div>
+            <h1 class="text-xl font-bold text-gradient">Waleeds Web</h1>
+            <p class="text-xs text-gray-500 dark:text-gray-400">Utbildningswebb</p>
+            </div>
+        </a>
+        <nav class="hidden lg:flex items-center gap-8 text-sm font-medium" aria-label="Primary">
+          <a href="/html/index.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Hem" data-lang-en="Home">
+            Hem
+            <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+          </a>
+          <a href="/html/syfte.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Syfte & krav" data-lang-en="Purpose & Requirements">
+            Syfte & krav
+            <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+          </a>
+          <a href="/html/historia.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Historia" data-lang-en="History">
+            Historia
+            <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+          </a>
+          <a href="/html/betydelse.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Betydelse" data-lang-en="Significance">
+            Betydelse
+            <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+          </a>
+          <a href="/html/funktionalitet.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Funktionalitet" data-lang-en="Functionality">
+            Funktionalitet
+            <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+          </a>
+        </nav>
+
+        <div class="flex items-center gap-4">
+          <!-- Dark Mode Toggle -->
+          <button id="theme-toggle" class="p-2 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 hover:scale-105" aria-label="Växla mörkt läge">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path class="dark:hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+              <path class="hidden dark:block" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+          </button>
+
+          <!-- Language Toggle -->
+          <div class="flex items-center bg-gray-100 dark:bg-gray-800 rounded-xl p-1">
+            <button id="btnSv" class="px-3 py-1 text-sm font-semibold rounded-lg transition-all duration-200 bg-blue-600 text-white shadow-md" aria-label="Svenska">SV</button>
+            <button id="btnEn" class="px-3 py-1 text-sm font-semibold rounded-lg transition-all duration-200 text-gray-600 dark:text-gray-300" aria-label="English">EN</button>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobileToggle" class="lg:hidden p-2 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200" aria-expanded="false" aria-controls="mobileMenu" aria-label="Öppna meny">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="lg:hidden hidden glass-effect border-t">
+      <div class="px-4 py-6 space-y-4">
+        <a href="/html/index.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 transition-colors" data-lang-sv="Hem" data-lang-en="Home">Hem</a>
+        <a href="/html/syfte.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 transition-colors" data-lang-sv="Syfte & krav" data-lang-en="Purpose & Requirements">Syfte & krav</a>
+        <a href="/html/historia.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 transition-colors" data-lang-sv="Historia" data-lang-en="History">Historia</a>
+        <a href="/html/betydelse.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 transition-colors" data-lang-sv="Betydelse" data-lang-en="Significance">Betydelse</a>
+        <a href="/html/funktionalitet.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 transition-colors" data-lang-sv="Funktionalitet" data-lang-en="Functionality">Funktionalitet</a>
+      </div>
+    </div>
+  </header>
+    
+    <nav class="breadcrumbs" aria-label="Brödsmulor">
+        <div class="breadcrumbs__container">
+            <ol class="breadcrumbs__list">
+                <li><a href="/" class="breadcrumbs__link">Start</a></li>
+                <li><span class="breadcrumbs__separator" aria-hidden="true">›</span></li>
+                <li><span class="breadcrumbs__current " aria-current="page">Kursens syfte & krav</span></li>
+            </ol>
+        </div>
+    </nav>
+    
+    <main id="main-content" class="main ">
+        <header class="page-header">
+            <h1 class="page-header__title  dark:text-gray-300 transition-colors" data-lang-sv="Kursens syfte & krav" data-lang-en="Course Purpose & Requirements">Kursens syfte & krav</h1>
+            <p class="page-header__subtitle" data-lang-sv="Lärandemål, bedömningskriterier och vad som förväntas av dig i denna kurs" data-lang-en="Learning objectives, assessment criteria and what you are expected to do in this course" data-lang-en="Learning objectives, assessment criteria and what you are expected to do in this course">Lärandemål, bedömningskriterier och vad som förväntas av dig i denna kurs</p>
+        </header>
+        
+        <section class="section">
+            <h2 class="section__title dark:text-gray-300 transition-colors" data-lang-sv="Kursens syfte" data-lang-en="Course Purpose">Kursens syfte</h2>
+            <div class="section__content">
+                <p data-lang-sv="Denna kurs syftar till att ge dig en djup förståelse för webben som plattform - från dess historiska utveckling till dagens moderna webbteknologier. Du kommer att lära dig hur webben fungerar tekniskt, dess samhällspåverkan och hur du kan utveckla tillgängliga och prestanda-optimerade webbapplikationer." data-lang-en="This course aims to provide you with a deep understanding of the web as a platform — from its historical development to today’s modern web technologies. You will learn how the web works technically, its impact on society, and how to develop accessible and performance-optimized web applications.">Denna kurs syftar till att ge dig en djup förståelse för webben som plattform - från dess historiska utveckling till dagens moderna webbteknologier. Du kommer att lära dig hur webben fungerar tekniskt, dess samhällspåverkan och hur du kan utveckla tillgängliga och prestanda-optimerade webbapplikationer.</p>
+                
+                <p data-lang-sv="Kursen kombinerar teoretisk kunskap med praktisk tillämpning genom ett omfattande projektarbete där du dokumenterar hela utvecklingsprocessen." data-lang-en="The course combines theoretical knowledge with practical application through an extensive project in which you document the entire development process.">Kursen kombinerar teoretisk kunskap med praktisk tillämpning genom ett omfattande projektarbete där du dokumenterar hela utvecklingsprocessen.</p>
+            </div>
+            
+            <div class="objectives dark:text-black transition-colors">
+                <h3 class="objectives__title" data-lang-en="Learning Objectives" data-lang-sv="Lärandemål">Lärandemål</h3>
+                <p data-lang-sv="Efter avslutad kurs ska du kunna:" data-lang-en="After the course is over, you should be able to:">Efter avslutad kurs ska du kunna:</p>
+                <ul class="objectives__list">
+                    <li class="objectives__item" data-lang-en="Redo the history and development of the web from Web 1.0 to modern PWA:s" data-lang-sv="Redogöra för webbens historia och utveckling från Web 1.0 till moderna PWA:er">Redogöra för webbens historia och utveckling från Web 1.0 till moderna PWA:er</li>
+                    <li class="objectives__item" data-lang-en="Describe the technical functionality of the web, including client-server architecture, DNS and HTTP/HTTPS" data-lang-sv="Förklara webbens tekniska funktionalitet inklusive klient-server-arkitektur, DNS och HTTP/HTTPS">Förklara webbens tekniska funktionalitet inklusive klient-server-arkitektur, DNS och HTTP/HTTPS</li>
+                    <li class="objectives__item" data-lang-en="Analyze the significance of the web for society, education, economy and culture" data-lang-sv="Analysera webbens betydelse för samhälle, utbildning, ekonomi och kultur">Analysera webbens betydelse för samhälle, utbildning, ekonomi och kultur</li>
+                    <li class="objectives__item" data-lang-en="Compare the advantages and disadvantages of web applications and mobile apps" data-lang-sv="Jämföra fördelar och nackdelar mellan webbapplikationer och mobilappar">Jämföra fördelar och nackdelar mellan webbapplikationer och mobilappar</li>
+                    <li class="objectives__item" data-lang-en="Apply legal requirements such as GDPR, WCAG 2.2 and copyright issues" data-lang-sv="Tillämpa juridiska krav som GDPR, WCAG 2.2 och upphovsrättslagar">Tillämpa juridiska krav som GDPR, WCAG 2.2 och upphovsrättslagar</li>
+                    <li class="objectives__item" data-lang-en="Develop responsive websites with a focus on accessibility and performance" data-lang-sv="Utveckla responsiva webbsidor med fokus på tillgänglighet och prestanda">Utveckla responsiva webbsidor med fokus på tillgänglighet och prestanda</li>
+                    <li class="objectives__item" data-lang-en="Document development processes and evaluate results critically" data-lang-sv="Dokumentera utvecklingsprocessen och utvärdera resultat kritiskt">Dokumentera utvecklingsprocessen och utvärdera resultat kritiskt</li>
+                    <li class="objectives__item" data-lang-en="Apply correct web terminology and explain technical terms" data-lang-sv="Använda korrekt webbterminologi och förklara tekniska begrepp">Använda korrekt webbterminologi och förklara tekniska begrepp</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section__title dark:text-gray-300 transition-colors" data-lang-en="Grading" data-lang-sv="Bedömningsmatris">Bedömningsmatris</h2>
+            <div class="section__content">
+                <p data-lang-en="Your knowledge is assessed according to the following criteria for the grades E (Pass), C (Pass with Distinction), and A (Pass with High Distinction):" data-lang-sv="Din kunskap bedöms enligt följande kriterier för betygen E (Godkänd), C (Väl godkänd) och A (Mycket väl godkänd):">Din kunskap bedöms enligt följande kriterier för betygen E (Godkänd), C (Väl godkänd) och A (Mycket väl godkänd):</p>
+            </div>
+            
+            <table class="matrix" role="table">
+                <thead class="matrix__header">
+                    <tr class="">
+                        <th class="matrix__cell matrix__cell--header" data-lang-en="Criteria" data-lang-sv="Kriterium" scope="col">Kriterium</th>
+                        <th class="matrix__cell matrix__cell--header" data-lang-en="E - Pass" data-lang-sv="E - Godkänd" scope="col">E - Godkänd</th>
+                        <th class="matrix__cell matrix__cell--header" data-lang-en="C - Pass with Distinction" data-lang-sv="C - Väl godkänd" scope="col">C - Väl godkänd</th>
+                        <th class="matrix__cell matrix__cell--header" data-lang-en="A - Pass with High Distinction" data-lang-sv="A - Mycket väl godkänd" scope="col">A - Mycket väl godkänd</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="matrix__row">
+                        <th class="matrix__cell matrix__cell--header" data-lang-en="Deadline/Planning" data-lang-sv="Deadline/Planering" scope="row">Deadline/planering</th>
+                        <td class="matrix__cell matrix__grade-e" data-lang-en="The project is submitted with minor changes, but shows basic planning" data-lang-sv="Projektet lämnas in med försening men visar grundläggande planering">Lämnar in projektet med försening men visar grundläggande planering</td>
+                        <td class="matrix__cell matrix__grade-c" data-lang-en="The project is submitted with minor changes, but shows structured planning" data-lang-sv="Projektet lämnas in med försening men visar strukturerad planering">Håller alla deadlines och visar strukturerad planering</td>
+                        <td class="matrix__cell matrix__grade-a" data-lang-en="Meets all deadlines and demonstrates advanced project planning with risk analysis." data-lang-sv="Håller alla deadlines och visar avancerad projektplanering med riskanalys.">Håller alla deadlines och visar avancerad projektplanering med riskanalys</td>
+                    </tr>
+                    <tr class="matrix__row">
+                        <th class="matrix__cell matrix__cell--header" data-lang-en="Technical Quality" data-lang-sv="Teknisk kvalitet" scope="row">Teknisk kvalitet</th>
+                        <td class="matrix__cell matrix__grade-e" data-lang-en="Functioning code with basic HTML/CSS; minor bugs are acceptable." data-lang-sv="Fungerende kod med grundläggande HTML/CSS, mindre buggar accepteras">Fungerende kod med grundläggande HTML/CSS, mindre buggar accepteras</td>
+                        <td class="matrix__cell matrix__grade-c" data-lang-en="Structured code, semantic HTML, responsive design" data-lang-sv="Välstrukturerad kod, semantisk HTML, responsiv design">Välstrukturerad kod, semantisk HTML, responsiv design</td>
+                        <td class="matrix__cell matrix__grade-a" data-lang-en="Optimized code with advanced techniques, performance optimization, accessibility" data-lang-sv="">Optimerad kod med avancerade tekniker, prestanda-optimering, tillgänglighet</td>
+                    </tr>
+                    <tr class="matrix__row">
+                        <th class="matrix__cell matrix__cell--header" data-lang-en="Content & Sources" data-lang-sv="Innehåll & källor" scope="row">Innehåll & källor</th>
+                        <td class="matrix__cell matrix__grade-e" data-lang-en="Basic content with a few relevant sources" data-lang-sv="Grundläggande innehåll med nägra relevanta källor">Grundläggande innehåll med några relevanta källor</td>
+                        <td class="matrix__cell matrix__grade-c" data-lang-en="Structured content with relevant sources" data-lang-sv="Välstrukturerat innehåll med trovärdiga källor och korrekt referenshantering">Välstrukturerat innehåll med trovärdiga källor och korrekt referenshantering</td>
+                        <td class="matrix__cell matrix__grade-a" data-lang-en="Detailed content with relevant sources and critical analysis" data-lang-sv="Djupt och nyanserat innehåll med vetenskapliga källor och kritisk analys">Djupt och nyanserat innehåll med vetenskapliga källor och kritisk analys</td>
+                    </tr>
+                    <tr class="matrix__row">
+                        <th class="matrix__cell matrix__cell--header" data-lang-en="Design & UX" data-lang-sv="Design & UX" scope="row">Design & UX</th>
+                        <td class="matrix__cell matrix__grade-e" data-lang-en="Basic design that is usable" data-lang-sv="Grundläggande design som är användbar">Grundläggande design som är användbar</td>
+                        <td class="matrix__cell matrix__grade-c" data-lang-en="Simplistic design with clear navigation and focus" data-lang-sv="Genomtänkt design med tydlig navigation ochändarfokus">Genomtänkt design med tydlig navigation och användarfokus</td>
+                        <td class="matrix__cell matrix__grade-a" data-lang-en="Professionell design with advanced UX-design and user testing" data-lang-sv="Professionell design med avancerad UX-design och användartestning">Professionell design med avancerad UX-design och användartestning</td>
+                    </tr>
+                    <tr class="matrix__row">
+                        <th class="matrix__cell matrix__cell--header" data-lang-en="Accessibility" data-lang-sv="Tillgänglighet" scope="row">Tillgänglighet</th>
+                        <td class="matrix__cell matrix__grade-e" data-lang-en="Grundläggande tillgänglighet (alt-texter, kontrast)" data-lang-sv="Grundläggande tillgänglighet (alt-texter, kontrast)">Grundläggande tillgänglighet (alt-texter, kontrast)</td>
+                        <td class="matrix__cell matrix__grade-c" data-lang-en="Följ WCAG 2.2 AA-riktlinjer systematiskt" data-lang-sv="Följ WCAG 2.2 AA-riktlinjer systematiskt">Följer WCAG 2.2 AA-riktlinjer systematiskt</td>
+                        <td class="matrix__cell matrix__grade-a" data-lang-en="Exemplarisk tillgänglighet medändartestning och AAA-nivå" data-lang-sv="Exemplarisk tillgänglighet medändartestning och AAA-nivå">Exemplarisk tillgänglighet med användartestning och AAA-nivå där möjligt</td>
+                    </tr>
+                    <tr class="matrix__row">
+                        <th class="matrix__cell matrix__cell--header" data-lang-en="Documentation" data-lang-sv="Dokumentation" scope="row">Dokumentation</th>
+                        <td class="matrix__cell matrix__grade-e" data-lang-en="Grundläggande dokumentation av processen" data-lang-sv="Grundläggande dokumentation av processen">Grundläggande dokumentation av processen</td>
+                        <td class="matrix__cell matrix__grade-c" data-lang-en="Strukturerad dokumentation med reflektion och lektionsloggar" data-lang-sv="Strukturerad dokumentation med reflektion och lektionsloggar">Strukturerad dokumentation med reflektion och lektionsloggar</td>
+                        <td class="matrix__cell matrix__grade-a" data-lang-en="Omfattande dokumentation med djup analys och metodreflektion" data-lang-sv="Omfattande dokumentation med djup analys och metodreflektion">Omfattande dokumentation med djup analys och metodreflektion</td>
+                    </tr>
+                    <tr class="matrix__row">
+                        <th class="matrix__cell matrix__cell--header" data-lang-en="Analysis & Reflection" data-lang-sv="Analys & resonemang" scope="row">Analys & resonemang</th>
+                        <td class="matrix__cell matrix__grade-e" data-lang-en="Enkel analys av resultat och process" data-lang-sv="Enkel analys av resultat och process">Enkel analys av resultat och process</td>
+                        <td class="matrix__cell matrix__grade-c" data-lang-en="Well-founded analysis with clear connections to theory and achievement of learning objectives." data-lang-sv="Välgrundad analys med koppling till teori och måluppfyllelse">Välgrundad analys med koppling till teori och måluppfyllelse</td>
+                        <td class="matrix__cell matrix__grade-a" data-lang-en="Critical and deep analysis with suggestions for further development and method criticism" data-lang-sv="Kritisk och djup analys med förslag på vidareutveckling och metodkritik">Kritisk och djup analys med förslag på vidareutveckling och metodkritik</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section class="section">
+            <h2 class="section__title dark:text-gray-300 transition-colors" data-lang-en="important rules and deadlines" data-lang-sv="viktiga regler och deadlines">Viktiga regler och deadlines</h2>
+            
+            <div class="alert alert--warning">
+                <h3 class="alert__title" data-lang-en="🚨 Deadline rules" data-lang-sv="🚨 Deadline-regeln">🚨 Deadline-regeln</h3>
+                <p><strong>För betyget C eller A krävs att alla deadlines hålls.</strong> Betyget E kan beaktas vid sen inlämning, men detta påverkar slutbetyget negativt. Planera ditt arbete noggrant och kontakta läraren i god tid om du förutser problem.</p>
+            </div>
+            
+            <div class="alert alert--info">
+                <h3 class="alert__title">📝 Kommentarsreglerne</h3>
+                <p>Varje större inlämnad uppgift eller avsnitt ska kommenteras av dig som elev i en separat mapp eller dokument. Beskriv vad du har lärt dig, vilka utmaningar du stött på och hur du löst dem.</p>
+            </div>
+            
+            <div class="alert alert--success">
+                <h3 class="alert__title">📅 Redovisning</h3>
+                <p><strong>Redovisning sker fredag 3 oktober kl 14.30.</strong> Alla projekt ska vara färdiga för presentation. Mer information om redovisningsformen kommer senare i kursen.</p>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section__title dark:text-gray-300 transition-colors">Vad förväntas av dig</h2>
+            <div class="section__content">
+                <p>För att lyckas i denna kurs förväntas du:</p>
+                <ul>
+                    <li><strong>Ta ansvar för ditt lärande:</strong> Kursen kräver självständigt arbete och egna reflektioner</li>
+                    <li><strong>Håll deadlines:</strong> Planera ditt arbete och följ den uppsatta tidsplanen</li>
+                    <li><strong>Dokumentera kontinuerligt:</strong> Skriv löpande i din lektionslogg och reflektion</li>
+                    <li><strong>Sök hjälp i tid:</strong> Kontakta läraren om du behöver stöd eller vägledning</li>
+                    <li><strong>Använd trovärdiga källor:</strong> Referera korrekt och kritiskt granska information</li>
+                    <li><strong>Testa och validera:</strong> Kontrollera att din kod fungerar och är tillgänglig</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section class="py-12 px-4">
+          <div class="max-w-5xl mx-auto flex flex-col sm:flex-row justify-between gap-4">
+            <a href="/html/index.html" class="group flex items-center gap-2 px-8 py-4 bg-gray-600 hover:bg-gray-700 text-white rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-lg">
+              <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+              </svg>
+              <span>Föregående: Hem</span>
+            </a>
+            <a href="/html/historia.html" class="group flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-lg">
+              <span>Nästa: Historia</span>
+              <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <div class="footer__container">
+            <ul class="footer__links">
+                <li><a href="/projektplan/" class="footer__link">Projektplan</a></li>
+                <li><a href="/tester/" class="footer__link">Tester</a></li>
+                <li><a href="/html/dokumentation.html" class="footer__link">Dokumentation</a></li>
+                <li><a href="/html/analys.html" class="footer__link">Analys</a></li>
+                <li><a href="/resurser/" class="footer__link">Resurser</a></li>
+            </ul>
+        </div>
+    </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+    // AOS initialization
+    if (typeof AOS !== 'undefined') {
+      AOS.init({ 
+        once: true, 
+        duration: 800, 
+        easing: 'ease-out-cubic',
+        offset: 50,
+        delay: 0
+      });
+    }
+  
+      // Mobile menu functionality
+  const mobileToggle = document.getElementById('mobileToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  
+  if (mobileToggle && mobileMenu) {
+    mobileToggle.addEventListener('click', () => {
+      const expanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+      mobileToggle.setAttribute('aria-expanded', !expanded);
+      mobileMenu.classList.toggle('hidden');
+      
+      // Animate hamburger icon
+      const svg = mobileToggle.querySelector('svg');
+      svg.style.transform = expanded ? 'rotate(0deg)' : 'rotate(180deg)';
+    });
+  }
+
+
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', e => {
+      const target = document.querySelector(anchor.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      const offset = 100;
+      const pos = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ 
+        top: pos, 
+        behavior: 'smooth' 
+      });
+    });
+  });
+
+        // Highlight current table row on hover
+        const matrixRows = document.querySelectorAll('.matrix__row');
+        matrixRows.forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.style.transform = 'scale(1.01)';
+            });
+            row.addEventListener('mouseleave', () => {
+                row.style.transform = 'scale(1)';
+            });
+        });
+
+        // Dark mode toggle with enhanced functionality
+  const themeToggle = document.getElementById('theme-toggle');
+  
+  if (themeToggle) {
+    // Check for saved theme preference or default to light
+    const savedTheme = localStorage.getItem('theme') || 
+                      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    
+    if (savedTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    }
+    
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      const isDark = document.documentElement.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      
+      // Add a subtle animation
+      themeToggle.style.transform = 'scale(0.9)';
+      setTimeout(() => {
+        themeToggle.style.transform = 'scale(1)';
+      }, 150);
+    });
+  }
+
+  // Enhanced language toggle functionality
+  const btnSv = document.getElementById('btnSv');
+  const btnEn = document.getElementById('btnEn');
+  const elements = document.querySelectorAll('[data-lang-sv]');
+
+  function setLanguage(lang) {
+    // Update all elements with language data attributes
+    elements.forEach(element => {
+      const text = element.getAttribute(`data-lang-${lang}`);
+      if (text) {
+        // Handle different types of elements
+        if (element.tagName === 'INPUT' && element.type === 'text') {
+          element.placeholder = text;
+        } else if (element.hasAttribute('aria-label')) {
+          element.setAttribute('aria-label', text);
+        } else {
+          element.textContent = text;
+        }
+      }
+    });
+    
+    // Update document language and direction
+    document.documentElement.lang = lang;
+    
+    // Update button styles with smooth transition
+    if (lang === 'sv') {
+      btnSv.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+      btnSv.classList.remove('text-gray-600', 'dark:text-gray-300');
+      btnEn.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+      btnEn.classList.add('text-gray-600', 'dark:text-gray-300');
+    } else {
+      btnEn.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+      btnEn.classList.remove('text-gray-600', 'dark:text-gray-300');
+      btnSv.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+      btnSv.classList.add('text-gray-600', 'dark:text-gray-300');
+    }
+    
+    // Save language preference
+    localStorage.setItem('language', lang);
+    
+    // Refresh AOS animations after language change
+    setTimeout(() => { 
+      if (typeof AOS !== 'undefined') AOS.refresh(); 
+    }, 100);
+  }
+
+  // Event listeners for language buttons
+  if (btnSv && btnEn) {
+    btnSv.addEventListener('click', () => {
+      setLanguage('sv');
+      btnSv.style.transform = 'scale(0.95)';
+      setTimeout(() => btnSv.style.transform = 'scale(1)', 150);
+    });
+    
+    btnEn.addEventListener('click', () => {
+      setLanguage('en');
+      btnEn.style.transform = 'scale(0.95)';
+      setTimeout(() => btnEn.style.transform = 'scale(1)', 150);
+    });
+    
+    // Load saved language preference or default to Swedish
+    const savedLanguage = localStorage.getItem('language') || 'sv';
+    setLanguage(savedLanguage);
+  }
+
+  // Enhanced accessibility features
+  document.addEventListener('click', (e) => {
+    if (mobileMenu && mobileToggle && 
+        !mobileMenu.contains(e.target) && 
+        !mobileToggle.contains(e.target) && 
+        !mobileMenu.classList.contains('hidden')) {
+      mobileMenu.classList.add('hidden');
+      mobileToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Escape key handling
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+        mobileToggle.focus();
+      }
+    }
+  });
+
+  // Intersection Observer for advanced animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-fade-in');
+      }
+    });
+  }, observerOptions);
+
+  // Observe cards for staggered animations
+  document.querySelectorAll('.card-hover').forEach((card, index) => {
+    card.style.animationDelay = `${index * 100}ms`;
+    observer.observe(card);
+  });
+
+  // Performance optimization - Debounced scroll
+  let ticking = false;
+  
+  function updateScrollEffects() {
+    // Add any scroll-based animations here
+    ticking = false;
+  }
+  
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(updateScrollEffects);
+      ticking = true;
+    }
+  });
+    </script>
+</body>
+</html>

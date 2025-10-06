@@ -1,0 +1,810 @@
+</html><!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apps vs Webb | Funktionalitet</title>
+<meta name="description" content="Jämför skillnader mellan native apps och webbapplikationer. Utforska fördelar, nackdelar och när du ska välja mellan app och webb.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script>
+tailwind.config = {
+darkMode: 'class',
+theme: {
+  extend: {
+    fontFamily: {
+      'sans': ['Inter', 'system-ui', 'sans-serif'],
+    },
+    animation: {
+      'float': 'float 6s ease-in-out infinite',
+      'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+    },
+    keyframes: {
+      float: {
+        '0%, 100%': { transform: 'translateY(0px)' },
+        '50%': { transform: 'translateY(-20px)' },
+      }
+    }
+  }
+}
+}
+</script>
+
+<style>
+.glass-effect {
+backdrop-filter: blur(20px);
+background: rgba(255, 255, 255, 0.1);
+border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass-effect {
+background: rgba(0, 0, 0, 0.2);
+border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-blur {
+backdrop-filter: blur(20px) saturate(180%);
+background: rgba(255, 255, 255, 0.8);
+border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dark .nav-blur {
+background: rgba(0, 0, 0, 0.8);
+border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.text-gradient {
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+.card-hover {
+transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+transform: translateY(-8px) scale(1.02);
+}
+</style>
+</head>
+
+<body class="font-sans text-gray-800 bg-gray-50 dark:bg-gray-900 dark:text-gray-100 overflow-x-hidden">
+
+<!-- Decorative background -->
+<div class="fixed inset-0 overflow-hidden pointer-events-none">
+<div class="absolute -top-40 -right-40 w-80 h-80 bg-blue-300 dark:bg-blue-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float"></div>
+<div class="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-300 dark:bg-purple-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: 2s;"></div>
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-pink-300 dark:bg-pink-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: 4s;"></div>
+</div>
+
+<!-- HEADER -->
+<header class="fixed inset-x-0 top-0 z-50 nav-blur">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-20">
+  <a href="/html/index.html" class="flex items-center gap-3 group">
+    <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+      <img src="relogo.png" alt="">
+    </div>
+    <div>
+      <h1 class="text-xl font-bold text-gradient">Waleeds Web</h1>
+      <p class="text-xs text-gray-500 dark:text-gray-400" data-lang-sv="Utbildningswebb" data-lang-en="Educational Website">Utbildningswebb</p>
+    </div>
+  </a>
+
+  <nav class="hidden lg:flex items-center gap-8 text-sm font-medium" aria-label="Primary">
+    <a href="/html/index.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Hem" data-lang-en="Home">
+      Hem
+      <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+    </a>
+    <a href="/html/syfte.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Syfte & krav" data-lang-en="Purpose">
+      Syfte & krav
+      <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+    </a>
+    <a href="/html/historia.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Historia" data-lang-en="History">
+      Historia
+      <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+    </a>
+    <a href="/html/app.html" class="text-blue-600 dark:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Funktionalitet" data-lang-en="Functionality">
+      App vs Webb
+      <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-100 transition-transform duration-200"></span>
+    </a>
+  </nav>
+
+  <div class="flex items-center gap-4">
+    <button id="theme-toggle" class="p-2 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 hover:scale-105" aria-label="Växla mörkt läge">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path class="dark:hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+        <path class="hidden dark:block" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+      </svg>
+    </button>
+
+    <div class="flex items-center bg-gray-100 dark:bg-gray-800 rounded-xl p-1">
+      <button id="btnSv" class="px-3 py-1 text-sm font-semibold rounded-lg transition-all duration-200 bg-blue-600 text-white shadow-md">SV</button>
+      <button id="btnEn" class="px-3 py-1 text-sm font-semibold rounded-lg transition-all duration-200 text-gray-600 dark:text-gray-300">EN</button>
+    </div>
+
+    <button id="mobileToggle" class="lg:hidden p-2 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300" aria-expanded="false" aria-label="Öppna meny">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </div>
+</div>
+</div>
+
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="lg:hidden hidden glass-effect border-t border-gray-200 dark:border-gray-700">
+<div class="px-4 py-6 space-y-4">
+  <a href="/html/index.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 transition-colors" data-lang-sv="Hem" data-lang-en="Home">Hem</a>
+  <a href="/html/syfte.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 transition-colors" data-lang-sv="Syfte & krav" data-lang-en="Purpose">Syfte & krav</a>
+  <a href="/html/historia.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 transition-colors" data-lang-sv="Historia" data-lang-en="History">Historia</a>
+  <a href="/html/funktionalitet.html" class="block py-3 px-4 rounded-xl bg-blue-600 text-white" data-lang-sv="Funktionalitet" data-lang-en="Functionality">App vs Webb</a>
+</div>
+</div>
+</header>
+
+<!-- Hero Section -->
+<section class="relative min-h-[70vh] flex items-center justify-center text-white overflow-hidden pt-20">
+<div class="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600"></div>
+<div class="absolute inset-0 bg-black bg-opacity-20"></div>
+
+<div class="relative z-10 text-center px-4 max-w-5xl mx-auto py-20" data-aos="fade-up">
+<div class="inline-block mb-6">
+  <div class="w-20 h-20 bg-white/10 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto animate-float">
+    <span class="text-5xl">📱</span>
+  </div>
+</div>
+<h1 class="text-5xl md:text-6xl font-bold mb-6" data-lang-sv="Apps vs Webb" data-lang-en="Apps vs Web">
+  App vs Webb
+</h1>
+<p class="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto mb-8" data-lang-sv="Upptäck skillnaderna mellan native appar och webbapplikationer - och när du ska välja vardera" data-lang-en="Discover the differences between native apps and web applications - and when to choose each">
+  Upptäck skillnaderna mellan native appar och webbapplikationer - och när du ska välja vardera
+</p>
+</div>
+</section>
+
+<!-- Main Content -->
+<main class="relative bg-white dark:bg-gray-900">
+
+<!-- Introduction -->
+<section class="py-20 px-4">
+<div class="max-w-6xl mx-auto">
+  <div class="text-center mb-16" data-aos="fade-up">
+    <h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="Vad är skillnaden?" data-lang-en="What's the Difference?">
+      Vad är skillnaden?
+    </h2>
+    <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto" data-lang-sv="I dagens digitala värld kan du nå användare genom native appar eller webbapplikationer. Båda har sina för- och nackdelar." data-lang-en="In today's digital world, you can reach users through native apps or web applications. Both have their pros and cons.">
+      I dagens digitala värld kan du nå användare genom native appar eller webbapplikationer. Båda har sina för- och nackdelar.
+    </p>
+  </div>
+
+  <!-- Main Comparison Cards -->
+  <div class="grid md:grid-cols-2 gap-8 mb-12">
+    <!-- Native Apps -->
+    <div class="card-hover bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl shadow-xl p-8 border-2 border-blue-200 dark:border-blue-800" data-aos="fade-right">
+      <div class="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+        <span class="text-4xl">📱</span>
+      </div>
+      <h3 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white" data-lang-sv="Native Appar" data-lang-en="Native Apps">
+        Native Appar
+      </h3>
+      <p class="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed" data-lang-sv="Applikationer som utvecklas specifikt för en plattform (iOS, Android) och installeras direkt på enheten från App Store eller Google Play." data-lang-en="Applications developed specifically for a platform (iOS, Android) and installed directly on the device from App Store or Google Play.">
+        Applikationer som utvecklas specifikt för en plattform (iOS, Android) och installeras direkt på enheten från App Store eller Google Play.
+      </p>
+      <div class="space-y-3">
+        <div class="flex items-start gap-3">
+          <span class="text-blue-500 text-xl mt-1">✓</span>
+          <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Full åtkomst till enhetens funktioner" data-lang-en="Full access to device features">Full åtkomst till enhetens funktioner</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-blue-500 text-xl mt-1">✓</span>
+          <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Bästa prestanda och användarupplevelse" data-lang-en="Best performance and user experience">Bästa prestanda och användarupplevelse</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-blue-500 text-xl mt-1">✓</span>
+          <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Fungerar offline" data-lang-en="Works offline">Fungerar offline</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-blue-500 text-xl mt-1">✓</span>
+          <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Push-notifikationer" data-lang-en="Push notifications">Push-notifikationer</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Web Applications -->
+    <div class="card-hover bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl shadow-xl p-8 border-2 border-purple-200 dark:border-purple-800" data-aos="fade-left">
+      <div class="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+        <span class="text-4xl">🌐</span>
+      </div>
+      <h3 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white" data-lang-sv="Webbapplikationer" data-lang-en="Web Applications">
+        Webbapplikationer
+      </h3>
+      <p class="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed" data-lang-sv="Applikationer som körs i webbläsaren och nås via en URL. Ingen installation krävs och fungerar på alla enheter med en webbläsare." data-lang-en="Applications that run in the browser and are accessed via a URL. No installation required and works on all devices with a browser.">
+        Applikationer som körs i webbläsaren och nås via en URL. Ingen installation krävs och fungerar på alla enheter med en webbläsare.
+      </p>
+      <div class="space-y-3">
+        <div class="flex items-start gap-3">
+          <span class="text-purple-500 text-xl mt-1">✓</span>
+          <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Plattformsoberoende - en kodbas för alla" data-lang-en="Platform independent - one codebase for all">Plattformsoberoende - en kodbas för alla</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-purple-500 text-xl mt-1">✓</span>
+          <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Ingen installation - direktåtkomst via URL" data-lang-en="No installation - direct access via URL">Ingen installation - direktåtkomst via URL</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-purple-500 text-xl mt-1">✓</span>
+          <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Lättare att uppdatera" data-lang-en="Easier to update">Lättare att uppdatera</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-purple-500 text-xl mt-1">✓</span>
+          <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Lägre utvecklingskostnad" data-lang-en="Lower development cost">Lägre utvecklingskostnad</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Detailed Comparison Table -->
+<section class="py-20 bg-gray-50 dark:bg-gray-800/50">
+<div class="max-w-7xl mx-auto px-4">
+  <h2 class="text-4xl font-bold mb-4 text-center text-gray-900 dark:text-white" data-aos="fade-up" data-lang-sv="Detaljerad jämförelse" data-lang-en="Detailed Comparison">
+    Detaljerad jämförelse
+  </h2>
+  <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mb-12 rounded-full"></div>
+
+  <div class="overflow-x-auto bg-white dark:bg-gray-800 rounded-2xl shadow-xl" data-aos="fade-up">
+    <table class="w-full">
+      <thead class="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+        <tr>
+          <th class="px-6 py-4 text-left font-semibold" data-lang-sv="Faktor" data-lang-en="Factor">Faktor</th>
+          <th class="px-6 py-4 text-left font-semibold" data-lang-sv="Native App" data-lang-en="Native App">Native App</th>
+          <th class="px-6 py-4 text-left font-semibold" data-lang-sv="Webbapp" data-lang-en="Web App">Webbapp</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+        <tr class="hover:bg-blue-50 dark:hover:bg-gray-700/50 transition-colors">
+          <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white" data-lang-sv="Installation" data-lang-en="Installation">Installation</td>
+          <td class="px-6 py-4 text-gray-600 dark:text-gray-300" data-lang-sv="Måste laddas ner från app store" data-lang-en="Must be downloaded from app store">Måste laddas ner från app store</td>
+          <td class="px-6 py-4 text-gray-600 dark:text-gray-300" data-lang-sv="Ingen installation - öppnas i webbläsare" data-lang-en="No installation - opens in browser">Ingen installation - öppnas i webbläsare</td>
+        </tr>
+        <tr class="hover:bg-blue-50 dark:hover:bg-gray-700/50 transition-colors">
+          <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white" data-lang-sv="Utvecklingskostnad" data-lang-en="Development Cost">Utvecklingskostnad</td>
+          <td class="px-6 py-4 text-gray-600 dark:text-gray-300" data-lang-sv="Hög (separat kod för iOS/Android)" data-lang-en="High (separate code for iOS/Android)">Hög (separat kod för iOS/Android)</td>
+          <td class="px-6 py-4 text-gray-600 dark:text-gray-300" data-lang-sv="Lägre (en kodbas för alla plattformar)" data-lang-en="Lower (one codebase for all platforms)">Lägre (en kodbas för alla plattformar)</td>
+        </tr>
+        <tr class="hover:bg-blue-50 dark:hover:bg-gray-700/50 transition-colors">
+          <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white" data-lang-sv="Prestanda" data-lang-en="Performance">Prestanda</td>
+          <td class="px-6 py-4 text-gray-600 dark:text-gray-300" data-lang-sv="Mycket hög - optimerad för plattformen" data-lang-en="Very high - optimized for the platform">Mycket hög - optimerad för plattformen</td>
+          <td class="px-6 py-4 text-gray-600 dark:text-gray-300" data-lang-sv="God - beroende av webbläsare" data-lang-en="Good - depends on browser">God - beroende av webbläsare</td>
+        </tr>
+        <tr class="hover:bg-blue-50 dark:hover:bg-gray-700/50 transition-colors">
+          <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white" data-lang-sv="Offline-funktionalitet" data-lang-en="Offline Functionality">Offline-funktionalitet</td>
+          <td class="px-6 py-4 text-gray-600 dark:text-gray-300" data-lang-sv="Fullständig offline-support" data-lang-en="Complete offline support">Fullständig offline-support</td>
+          <td class="px-6 py-4 text-gray-600 dark:text-gray-300" data-lang-sv="Begränsad (med PWA kan det förbättras)" data-lang-en="Limited (can be improved with PWA)">Begränsad (med PWA kan det förbättras)</td>
+        </tr>
+        <tr class="hover:bg-blue-50 dark:hover:bg-gray-700/50 transition-colors">
+          <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white" data-lang-sv="Uppdateringar" data-lang-en="Updates">Uppdateringar</td>
+          <td class="px-6 py-4 text-gray-600 dark:text-gray-300" data-lang-sv="Kräver godkännande från app store, användare måste uppdatera" data-lang-en="Requires app store approval, users must update">Kräver godkännande från app store, användare måste uppdatera</td>
+          <td class="px-6 py-4 text-gray-600 dark:text-gray-300" data-lang-sv="Omedelbar uppdatering för alla användare" data-lang-en="Immediate update for all users">Omedelbar uppdatering för alla användare</td>
+        </tr>
+        <tr class="hover:bg-blue-50 dark:hover:bg-gray-700/50 transition-colors">
+          <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white" data-lang-sv="Enhetsåtkomst" data-lang-en="Device Access">Enhetsåtkomst</td>
+          <td class="px-6 py-4 text-gray-600 dark:text-gray-300" data-lang-sv="Full åtkomst till kamera, GPS, sensorer, etc." data-lang-en="Full access to camera, GPS, sensors, etc.">Full åtkomst till kamera, GPS, sensorer, etc.</td>
+          <td class="px-6 py-4 text-gray-600 dark:text-gray-300" data-lang-sv="Begränsad via Web APIs" data-lang-en="Limited via Web APIs">Begränsad via Web APIs</td>
+        </tr>
+        <tr class="hover:bg-blue-50 dark:hover:bg-gray-700/50 transition-colors">
+          <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white" data-lang-sv="Upptäckbarhet" data-lang-en="Discoverability">Upptäckbarhet</td>
+          <td class="px-6 py-4 text-gray-600 dark:text-gray-300" data-lang-sv="Via app stores" data-lang-en="Via app stores">Via app stores</td>
+          <td class="px-6 py-4 text-gray-600 dark:text-gray-300" data-lang-sv="Via sökmotorer och direktlänkar" data-lang-en="Via search engines and direct links">Via sökmotorer och direktlänkar</td>
+        </tr>
+        <tr class="hover:bg-blue-50 dark:hover:bg-gray-700/50 transition-colors">
+          <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white" data-lang-sv="Lagringsutrymme" data-lang-en="Storage Space">Lagringsutrymme</td>
+          <td class="px-6 py-4 text-gray-600 dark:text-gray-300" data-lang-sv="Tar upp plats på enheten (ofta 50-200 MB)" data-lang-en="Takes up space on device (often 50-200 MB)">Tar upp plats på enheten (ofta 50-200 MB)</td>
+          <td class="px-6 py-4 text-gray-600 dark:text-gray-300" data-lang-sv="Minimal - cachning i webbläsaren" data-lang-en="Minimal - caching in browser">Minimal - cachning i webbläsaren</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</section>
+
+<!-- Progressive Web Apps (PWA) -->
+<section class="py-20 px-4">
+<div class="max-w-6xl mx-auto">
+  <div class="text-center mb-16" data-aos="fade
+
+<div class="text-center mb-16" data-aos="fade-up">
+    <div class="inline-block mb-6">
+      <div class="w-20 h-20 bg-gradient-to-br from-green-400 to-cyan-500 rounded-3xl flex items-center justify-center shadow-2xl animate-pulse-slow">
+        <span class="text-5xl">⚡</span>
+      </div>
+    </div>
+    <h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="Progressive Web Apps (PWA)" data-lang-en="Progressive Web Apps (PWA)">
+      Progressive Web Apps (PWA)
+    </h2>
+    <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto" data-lang-sv="Det bästa av två världar - webbteknologi med app-liknande funktionalitet" data-lang-en="The best of both worlds - web technology with app-like functionality">
+      Det bästa av två världar - webbteknologi med app-liknande funktionalitet
+    </p>
+  </div>
+
+  <div class="bg-gradient-to-br from-green-50 to-cyan-50 dark:from-green-900/20 dark:to-cyan-900/20 rounded-2xl shadow-xl p-8 mb-12" data-aos="fade-up">
+    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6" data-lang-sv="PWA är webbapplikationer som använder moderna webbtekologier för att leverera en app-liknande upplevelse. De kan installeras på hemskärmen, fungera offline och skicka push-notifikationer - precis som native appar." data-lang-en="PWA are web applications that use modern web technologies to deliver an app-like experience. They can be installed on the home screen, work offline and send push notifications - just like native apps.">
+      PWA är webbapplikationer som använder moderna webbtekologier för att leverera en app-liknande upplevelse. De kan installeras på hemskärmen, fungera offline och skicka push-notifikationer - precis som native appar.
+    </p>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+        <div class="text-3xl mb-3">📲</div>
+        <h4 class="font-bold text-gray-900 dark:text-white mb-2" data-lang-sv="Installerbar" data-lang-en="Installable">Installerbar</h4>
+        <p class="text-sm text-gray-600 dark:text-gray-300" data-lang-sv="Kan läggas till på hemskärmen utan app store" data-lang-en="Can be added to home screen without app store">Kan läggas till på hemskärmen utan app store</p>
+      </div>
+
+      <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+        <div class="text-3xl mb-3">🔄</div>
+        <h4 class="font-bold text-gray-900 dark:text-white mb-2" data-lang-sv="Offline-först" data-lang-en="Offline-first">Offline-först</h4>
+        <p class="text-sm text-gray-600 dark:text-gray-300" data-lang-sv="Service Workers möjliggör offline-funktionalitet" data-lang-en="Service Workers enable offline functionality">Service Workers möjliggör offline-funktionalitet</p>
+      </div>
+
+      <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+        <div class="text-3xl mb-3">🔔</div>
+        <h4 class="font-bold text-gray-900 dark:text-white mb-2" data-lang-sv="Push-notiser" data-lang-en="Push Notifications">Push-notiser</h4>
+        <p class="text-sm text-gray-600 dark:text-gray-300" data-lang-sv="Skicka meddelanden även när appen är stängd" data-lang-en="Send messages even when the app is closed">Skicka meddelanden även när appen är stängd</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PWA Examples -->
+  <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8" data-aos="fade-up">
+    <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="Kända företag som använder PWA" data-lang-en="Well-known Companies Using PWA">
+      Kända företag som använder PWA
+    </h3>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="text-center p-4 border border-gray-200 dark:border-gray-700 rounded-xl hover:border-blue-500 transition-colors">
+        <div class="text-4xl mb-2">🐦</div>
+        <h4 class="font-bold text-gray-900 dark:text-white">Twitter</h4>
+        <p class="text-sm text-gray-600 dark:text-gray-300" data-lang-sv="65% ökning i sidor per session" data-lang-en="65% increase in pages per session">65% ökning i sidor per session</p>
+      </div>
+      <div class="text-center p-4 border border-gray-200 dark:border-gray-700 rounded-xl hover:border-blue-500 transition-colors">
+        <div class="text-4xl mb-2">📌</div>
+        <h4 class="font-bold text-gray-900 dark:text-white">Pinterest</h4>
+        <p class="text-sm text-gray-600 dark:text-gray-300" data-lang-sv="60% ökning i engagemang" data-lang-en="60% increase in engagement">60% ökning i engagemang</p>
+      </div>
+      <div class="text-center p-4 border border-gray-200 dark:border-gray-700 rounded-xl hover:border-blue-500 transition-colors">
+        <div class="text-4xl mb-2">🎵</div>
+        <h4 class="font-bold text-gray-900 dark:text-white">Spotify</h4>
+        <p class="text-sm text-gray-600 dark:text-gray-300" data-lang-sv="Snabb och responsiv musikstreaming" data-lang-en="Fast and responsive music streaming">Snabb och responsiv musikstreaming</p>
+      </div>
+      <div class="text-center p-4 border border-gray-200 dark:border-gray-700 rounded-xl hover:border-blue-500 transition-colors">
+        <div class="text-4xl mb-2">🛒</div>
+        <h4 class="font-bold text-gray-900 dark:text-white">Alibaba</h4>
+        <p class="text-sm text-gray-600 dark:text-gray-300" data-lang-sv="76% ökning i konverteringar" data-lang-en="76% increase in conversions">76% ökning i konverteringar</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Advantages and Disadvantages -->
+<section class="py-20 bg-gray-50 dark:bg-gray-800/50">
+<div class="max-w-6xl mx-auto px-4">
+  <h2 class="text-4xl font-bold mb-4 text-center text-gray-900 dark:text-white" data-aos="fade-up" data-lang-sv="Fördelar och nackdelar" data-lang-en="Advantages and Disadvantages">
+    Fördelar och nackdelar
+  </h2>
+  <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mb-12 rounded-full"></div>
+
+  <div class="grid md:grid-cols-2 gap-8">
+    <!-- Native Apps Pros/Cons -->
+    <div data-aos="fade-right">
+      <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white flex items-center gap-3">
+        <span class="text-3xl">📱</span>
+        <span data-lang-sv="Native Appar" data-lang-en="Native Apps">Native Appar</span>
+      </h3>
+
+      <div class="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 rounded-r-xl p-6 mb-6">
+        <h4 class="font-bold text-green-800 dark:text-green-300 mb-4 flex items-center gap-2">
+          <span>✓</span>
+          <span data-lang-sv="Fördelar" data-lang-en="Advantages">Fördelar</span>
+        </h4>
+        <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+          <li data-lang-sv="• Bästa prestanda och användarupplevelse" data-lang-en="• Best performance and user experience">• Bästa prestanda och användarupplevelse</li>
+          <li data-lang-sv="• Full tillgång till enhetens hårdvara" data-lang-en="• Full access to device hardware">• Full tillgång till enhetens hårdvara</li>
+          <li data-lang-sv="• Komplett offline-funktionalitet" data-lang-en="• Complete offline functionality">• Komplett offline-funktionalitet</li>
+          <li data-lang-sv="• Rik push-notifikations support" data-lang-en="• Rich push notification support">• Rik push-notifikations support</li>
+          <li data-lang-sv="• Synlighet i app stores" data-lang-en="• Visibility in app stores">• Synlighet i app stores</li>
+          <li data-lang-sv="• Möjlighet till in-app köp" data-lang-en="• Ability for in-app purchases">• Möjlighet till in-app köp</li>
+        </ul>
+      </div>
+
+      <div class="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 rounded-r-xl p-6">
+        <h4 class="font-bold text-red-800 dark:text-red-300 mb-4 flex items-center gap-2">
+          <span>✗</span>
+          <span data-lang-sv="Nackdelar" data-lang-en="Disadvantages">Nackdelar</span>
+        </h4>
+        <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+          <li data-lang-sv="• Hög utvecklingskostnad (flera plattformar)" data-lang-en="• High development cost (multiple platforms)">• Hög utvecklingskostnad (flera plattformar)</li>
+          <li data-lang-sv="• Långsam godkännandeprocess i app stores" data-lang-en="• Slow approval process in app stores">• Långsam godkännandeprocess i app stores</li>
+          <li data-lang-sv="• Kräver regelbundna uppdateringar" data-lang-en="• Requires regular updates">• Kräver regelbundna uppdateringar</li>
+          <li data-lang-sv="• Användare måste ladda ner och installera" data-lang-en="• Users must download and install">• Användare måste ladda ner och installera</li>
+          <li data-lang-sv="• Tar upp lagringsutrymme på enheten" data-lang-en="• Takes up storage space on device">• Tar upp lagringsutrymme på enheten</li>
+          <li data-lang-sv="• Högre underhållskostnad" data-lang-en="• Higher maintenance cost">• Högre underhållskostnad</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Web Apps Pros/Cons -->
+    <div data-aos="fade-left">
+      <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white flex items-center gap-3">
+        <span class="text-3xl">🌐</span>
+        <span data-lang-sv="Webbapplikationer" data-lang-en="Web Applications">Webbapplikationer</span>
+      </h3>
+
+      <div class="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 rounded-r-xl p-6 mb-6">
+        <h4 class="font-bold text-green-800 dark:text-green-300 mb-4 flex items-center gap-2">
+          <span>✓</span>
+          <span data-lang-sv="Fördelar" data-lang-en="Advantages">Fördelar</span>
+        </h4>
+        <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+          <li data-lang-sv="• En kodbas för alla plattformar" data-lang-en="• One codebase for all platforms">• En kodbas för alla plattformar</li>
+          <li data-lang-sv="• Lägre utvecklings- och underhållskostnad" data-lang-en="• Lower development and maintenance cost">• Lägre utvecklings- och underhållskostnad</li>
+          <li data-lang-sv="• Omedelbar tillgång via URL" data-lang-en="• Immediate access via URL">• Omedelbar tillgång via URL</li>
+          <li data-lang-sv="• Inga app store-restriktioner" data-lang-en="• No app store restrictions">• Inga app store-restriktioner</li>
+          <li data-lang-sv="• Enklare att uppdatera" data-lang-en="• Easier to update">• Enklare att uppdatera</li>
+          <li data-lang-sv="• Bättre SEO och upptäckbarhet" data-lang-en="• Better SEO and discoverability">• Bättre SEO och upptäckbarhet</li>
+        </ul>
+      </div>
+
+      <div class="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 rounded-r-xl p-6">
+        <h4 class="font-bold text-red-800 dark:text-red-300 mb-4 flex items-center gap-2">
+          <span>✗</span>
+          <span data-lang-sv="Nackdelar" data-lang-en="Disadvantages">Nackdelar</span>
+        </h4>
+        <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+          <li data-lang-sv="• Begränsad åtkomst till enhetsfunktioner" data-lang-en="• Limited access to device features">• Begränsad åtkomst till enhetsfunktioner</li>
+          <li data-lang-sv="• Lägre prestanda än native appar" data-lang-en="• Lower performance than native apps">• Lägre prestanda än native appar</li>
+          <li data-lang-sv="• Begränsad offline-funktionalitet" data-lang-en="• Limited offline functionality">• Begränsad offline-funktionalitet</li>
+          <li data-lang-sv="• Kräver internetuppkoppling" data-lang-en="• Requires internet connection">• Kräver internetuppkoppling</li>
+          <li data-lang-sv="• Mindre synlighet (ingen app store)" data-lang-en="• Less visibility (no app store)">• Mindre synlighet (ingen app store)</li>
+          <li data-lang-sv="• Beroende av webbläsarens kapacitet" data-lang-en="• Dependent on browser capabilities">• Beroende av webbläsarens kapacitet</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- When to Choose What -->
+<section class="py-20 px-4">
+<div class="max-w-6xl mx-auto">
+  <h2 class="text-4xl font-bold mb-4 text-center text-gray-900 dark:text-white" data-aos="fade-up" data-lang-sv="När ska du välja vad?" data-lang-en="When to Choose What?">
+    När ska du välja vad?
+  </h2>
+  <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mb-12 rounded-full"></div>
+
+  <div class="grid md:grid-cols-2 gap-8">
+    <!-- Choose Native App -->
+    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl shadow-xl p-8 border-2 border-blue-200 dark:border-blue-800" data-aos="fade-right">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center shadow-lg">
+          <span class="text-3xl">📱</span>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white" data-lang-sv="Välj Native App när:" data-lang-en="Choose Native App when:">Välj Native App när:</h3>
+      </div>
+      <ul class="space-y-4">
+        <li class="flex items-start gap-3">
+          <span class="text-blue-500 text-xl mt-1">→</span>
+          <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Du behöver maximal prestanda (spel, grafiska appar)" data-lang-en="You need maximum performance (games, graphic apps)">Du behöver maximal prestanda (spel, grafiska appar)</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-blue-500 text-xl mt-1">→</span>
+          <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Omfattande offline-funktionalitet krävs" data-lang-en="Extensive offline functionality is required">Omfattande offline-funktionalitet krävs</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-blue-500 text-xl mt-1">→</span>
+          <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Du behöver djup integration med enhetens hårdvara" data-lang-en="You need deep integration with device hardware">Du behöver djup integration med enhetens hårdvara</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-blue-500 text-xl mt-1">→</span>
+          <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Budget finns för att utveckla för flera plattformar" data-lang-en="Budget exists to develop for multiple platforms">Budget finns för att utveckla för flera plattformar</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-blue-500 text-xl mt-1">→</span>
+          <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Målgruppen förväntar sig en native app-upplevelse" data-lang-en="Target audience expects a native app experience">Målgruppen förväntar sig en native app-upplevelse</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Choose Web App -->
+    <div class="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl shadow-xl p-8 border-2 border-purple-200 dark:border-purple-800" data-aos="fade-left">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center shadow-lg">
+          <span class="text-3xl">🌐</span>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white" data-lang-sv="Välj Webbapp när:" data-lang-en="Choose Web App when:">Välj Webbapp när:</h3>
+      </div>
+      <ul class="space-y-4">
+        <li class="flex items-start gap-3">
+          <span class="text-purple-500 text-xl mt-1">→</span>
+          <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Du vill nå användare på alla plattformar snabbt" data-lang-en="You want to reach users on all platforms quickly">Du vill nå användare på alla plattformar snabbt</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-purple-500 text-xl mt-1">→</span>
+          <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Begränsad budget för utveckling" data-lang-en="Limited development budget">Begränsad budget för utveckling</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-purple-500 text-xl mt-1">→</span>
+          <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Innehållet är huvudsakligen informativt" data-lang-en="Content is primarily informative">Innehållet är huvudsakligen informativt</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-purple-500 text-xl mt-1">→</span>
+          <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Frekventa uppdateringar behövs" data-lang-en="Frequent updates are needed">Frekventa uppdateringar behövs</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-purple-500 text-xl mt-1">→</span>
+          <span class="text-gray-700 dark:text-gray-300" data-lang-sv="SEO och upptäckbarhet är viktigt" data-lang-en="SEO and discoverability is important">SEO och upptäckbarhet är viktigt</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Hybrid Solution -->
+  <div class="mt-12 bg-gradient-to-br from-green-50 to-cyan-50 dark:from-green-900/20 dark:to-cyan-900/20 rounded-2xl shadow-xl p-8 border-2 border-green-200 dark:border-green-800" data-aos="fade-up">
+    <div class="flex items-center gap-4 mb-6">
+      <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-cyan-500 rounded-2xl flex items-center justify-center shadow-lg">
+        <span class="text-3xl">⚡</span>
+      </div>
+      <h3 class="text-2xl font-bold text-gray-900 dark:text-white" data-lang-sv="Eller välj PWA för:" data-lang-en="Or Choose PWA for:">Eller välj PWA för:</h3>
+    </div>
+    <p class="text-gray-700 dark:text-gray-300 mb-4" data-lang-sv="Progressive Web Apps erbjuder en mellanväg som kombinerar fördelarna från både native appar och webbapplikationer:" data-lang-en="Progressive Web Apps offer a middle ground that combines the advantages of both native apps and web applications:">
+      Progressive Web Apps erbjuder en mellanväg som kombinerar fördelarna från både native appar och webbapplikationer:
+    </p>
+    <ul class="grid md:grid-cols-2 gap-4">
+      <li class="flex items-start gap-3">
+        <span class="text-green-500 text-xl mt-1">✓</span>
+        <span class="text-gray-700 dark:text-gray-300" data-lang-sv="App-liknande upplevelse med webbteknologi" data-lang-en="App-like experience with web technology">App-liknande upplevelse med webbteknologi</span>
+      </li>
+      <li class="flex items-start gap-3">
+        <span class="text-green-500 text-xl mt-1">✓</span>
+        <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Installation utan app store" data-lang-en="Installation without app store">Installation utan app store</span>
+      </li>
+      <li class="flex items-start gap-3">
+        <span class="text-green-500 text-xl mt-1">✓</span>
+        <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Offline-funktionalitet med Service Workers" data-lang-en="Offline functionality with Service Workers">Offline-funktionalitet med Service Workers</span>
+      </li>
+      <li class="flex items-start gap-3">
+        <span class="text-green-500 text-xl mt-1">✓</span>
+        <span class="text-gray-700 dark:text-gray-300" data-lang-sv="Lägre kostnad än native appar" data-lang-en="Lower cost than native apps">Lägre kostnad än native appar</span>
+      </li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<!-- Statistics and Trends -->
+<section class="py-20 bg-gray-50 dark:bg-gray-800/50">
+<div class="max-w-6xl mx-auto px-4">
+  <h2 class="text-4xl font-bold mb-4 text-center text-gray-900 dark:text-white" data-aos="fade-up" data-lang-sv="Statistik och trender" data-lang-en="Statistics and Trends">
+    Statistik och trender
+  </h2>
+  <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mb-12 rounded-full"></div>
+
+  <div class="grid md:grid-cols-3 gap-8">
+    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 text-center" data-aos="fade-up" data-aos-delay="100">
+      <div class="text-5xl font-bold text-blue-600 mb-2">87%</div>
+      <p class="text-gray-600 dark:text-gray-300" data-lang-sv="av mobil tid spenderas i appar" data-lang-en="of mobile time spent in apps">av mobil tid spenderas i appar</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 text-center" data-aos="fade-up" data-aos-delay="200">
+      <div class="text-5xl font-bold text-purple-600 mb-2">3.5M+</div>
+      <p class="text-gray-600 dark:text-gray-300" data-lang-sv="appar i Google Play Store" data-lang-en="apps in Google Play Store">appar i Google Play Store</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 text-center" data-aos="fade-up" data-aos-delay="300">
+      <div class="text-5xl font-bold text-green-600 mb-2">60%</div>
+      <p class="text-gray-600 dark:text-gray-300" data-lang-sv="förbättring med PWA (genomsnitt)" data-lang-en="improvement with PWA (average)">förbättring med PWA (genomsnitt)</p>
+    </div>
+  </div>
+
+  <div class="mt-12 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-700 dark:to-gray-800 border-l-4 border-blue-500 p-8 rounded-r-2xl" data-aos="fade-up">
+    <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white" data-lang-sv="Framtidens trend" data-lang-en="Future Trend">Framtidens trend</h3>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed" data-lang-sv="PWA växer snabbt som en hybrid-lösning. Med förbättrad webbläsarstöd och nya Web APIs blir gränsen mellan native appar och webbapplikationer allt mer suddig. Många experter förutspår att PWA kommer att dominera i framtiden, särskilt för innehållsdrivna och e-handelsapplikationer." data-lang-en="PWA is growing rapidly as a hybrid solution. With improved browser support and new Web APIs, the line between native apps and web applications is becoming increasingly blurred. Many experts predict that PWA will dominate in the future, especially for content-driven and e-commerce applications.">
+      PWA växer snabbt som en hybrid-lösning. Med förbättrad webbläsarstöd och nya Web APIs blir gränsen mellan native appar och webbapplikationer allt mer suddig. Många experter förutspår att PWA kommer att dominera i framtiden, särskilt för innehållsdrivna och e-handelsapplikationer.
+    </p>
+  </div>
+</div>
+</section>
+
+<!-- Conclusion -->
+<section class="py-20 px-4">
+<div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+  <div class="bg-gradient-to-br from-blue-600 to-purple-600 rounded-3xl p-12 text-white shadow-2xl">
+    <div class="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto mb-6">
+      <span class="text-5xl">💡</span>
+    </div>
+    <h2 class="text-4xl font-bold mb-6" data-lang-sv="Slutsats" data-lang-en="Conclusion">
+      Slutsats
+    </h2>
+    <p class="text-xl opacity-90 mb-8" data-lang-sv="Det finns ingen universell lösning som passar alla. Valet mellan native app, webbapp eller PWA beror på dina specifika behov, budget, målgrupp och långsiktiga mål. Ibland kan till och med en hybrid-strategi vara det bästa alternativet." data-lang-en="There is no universal solution that fits all. The choice between native app, web app or PWA depends on your specific needs, budget, target audience and long-term goals. Sometimes even a hybrid strategy can be the best option.">
+      Det finns ingen universell lösning som passar alla. Valet mellan native app, webbapp eller PWA beror på dina specifika behov, budget, målgrupp och långsiktiga mål. Ibland kan till och med en hybrid-strategi vara det bästa alternativet.
+    </p>
+    <div class="flex flex-wrap gap-4 justify-center">
+      <div class="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
+        <span data-lang-sv="Analysera dina behov" data-lang-en="Analyze your needs">Analysera dina behov</span>
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
+        <span data-lang-sv="Testa olika alternativ" data-lang-en="Test different options">Testa olika alternativ</span>
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
+        <span data-lang-sv="Fokusera på användaren" data-lang-en="Focus on the user">Fokusera på användaren</span>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+</main>
+
+<section class="py-12 px-4">
+  <div class="max-w-5xl mx-auto flex flex-col sm:flex-row justify-between gap-4">
+    <a href="/html/funktionalitet.html" class="group flex items-center gap-2 px-8 py-4 bg-gray-600 hover:bg-gray-700 text-white rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-lg">
+      <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+      </svg>
+      <span>Föregående: Funktionalitet</span>
+    </a>
+    <a href="/html/web.html" class="group flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-lg">
+      <span>Nästa: web 1.0</span>
+      <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+      </svg>
+    </a>
+  </div>
+    </section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 dark:bg-gray-800 text-white py-16">
+<div class="max-w-6xl mx-auto px-4">
+<div class="grid md:grid-cols-4 gap-8 mb-12">
+  <div class="col-span-2 md:col-span-1">
+    <div class="flex items-center gap-3 mb-4">
+      <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold">
+        <img src="relogo.png" alt="">
+      </div>
+      <div>
+        <h3 class="font-bold text-lg">Waleeds Web</h3>
+        <p class="text-sm text-gray-400" data-lang-sv="Utbildningsprojekt" data-lang-en="Educational Project">Utbildningsprojekt</p>
+      </div>
+    </div>
+    <p class="text-gray-400 text-sm leading-relaxed" data-lang-sv="En omfattande guide till webbens utveckling och betydelse för det moderna samhället." data-lang-en="A comprehensive guide to the web's development and significance for modern society.">
+      En omfattande guide till webbens utveckling och betydelse för det moderna samhället.
+    </p>
+  </div>
+  
+  <div>
+    <h4 class="font-semibold mb-4" data-lang-sv="Navigation" data-lang-en="Navigation">Navigation</h4>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/html/index.html" class="text-gray-400 hover:text-white transition-colors" data-lang-sv="Hem" data-lang-en="Home">Hem</a></li>
+      <li><a href="/html/syfte.html" class="text-gray-400 hover:text-white transition-colors" data-lang-sv="Syfte & krav" data-lang-en="Purpose">Syfte & krav</a></li>
+      <li><a href="/html/historia.html" class="text-gray-400 hover:text-white transition-colors" data-lang-sv="Historia" data-lang-en="History">Historia</a></li>
+      <li><a href="/html/funktionalitet.html" class="text-gray-400 hover:text-white transition-colors" data-lang-sv="Funktionalitet" data-lang-en="Functionality">Funktionalitet</a></li>
+    </ul>
+  </div>
+  
+  <div>
+    <h4 class="font-semibold mb-4" data-lang-sv="Resurser" data-lang-en="Resources">Resurser</h4>
+    <ul class="space-y-2 text-sm">
+      <li><a href="#" class="text-gray-400 hover:text-white transition-colors" data-lang-sv="Projektplan" data-lang-en="Project Plan">Projektplan</a></li>
+      <li><a href="#" class="text-gray-400 hover:text-white transition-colors" data-lang-sv="Tester" data-lang-en="Tests">Tester</a></li>
+      <li><a href="/html/dokumentation.html" class="text-gray-400 hover:text-white transition-colors" data-lang-sv="Dokumentation" data-lang-en="Documentation">Dokumentation</a></li>
+      <li><a href="/html/analys.html" class="text-gray-400 hover:text-white transition-colors" data-lang-sv="Analys" data-lang-en="Analysis">Analys</a></li>
+    </ul>
+  </div>
+  
+  <div>
+    <h4 class="font-semibold mb-4" data-lang-sv="Upptäcka" data-lang-en="Discover">Upptäcka</h4>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/projektplan/" class="text-gray-400 hover:text-white transition-colors">Projektplan</a></li>
+      <li><a href="/tester/" class="text-gray-400 hover:text-white transition-colors">Tester</a></li>
+      <li><a href="/html/dokumentation.html" class="text-gray-400 hover:text-white transition-colors">Dokumentation</a></li>
+      <li><a href="/html/analys.html" class="text-gray-400 hover:text-white transition-colors">Analys</a></li>
+      </ul>
+  </div>
+</div>
+</div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+// AOS initialization
+if (typeof AOS !== 'undefined') {
+AOS.init({ 
+  once: true, 
+  duration: 800, 
+  easing: 'ease-out-cubic',
+  offset: 50
+});
+}
+
+// Dark mode toggle
+const themeToggle = document.getElementById('theme-toggle');
+const html = document.documentElement;
+
+const currentTheme = localStorage.getItem('theme') || 'light';
+if (currentTheme === 'dark') {
+html.classList.add('dark');
+}
+
+themeToggle.addEventListener('click', () => {
+html.classList.toggle('dark');
+const theme = html.classList.contains('dark') ? 'dark' : 'light';
+localStorage.setItem('theme', theme);
+});
+
+// Mobile menu toggle
+const mobileToggle = document.getElementById('mobileToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+
+mobileToggle.addEventListener('click', () => {
+mobileMenu.classList.toggle('hidden');
+const isExpanded = !mobileMenu.classList.contains('hidden');
+mobileToggle.setAttribute('aria-expanded', isExpanded);
+});
+
+// Language toggle
+const btnSv = document.getElementById('btnSv');
+const btnEn = document.getElementById('btnEn');
+let currentLang = 'sv';
+
+function switchLanguage(lang) {
+currentLang = lang;
+
+if (lang === 'sv') {
+  btnSv.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+  btnSv.classList.remove('text-gray-600', 'dark:text-gray-300');
+  btnEn.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+  btnEn.classList.add('text-gray-600', 'dark:text-gray-300');
+} else {
+  btnEn.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+  btnEn.classList.remove('text-gray-600', 'dark:text-gray-300');
+  btnSv.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+  btnSv.classList.add('text-gray-600', 'dark:text-gray-300');
+}
+
+document.querySelectorAll('[data-lang-sv]').forEach(el => {
+  const svText = el.getAttribute('data-lang-sv');
+  const enText = el.getAttribute('data-lang-en');
+  el.textContent = lang === 'sv' ? svText : enText;
+});
+
+localStorage.setItem('language', lang);
+}
+
+btnSv.addEventListener('click', () => switchLanguage('sv'));
+btnEn.addEventListener('click', () => switchLanguage('en'));
+
+const savedLang = localStorage.getItem('language') || 'sv';
+if (savedLang === 'en') {
+switchLanguage('en');
+}
+
+// Smooth scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', e => {
+  const target = document.querySelector(anchor.getAttribute('href'));
+  if (!target) return;
+  e.preventDefault();
+  const offset = 100;
+  const pos = target.getBoundingClientRect().top + window.pageYOffset - offset;
+  window.scrollTo({ 
+    top: pos, 
+    behavior: 'smooth' 
+  });
+});
+});
+</script>
+</body>

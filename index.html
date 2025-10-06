@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Webben som plattform | Utbildningswebb</title>
+  <meta name="description" content="Utforska webben som plattform - från historia till modern funktionalitet. Lär dig om webbteknologi, tillgänglighet och utveckling.">
+  <meta name="robots" content="index, follow">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            'sans': ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            primary: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            },
+            accent: {
+              50: '#fdf2f8',
+              100: '#fce7f3',
+              200: '#fbcfe8',
+              300: '#f9a8d4',
+              400: '#f472b6',
+              500: '#ec4899',
+              600: '#db2777',
+              700: '#be185d',
+              800: '#9d174d',
+              900: '#831843',
+            }
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'glow': 'glow 2s ease-in-out infinite alternate',
+            'slide-up': 'slideUp 0.5s ease-out',
+            'fade-in': 'fadeIn 0.5s ease-out',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-20px)' },
+            },
+            glow: {
+              '0%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.4)' },
+              '100%': { boxShadow: '0 0 30px rgba(59, 130, 246, 0.8)' },
+            },
+            slideUp: {
+              '0%': { transform: 'translateY(100px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' },
+            },
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            }
+          },
+          backgroundImage: {
+            'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+            'mesh-gradient': 'linear-gradient(45deg, #667eea 0%, #764ba2 50%, #f093fb 100%)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Webben som plattform">
+  <meta property="og:description" content="Utforska webben som plattform - från historia till modern funktionalitet.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="/">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Webben som plattform">
+  <meta name="twitter:description" content="Utforska webben som plattform - från historia till modern funktionalitet.">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png">
+
+  <style>
+    .glass-effect {
+      backdrop-filter: blur(20px);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .dark .glass-effect {
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .hero-gradient {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+    }
+    
+    .card-hover {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-12px) scale(1.02);
+    }
+    
+    .floating-element {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .text-gradient {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .nav-blur {
+      backdrop-filter: blur(20px) saturate(180%);
+      background: rgba(255, 255, 255, 0.8);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .dark .nav-blur {
+      background: rgba(0, 0, 0, 0.8);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+
+<body class="font-sans text-gray-800 bg-gray-50 dark:bg-gray-900 dark:text-gray-100 overflow-x-hidden">
+
+  <!-- Decorative background elements -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute -top-40 -right-40 w-80 h-80 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float"></div>
+    <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: 2s;"></div>
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: 4s;"></div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="fixed inset-x-0 top-0 z-50 nav-blur">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="/html/index.html" class="flex items-center gap-3 group">
+          <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105" data-aos="">
+            <img src="relogo.png" alt="">
+          </div>
+          <div>
+            <h1 class="text-xl font-bold text-gradient">Waleeds Web</h1>
+            <p class="text-xs text-gray-500 dark:text-gray-400">Utbildningswebb</p>
+            </div>
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-8 text-sm font-medium" aria-label="Primary">
+          <a href="/html/index.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Hem" data-lang-en="Home">
+            Hem
+            <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+          </a>
+          <a href="/html/syfte.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Syfte & krav" data-lang-en="Purpose & Requirements">
+            Syfte & krav
+            <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+          </a>
+          <a href="/html/historia.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Historia" data-lang-en="History">
+            Historia
+            <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+          </a>
+          <a href="/html/web.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Web" data-lang-en="Web">
+            Web
+            <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+          </a>
+          <a href="/html/funktionalitet.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Funktionalitet" data-lang-en="Functionality">
+            Funktionalitet
+            <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+          </a>
+        </nav>
+
+        <div class="flex items-center gap-4">
+          <!-- Dark Mode Toggle -->
+          <button id="theme-toggle" class="p-2 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 hover:scale-105" aria-label="Växla mörkt läge">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path class="dark:hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+              <path class="hidden dark:block" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+          </button>
+
+          <!-- Language Toggle -->
+          <div class="flex items-center bg-gray-100 dark:bg-gray-800 rounded-xl p-1">
+            <button id="btnSv" class="px-3 py-1 text-sm font-semibold rounded-lg transition-all duration-200 bg-blue-600 text-white shadow-md" aria-label="Svenska">SV</button>
+            <button id="btnEn" class="px-3 py-1 text-sm font-semibold rounded-lg transition-all duration-200 text-gray-600 dark:text-gray-300" aria-label="English">EN</button>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobileToggle" class="lg:hidden p-2 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200" aria-expanded="false" aria-controls="mobileMenu" aria-label="Öppna meny">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="lg:hidden hidden glass-effect border-t">
+      <div class="px-4 py-6 space-y-4">
+        <a href="/html/index.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 transition-colors" data-lang-sv="Hem" data-lang-en="Home">Hem</a>
+        <a href="/html/syfte.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 transition-colors" data-lang-sv="Syfte & krav" data-lang-en="Purpose & Requirements">Syfte & krav</a>
+        <a href="/html/historia.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 transition-colors" data-lang-sv="Historia" data-lang-en="History">Historia</a>
+        <a href="/html/web.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 transition-colors" data-lang-sv="Web" data-lang-en="Web">Web</a>
+        <a href="/html/funktionalitet.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 transition-colors" data-lang-sv="Funktionalitet" data-lang-en="Functionality">Funktionalitet</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-screen flex items-center justify-center text-white overflow-hidden">
+    <!-- Background -->
+    <div class="absolute inset-0 hero-gradient"></div>
+    <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+    
+    <!-- Floating elements -->
+    <div class="absolute top-20 left-10 w-4 h-4 bg-white bg-opacity-20 rounded-full floating-element"></div>
+    <div class="absolute top-40 right-20 w-6 h-6 bg-white bg-opacity-15 rounded-full floating-element" style="animation-delay: 1s;"></div>
+    <div class="absolute bottom-40 left-20 w-8 h-8 bg-white bg-opacity-10 rounded-full floating-element" style="animation-delay: 3s;"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 text-center px-4 max-w-5xl mx-auto" data-aos="fade-up" data-aos-duration="1000">
+      <h1 class="text-5xl md:text-7xl font-light mb-6 leading-tight" data-lang-sv="Webben som plattform" data-lang-en="The Web as a Platform">
+        Webben som plattform
+      </h1>
+      <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-3xl mx-auto leading-relaxed" data-lang-sv="Utforska webben från historia till framtid - teknologi, funktionalitet och betydelse för det moderna samhället" data-lang-en="Explore the web from history to future - technology, functionality and significance for modern society">
+        Utforska webben från historia till framtid - teknologi, funktionalitet och betydelse för det moderna samhället
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a href="/html/syfte.html" class="group px-8 py-4 bg-white text-gray-900 rounded-full font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 flex items-center gap-2" data-lang-sv="🚀 Börja här: Kursens syfte & krav" data-lang-en="🚀 Start here: Course purpose & requirements">
+          🚀 Börja här: Kursens syfte & krav
+        </a>
+        <a href="/html/historia.html" class="group px-8 py-4 glass-effect text-white rounded-full font-medium hover:bg-white/20 transition-all duration-300 flex items-center gap-2" data-lang-sv="📚 Utforska innehållet" data-lang-en="📚 Explore content">
+          📚 Utforska innehållet
+          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div class="w-6 h-10 border-2 border-white border-opacity-30 rounded-full flex justify-center">
+        <div class="w-1 h-3 bg-white bg-opacity-60 rounded-full mt-2 animate-pulse"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main id="main-content" class="relative bg-white dark:bg-gray-900">
+    <!-- Welcome Section -->
+    <section class="py-20 px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gradient" data-lang-sv="Välkommen till webben som plattform" data-lang-en="Welcome to the web as a platform">
+            Välkommen till webben som plattform
+          </h2>
+          <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mb-8 rounded-full"></div>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div data-aos="fade-right" data-aos-delay="200">
+            <p class="text-lg leading-relaxed mb-6 text-gray-600 dark:text-gray-300" data-lang-sv="Webben har utvecklats från en enkel informationsdelningsplattform till det kraftfulla ekosystem vi känner idag. Den här webbplatsen dokumenterar hela resan - från de första stegen med HTML till dagens avancerade webbapplikationer." data-lang-en="The web has evolved from a simple information sharing platform to the powerful ecosystem we know today. This website documents the entire journey - from the first steps with HTML to today's advanced web applications.">
+              Webben har utvecklats från en enkel informationsdelningsplattform till det kraftfulla ekosystem vi känner idag. Den här webbplatsen dokumenterar hela resan - från de första stegen med HTML till dagens avancerade webbapplikationer.
+            </p>
+            <p class="text-lg leading-relaxed text-gray-600 dark:text-gray-300" data-lang-sv="Här utforskar vi webbens historia, tekniska funktionalitet, samhällspåverkan och framtid. Oavsett om du är nybörjare eller erfaren utvecklare, kommer du att hitta värdefull information om hur webben fungerar som plattform." data-lang-en="Here we explore the web's history, technical functionality, societal impact and future. Whether you're a beginner or experienced developer, you'll find valuable information about how the web works as a platform.">
+              Här utforskar vi webbens historia, tekniska funktionalitet, samhällspåverkan och framtid. Oavsett om du är nybörjare eller erfaren utvecklare, kommer du att hitta värdefull information om hur webben fungerar som plattform.
+            </p>
+          </div>
+          
+          <div class="relative" data-aos="fade-left" data-aos-delay="400">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 rounded-3xl blur-2xl opacity-20"></div>
+            <div class="relative bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-2xl">
+              <div class="grid grid-cols-2 gap-6">
+                <div class="text-center">
+                  <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <span class="text-2xl">🌐</span>
+                  </div>
+                  <h3 class="font-semibold text-gray-900 dark:text-white mb-1">Historia</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">1990-idag</p>
+                </div>
+                <div class="text-center">
+                  <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <span class="text-2xl">🔧</span>
+                  </div>
+                  <h3 class="font-semibold text-gray-900 dark:text-white mb-1">Teknik</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">HTML, CSS, JS</p>
+                </div>
+                <div class="text-center">
+                  <div class="w-12 h-12 bg-pink-100 dark:bg-pink-900/30 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <span class="text-2xl">🌟</span>
+                  </div>
+                  <h3 class="font-semibold text-gray-900 dark:text-white mb-1">Betydelse</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">Samhälle</p>
+                </div>
+                <div class="text-center">
+                  <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <span class="text-2xl">⚖️</span>
+                  </div>
+                  <h3 class="font-semibold text-gray-900 dark:text-white mb-1">Juridik</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">GDPR, WCAG</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Cards -->
+    <section class="py-20 bg-gray-50 dark:bg-gray-800/50">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="text-4xl font-bold mb-4 text-gray-900 dark:text-white" data-lang-sv="Utforska innehållet" data-lang-en="Explore the content">
+            Utforska innehållet
+          </h2>
+          <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto" data-lang-sv="Välj ett område som intresserar dig och fördjupa dig i webbens fascinerande värld" data-lang-en="Choose an area that interests you and delve deeper into the fascinating world of the web">
+            Välj ett område som intresserar dig och fördjupa dig i webbens fascinerande värld
+          </p>
+        </div>
+
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <!-- Card 1 -->
+          <article class="card-hover bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden group" data-aos="fade-up" data-aos-delay="100">
+            <div class="h-2 bg-gradient-to-r from-blue-500 to-blue-600"></div>
+            <div class="p-8">
+              <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <span class="text-3xl">🎯</span>
+              </div>
+              <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white" data-lang-sv="Kursens syfte & krav" data-lang-en="Course purpose & requirements">
+                Kursens syfte & krav
+              </h3>
+              <p class="text-blue-600 dark:text-blue-400 font-medium mb-4" data-lang-sv="Lärandemål och bedömning" data-lang-en="Learning objectives and assessment">
+                Lärandemål och bedömning
+              </p>
+              <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6" data-lang-sv="Förstå kursens mål, lärandemål och hur din kunskap kommer att bedömas. Inkluderar detaljerad bedömningsmatris för betygen E, C och A." data-lang-en="Understand the course goals, learning objectives and how your knowledge will be assessed. Includes detailed assessment matrix for grades E, C and A.">
+                Förstå kursens mål, lärandemål och hur din kunskap kommer att bedömas. Inkluderar detaljerad bedömningsmatris för betygen E, C och A.
+              </p>
+              <a href="/html/syfte.html" class="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold group-hover:gap-3 transition-all duration-300" data-lang-sv="Läs mer" data-lang-en="Read more">
+                <span data-lang-sv="Läs mer" data-lang-en="Read more">Läs mer</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="card-hover bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden group" data-aos="fade-up" data-aos-delay="200">
+            <div class="h-2 bg-gradient-to-r from-purple-500 to-purple-600"></div>
+            <div class="p-8">
+              <div class="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <span class="text-3xl">📜</span>
+              </div>
+              <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white" data-lang-sv="Webbens historia" data-lang-en="Web history">
+                Webbens historia
+              </h3>
+              <p class="text-purple-600 dark:text-purple-400 font-medium mb-4" data-lang-sv="Från Web 1.0 till idag" data-lang-en="From Web 1.0 to today">
+                Från Web 1.0 till idag
+              </p>
+              <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6" data-lang-sv="En resa genom webbens utveckling från 1990-talet till idag. Utforska Web 1.0, Web 2.0, mobilrevolutionen och PWA:er." data-lang-en="A journey through the web's development from the 1990s to today. Explore Web 1.0, Web 2.0, the mobile revolution and PWAs.">
+                En resa genom webbens utveckling från 1990-talet till idag. Utforska Web 1.0, Web 2.0, mobilrevolutionen och PWA:er.
+              </p>
+              <a href="/html/historia.html" class="inline-flex items-center gap-2 text-purple-600 dark:text-purple-400 font-semibold group-hover:gap-3 transition-all duration-300" data-lang-sv="Utforska tidslinje" data-lang-en="Explore timeline">
+                <span data-lang-sv="Utforska tidslinje" data-lang-en="Explore timeline">Utforska tidslinje</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="card-hover bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden group" data-aos="fade-up" data-aos-delay="300">
+            <div class="h-2 bg-gradient-to-r from-green-500 to-green-600"></div>
+            <div class="p-8">
+              <div class="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <span class="text-3xl">🌟</span>
+              </div>
+              <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white" data-lang-sv="Webbens betydelse" data-lang-en="Web significance">
+                Webbens betydelse
+              </h3>
+              <p class="text-green-600 dark:text-green-400 font-medium mb-4" data-lang-sv="Påverkan på samhälle och kultur" data-lang-en="Impact on society and culture">
+                Påverkan på samhälle och kultur
+              </p>
+              <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6" data-lang-sv="Hur webben har förändrat utbildning, ekonomi, kommunikation och kultur. En djupdykning i webbens samhällspåverkan." data-lang-en="How the web has changed education, economy, communication and culture. A deep dive into the web's societal impact.">
+                Hur webben har förändrat utbildning, ekonomi, kommunikation och kultur. En djupdykning i webbens samhällspåverkan.
+              </p>
+              <a href="/html/betydelse.html" class="inline-flex items-center gap-2 text-green-600 dark:text-green-400 font-semibold group-hover:gap-3 transition-all duration-300" data-lang-sv="Läs mer" data-lang-en="Read more">
+                <span data-lang-sv="Läs mer" data-lang-en="Read more">Läs mer</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="card-hover bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden group" data-aos="fade-up" data-aos-delay="400">
+            <div class="h-2 bg-gradient-to-r from-red-500 to-red-600"></div>
+            <div class="p-8">
+              <div class="w-16 h-16 bg-red-100 dark:bg-red-900/30 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <span class="text-3xl">⚙️</span>
+              </div>
+              <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white" data-lang-sv="Teknisk funktionalitet" data-lang-en="Technical functionality">
+                Teknisk funktionalitet
+              </h3>
+              <p class="text-red-600 dark:text-red-400 font-medium mb-4" data-lang-sv="Så fungerar webben" data-lang-en="How the web works">
+                Så fungerar webben
+              </p>
+              <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6" data-lang-sv="Förstå grundläggande webbteknologier: klient-server, DNS, HTTP/HTTPS, HTML/CSS/JavaScript och responsiv design." data-lang-en="Understand basic web technologies: client-server, DNS, HTTP/HTTPS, HTML/CSS/JavaScript and responsive design.">
+                Förstå grundläggande webbteknologier: klient-server, DNS, HTTP/HTTPS, HTML/CSS/JavaScript och responsiv design.
+              </p>
+              <a href="/html/funktionalitet.html" class="inline-flex items-center gap-2 text-red-600 dark:text-red-400 font-semibold group-hover:gap-3 transition-all duration-300" data-lang-sv="Lär dig mer" data-lang-en="Learn more">
+                <span data-lang-sv="Lär dig mer" data-lang-en="Learn more">Lär dig mer</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="card-hover bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden group" data-aos="fade-up" data-aos-delay="500">
+            <div class="h-2 bg-gradient-to-r from-indigo-500 to-indigo-600"></div>
+            <div class="p-8">
+              <div class="w-16 h-16 bg-indigo-100 dark:bg-indigo-900/30 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <span class="text-3xl">⚖️</span>
+              </div>
+              <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white" data-lang-sv="Webb vs Appar" data-lang-en="Web vs Apps">
+                Webb vs Appar
+              </h3>
+              <p class="text-indigo-600 dark:text-indigo-400 font-medium mb-4" data-lang-sv="Jämförelse och analys" data-lang-en="Comparison and analysis">
+                Jämförelse och analys
+              </p>
+              <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6" data-lang-sv="En detaljerad jämförelse mellan webbapplikationer och mobilappar när det gäller prestanda, tillgänglighet och användarupplevelse." data-lang-en="A detailed comparison between web applications and mobile apps regarding performance, accessibility and user experience.">
+                En detaljerad jämförelse mellan webbapplikationer och mobilappar när det gäller prestanda, tillgänglighet och användarupplevelse.
+              </p>
+              <a href="/html/app.html" class="inline-flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-semibold group-hover:gap-3 transition-all duration-300" data-lang-sv="Jämför" data-lang-en="Compare">
+                <span data-lang-sv="Jämför" data-lang-en="Compare">Jämför</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="card-hover bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden group" data-aos="fade-up" data-aos-delay="600">
+            <div class="h-2 bg-gradient-to-r from-orange-500 to-orange-600"></div>
+            <div class="p-8">
+              <div class="w-16 h-16 bg-orange-100 dark:bg-orange-900/30 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <span class="text-3xl">📋</span>
+              </div>
+              <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white" data-lang-sv="Lagar & regler" data-lang-en="Laws & regulations">
+                Lagar & regler
+              </h3>
+              <p class="text-orange-600 dark:text-orange-400 font-medium mb-4" data-lang-sv="GDPR, WCAG och upphovsrätt" data-lang-en="GDPR, WCAG and copyright">
+                GDPR, WCAG och upphovsrätt
+              </p>
+              <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6" data-lang-sv="Viktiga juridiska aspekter vid webbutveckling: GDPR, tillgänglighetskrav enligt WCAG 2.2 och upphovsrättsliga frågor." data-lang-en="Important legal aspects of web development: GDPR, accessibility requirements according to WCAG 2.2 and copyright issues.">
+                Viktiga juridiska aspekter vid webbutveckling: GDPR, tillgänglighetskrav enligt WCAG 2.2 och upphovsrättsliga frågor.
+              </p>
+              <a href="/html/lagar.html" class="inline-flex items-center gap-2 text-orange-600 dark:text-orange-400 font-semibold group-hover:gap-3 transition-all duration-300" data-lang-sv="Läs mer" data-lang-en="Read more">
+                <span data-lang-sv="Läs mer" data-lang-en="Read more">Läs mer</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-20">
+      <div class="max-w-6xl mx-auto px-4" data-aos="fade-up">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold mb-4 text-gray-900 dark:text-white" data-lang-sv="Webbens påverkan i siffror" data-lang-en="Web impact in numbers">
+            Webbens påverkan i siffror
+          </h2>
+        </div>
+        
+        <div class="grid md:grid-cols-4 gap-8">
+          <div class="text-center group" data-aos="zoom-in" data-aos-delay="100">
+            <div class="w-20 h-20 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+              <span class="text-3xl">🌐</span>
+            </div>
+            <div class="text-3xl font-bold text-gray-900 dark:text-white mb-2">5.2B</div>
+            <div class="text-gray-600 dark:text-gray-400" data-lang-sv="Internetanvändare" data-lang-en="Internet users">Internetanvändare</div>
+          </div>
+          
+          <div class="text-center group" data-aos="zoom-in" data-aos-delay="200">
+            <div class="w-20 h-20 bg-gradient-to-br from-purple-400 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+              <span class="text-3xl">📱</span>
+            </div>
+            <div class="text-3xl font-bold text-gray-900 dark:text-white mb-2">1.9B</div>
+            <div class="text-gray-600 dark:text-gray-400" data-lang-sv="Webbplatser" data-lang-en="Websites">Webbplatser</div>
+          </div>
+          
+          <div class="text-center group" data-aos="zoom-in" data-aos-delay="300">
+            <div class="w-20 h-20 bg-gradient-to-br from-green-400 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+              <span class="text-3xl">💼</span>
+            </div>
+            <div class="text-3xl font-bold text-gray-900 dark:text-white mb-2">30+</div>
+            <div class="text-gray-600 dark:text-gray-400" data-lang-sv="År av utveckling" data-lang-en="Years of development">År av utveckling</div>
+          </div>
+          
+          <div class="text-center group" data-aos="zoom-in" data-aos-delay="400">
+            <div class="w-20 h-20 bg-gradient-to-br from-red-400 to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+              <span class="text-3xl">🚀</span>
+            </div>
+            <div class="text-3xl font-bold text-gray-900 dark:text-white mb-2">∞</div>
+            <div class="text-gray-600 dark:text-gray-400" data-lang-sv="Möjligheter" data-lang-en="Possibilities">Möjligheter</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 dark:bg-gray-800 text-white py-16">
+    <div class="max-w-6xl mx-auto px-4" data-aos="fade-up">
+      <div class="grid md:grid-cols-4 gap-8 mb-12">
+        <!-- Brand -->
+        <div class="col-span-2 md:col-span-1">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold">
+              <img src="relogo.png" alt="">
+            </div>
+            <div>
+              <h3 class="font-bold text-lg">Webben som plattform</h3>
+              <p class="text-sm text-gray-400">Utbildningsprojekt</p>
+            </div>
+          </div>
+          <p class="text-gray-400 text-sm leading-relaxed" data-lang-sv="En omfattande guide till webbens utveckling och betydelse för det moderna samhället." data-lang-en="A comprehensive guide to web development and its significance for modern society.">
+            En omfattande guide till webbens utveckling och betydelse för det moderna samhället.
+          </p>
+        </div>
+        
+        <!-- Navigation -->
+        <div>
+          <h4 class="font-semibold mb-4" data-lang-sv="Navigation" data-lang-en="Navigation">Navigation</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/html/syfte.html" class="text-gray-400 hover:text-white transition-colors" data-lang-sv="Syfte & krav" data-lang-en="Purpose & Requirements">Syfte & krav</a></li>
+            <li><a href="/html/historia.html" class="text-gray-400 hover:text-white transition-colors" data-lang-sv="Historia" data-lang-en="History">Historia</a></li>
+            <li><a href="/betydelse/" class="text-gray-400 hover:text-white transition-colors" data-lang-sv="Betydelse" data-lang-en="Significance">Betydelse</a></li>
+            <li><a href="/html/funktionalitet.html" class="text-gray-400 hover:text-white transition-colors" data-lang-sv="Funktionalitet" data-lang-en="Functionality">Funktionalitet</a></li>
+          </ul>
+        </div>
+        
+        <!-- Resources -->
+        <div>
+          <h4 class="font-semibold mb-4" data-lang-sv="Resurser" data-lang-en="Resources">Resurser</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/projektplan/" class="text-gray-400 hover:text-white transition-colors" data-lang-sv="Projektplan" data-lang-en="Project plan">Projektplan</a></li>
+            <li><a href="/tester/" class="text-gray-400 hover:text-white transition-colors" data-lang-sv="Tester" data-lang-en="Tests">Tester</a></li>
+            <li><a href="/html/dokumentation.html" class="text-gray-400 hover:text-white transition-colors" data-lang-sv="Dokumentation" data-lang-en="Documentation">Dokumentation</a></li>
+            <li><a href="/html/analys.html" class="text-gray-400 hover:text-white transition-colors" data-lang-sv="Analys" data-lang-en="Analysis">Analys</a></li>
+          </ul>
+        </div>
+        
+        <!-- Legal -->
+        <div>
+          <h4 class="font-semibold mb-4" data-lang-sv="Upptäcka" data-lang-en="Discover">Upptäcka</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/projektplan/" class="text-gray-400 hover:text-white transition-colors">Projektplan</a></li>
+            <li><a href="/tester/" class="text-gray-400 hover:text-white transition-colors">Tester</a></li>
+            <li><a href="/html/dokumentation.html" class="text-gray-400 hover:text-white transition-colors">Dokumentation</a></li>
+            <li><a href="/html/analys.html" class="text-gray-400 hover:text-white transition-colors">Analys</a></li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+  // AOS initialization
+  if (typeof AOS !== 'undefined') {
+    AOS.init({ 
+      once: true, 
+      duration: 800, 
+      easing: 'ease-out-cubic',
+      offset: 50,
+      delay: 0
+    });
+  }
+
+  // Mobile menu functionality
+  const mobileToggle = document.getElementById('mobileToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  
+  if (mobileToggle && mobileMenu) {
+    mobileToggle.addEventListener('click', () => {
+      const expanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+      mobileToggle.setAttribute('aria-expanded', !expanded);
+      mobileMenu.classList.toggle('hidden');
+      
+      // Animate hamburger icon
+      const svg = mobileToggle.querySelector('svg');
+      svg.style.transform = expanded ? 'rotate(0deg)' : 'rotate(180deg)';
+    });
+  }
+
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', e => {
+      const target = document.querySelector(anchor.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      const offset = 100;
+      const pos = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ 
+        top: pos, 
+        behavior: 'smooth' 
+      });
+    });
+  });
+
+  // Dark mode toggle with enhanced functionality
+  const themeToggle = document.getElementById('theme-toggle');
+  
+  if (themeToggle) {
+    // Check for saved theme preference or default to light
+    const savedTheme = localStorage.getItem('theme') || 
+                      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    
+    if (savedTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    }
+    
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      const isDark = document.documentElement.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      
+      // Add a subtle animation
+      themeToggle.style.transform = 'scale(0.9)';
+      setTimeout(() => {
+        themeToggle.style.transform = 'scale(1)';
+      }, 150);
+    });
+  }
+
+  // Enhanced language toggle functionality
+  const btnSv = document.getElementById('btnSv');
+  const btnEn = document.getElementById('btnEn');
+  const elements = document.querySelectorAll('[data-lang-sv]');
+
+  function setLanguage(lang) {
+    // Update all elements with language data attributes
+    elements.forEach(element => {
+      const text = element.getAttribute(`data-lang-${lang}`);
+      if (text) {
+        // Handle different types of elements
+        if (element.tagName === 'INPUT' && element.type === 'text') {
+          element.placeholder = text;
+        } else if (element.hasAttribute('aria-label')) {
+          element.setAttribute('aria-label', text);
+        } else {
+          element.textContent = text;
+        }
+      }
+    });
+    
+    // Update document language and direction
+    document.documentElement.lang = lang;
+    
+    // Update button styles with smooth transition
+    if (lang === 'sv') {
+      btnSv.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+      btnSv.classList.remove('text-gray-600', 'dark:text-gray-300');
+      btnEn.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+      btnEn.classList.add('text-gray-600', 'dark:text-gray-300');
+    } else {
+      btnEn.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+      btnEn.classList.remove('text-gray-600', 'dark:text-gray-300');
+      btnSv.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+      btnSv.classList.add('text-gray-600', 'dark:text-gray-300');
+    }
+    
+    // Save language preference
+    localStorage.setItem('language', lang);
+    
+    // Refresh AOS animations after language change
+    setTimeout(() => { 
+      if (typeof AOS !== 'undefined') AOS.refresh(); 
+    }, 100);
+  }
+
+  // Event listeners for language buttons
+  if (btnSv && btnEn) {
+    btnSv.addEventListener('click', () => {
+      setLanguage('sv');
+      btnSv.style.transform = 'scale(0.95)';
+      setTimeout(() => btnSv.style.transform = 'scale(1)', 150);
+    });
+    
+    btnEn.addEventListener('click', () => {
+      setLanguage('en');
+      btnEn.style.transform = 'scale(0.95)';
+      setTimeout(() => btnEn.style.transform = 'scale(1)', 150);
+    });
+    
+    // Load saved language preference or default to Swedish
+    const savedLanguage = localStorage.getItem('language') || 'sv';
+    setLanguage(savedLanguage);
+  }
+
+  // Enhanced accessibility features
+  document.addEventListener('click', (e) => {
+    if (mobileMenu && mobileToggle && 
+        !mobileMenu.contains(e.target) && 
+        !mobileToggle.contains(e.target) && 
+        !mobileMenu.classList.contains('hidden')) {
+      mobileMenu.classList.add('hidden');
+      mobileToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Escape key handling
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+        mobileToggle.focus();
+      }
+    }
+  });
+
+  // Intersection Observer for advanced animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-fade-in');
+      }
+    });
+  }, observerOptions);
+
+  // Observe cards for staggered animations
+  document.querySelectorAll('.card-hover').forEach((card, index) => {
+    card.style.animationDelay = `${index * 100}ms`;
+    observer.observe(card);
+  });
+
+  // Parallax effect for hero section
+  window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const hero = document.querySelector('section');
+    if (hero) {
+      hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+    }
+  });
+
+  // Performance optimization - Debounced scroll
+  let ticking = false;
+  
+  function updateScrollEffects() {
+    // Add any scroll-based animations here
+    ticking = false;
+  }
+  
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(updateScrollEffects);
+      ticking = true;
+    }
+  });
+  </script>
+</body>
+</html>

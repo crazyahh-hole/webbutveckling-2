@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Webbens betydelse | Webben som plattform</title>
+<meta name="description" content="Upptäck webbens påverkan på samhälle, utbildning, ekonomi och kultur. Lär dig om digital transformation och internets betydelse för vår moderna värld.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="/betydelse/">
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- AOS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script>
+tailwind.config = {
+darkMode: 'class',
+theme: {
+extend: {
+fontFamily: {
+'sans': ['Inter', 'system-ui', 'sans-serif'],
+},
+animation: {
+'float': 'float 6s ease-in-out infinite',
+'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+},
+keyframes: {
+float: {
+  '0%, 100%': { transform: 'translateY(0px)' },
+  '50%': { transform: 'translateY(-20px)' },
+}
+}
+}
+}
+}
+</script>
+
+<style>
+.glass-effect {
+backdrop-filter: blur(20px);
+background: rgba(255, 255, 255, 0.1);
+border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass-effect {
+background: rgba(0, 0, 0, 0.2);
+border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-blur {
+backdrop-filter: blur(20px) saturate(180%);
+background: rgba(255, 255, 255, 0.8);
+border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+transition: all 0.3s ease;
+}
+
+.dark .nav-blur {
+background: rgba(0, 0, 0, 0.8);
+border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.text-gradient {
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+.card-hover {
+transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+transform: translateY(-8px) scale(1.02);
+}
+
+/* Smooth transitions for dark mode */
+* {
+transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+</style>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50 dark:bg-gray-900 dark:text-gray-100 overflow-x-hidden">
+
+    <!-- Decorative background -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute -top-40 -right-40 w-80 h-80 bg-green-300 dark:bg-green-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float"></div>
+    <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-300 dark:bg-blue-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: 2s;"></div>
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-purple-300 dark:bg-purple-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: 4s;"></div>
+    </div>
+    
+    <!-- HEADER -->
+    <header class="fixed inset-x-0 top-0 z-50 nav-blur">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+    <a href="/html/index.html" class="flex items-center gap-3 group">
+    <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+    <img src="relogo.png" alt="">
+    </div>
+    <div>
+    <h1 class="text-xl font-bold text-gradient">Waleeds Web</h1>
+    <p class="text-xs text-gray-500 dark:text-gray-400">Utbildningswebb</p>
+    </div>
+    </a>
+    
+    <nav class="hidden lg:flex items-center gap-8 text-sm font-medium" aria-label="Primary">
+    <a href="/" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Hem" data-lang-en="Home">
+    Hem
+    <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+    </a>
+    <a href="/html/syfte.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Syfte & krav" data-lang-en="Purpose">
+    Syfte & krav
+    <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+    </a>
+    <a href="/html/historia.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Historia" data-lang-en="History">
+    Historia
+    <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+    </a>
+    <a href="/html/betydelse.html" class="text-blue-600 dark:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Betydelse" data-lang-en="Significance">
+    Betydelse
+    <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-100 transition-transform duration-200"></span>
+    </a>
+    <a href="/html/funktionalitet.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Funktionalitet" data-lang-en="Functionality">
+    Funktionalitet
+    <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+    </a>
+    </nav>
+    
+    <div class="flex items-center gap-4">
+    <button id="theme-toggle" class="p-2 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 hover:scale-105" aria-label="Växla mörkt läge">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path class="dark:hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+      <path class="hidden dark:block" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+    </svg>
+    </button>
+    
+    <div class="flex items-center bg-gray-100 dark:bg-gray-800 rounded-xl p-1">
+    <button id="btnSv" class="px-3 py-1 text-sm font-semibold rounded-lg transition-all duration-200 bg-blue-600 text-white shadow-md">SV</button>
+    <button id="btnEn" class="px-3 py-1 text-sm font-semibold rounded-lg transition-all duration-200 text-gray-600 dark:text-gray-300">EN</button>
+    </div>
+    
+    <button id="mobileToggle" class="lg:hidden p-2 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300" aria-expanded="false" aria-label="Öppna meny">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+    </svg>
+    </button>
+    </div>
+    </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="lg:hidden hidden glass-effect border-t border-gray-200 dark:border-gray-700">
+    <div class="px-4 py-6 space-y-4">
+    <a href="/html/index.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 dark:hover:bg-black/10 transition-colors" data-lang-sv="Hem" data-lang-en="Home">Hem</a>
+    <a href="/html/syfte.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 dark:hover:bg-black/10 transition-colors" data-lang-sv="Syfte & krav" data-lang-en="Purpose">Syfte & krav</a>
+    <a href="/html/historia.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 dark:hover:bg-black/10 transition-colors" data-lang-sv="Historia" data-lang-en="History">Historia</a>
+    <a href="/html/betydelse.html" class="block py-3 px-4 rounded-xl bg-blue-600 text-white" data-lang-sv="Betydelse" data-lang-en="Significance">Betydelse</a>
+    <a href="/html/funktionalitet.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 dark:hover:bg-black/10 transition-colors" data-lang-sv="Funktionalitet" data-lang-en="Functionality">Funktionalitet</a>
+    </div>
+    </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="relative min-h-[70vh] flex items-center justify-center text-white overflow-hidden pt-20">
+    <div class="absolute inset-0 bg-gradient-to-br from-green-600 via-blue-600 to-purple-700"></div>
+    <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+    
+    <div class="relative z-10 text-center px-4 max-w-5xl mx-auto py-20" data-aos="fade-up">
+    <div class="inline-block mb-6">
+    <div class="w-20 h-20 bg-white/10 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto animate-float">
+    <span class="text-5xl">🌍</span>
+    </div>
+    </div>
+    <h1 class="text-5xl md:text-6xl font-bold mb-6" data-lang-sv="Webbens betydelse" data-lang-en="Web Significance">
+    Webbens betydelse
+    </h1>
+    <p class="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto mb-8" data-lang-sv="Hur internet och webben har förändrat vårt samhälle, ekonomi, utbildning och vardag" data-lang-en="How the internet and the web have transformed our society, economy, education and daily life">
+    Hur internet och webben har förändrat vårt samhälle, ekonomi, utbildning och vardag
+    </p>
+    
+    <!-- Breadcrumbs -->
+    <nav class="flex justify-center items-center gap-2 text-sm text-white/80">
+    <a href="/html/index.html" class="hover:text-white transition-colors" data-lang-sv="Hem" data-lang-en="Home">Hem</a>
+    <span>›</span>
+    <span class="text-white" data-lang-sv="Betydelse" data-lang-en="Significance">Betydelse</span>
+    </nav>
+    </div>
+    </section>
+    
+    <!-- Main Content -->
+    <main class="relative bg-white dark:bg-gray-900">
+    <!-- Statistics Section -->
+    <section class="py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16" data-aos="fade-up">
+    <h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="Webben i siffror" data-lang-en="The Web in Numbers">
+    Webben i siffror
+    </h2>
+    <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto" data-lang-sv="Imponerande statistik som visar webbens globala räckvidd och påverkan" data-lang-en="Impressive statistics showing the web's global reach and impact">
+    Imponerande statistik som visar webbens globala räckvidd och påverkan
+    </p>
+    </div>
+    
+    <!-- Stats Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="card-hover bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl p-8 text-white text-center shadow-xl" data-aos="zoom-in" data-aos-delay="100">
+    <div class="text-5xl font-bold mb-2">5.3B+</div>
+    <div class="text-blue-100 text-sm uppercase tracking-wide" data-lang-sv="Internetanvändare globalt" data-lang-en="Internet users globally">Internetanvändare globalt</div>
+    <div class="text-blue-200 text-xs mt-2" data-lang-sv="66% av världens befolkning" data-lang-en="66% of the world's population">66% av världens befolkning</div>
+    </div>
+    
+    <div class="card-hover bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl p-8 text-white text-center shadow-xl" data-aos="zoom-in" data-aos-delay="200">
+    <div class="text-5xl font-bold mb-2">1.9B+</div>
+    <div class="text-purple-100 text-sm uppercase tracking-wide" data-lang-sv="Aktiva webbplatser" data-lang-en="Active websites">Aktiva webbplatser</div>
+    <div class="text-purple-200 text-xs mt-2" data-lang-sv="Växer dagligen" data-lang-en="Growing daily">Växer dagligen</div>
+    </div>
+    
+    <div class="card-hover bg-gradient-to-br from-green-500 to-green-600 rounded-2xl p-8 text-white text-center shadow-xl" data-aos="zoom-in" data-aos-delay="300">
+    <div class="text-5xl font-bold mb-2">$5.7T</div>
+    <div class="text-green-100 text-sm uppercase tracking-wide" data-lang-sv="Global e-handel 2023" data-lang-en="Global e-commerce 2023">Global e-handel 2023</div>
+    <div class="text-green-200 text-xs mt-2" data-lang-sv="Årlig tillväxt" data-lang-en="Annual growth">Årlig tillväxt</div>
+    </div>
+    
+    <div class="card-hover bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl p-8 text-white text-center shadow-xl" data-aos="zoom-in" data-aos-delay="400">
+    <div class="text-5xl font-bold mb-2">6.9h</div>
+    <div class="text-orange-100 text-sm uppercase tracking-wide" data-lang-sv="Genomsnittlig tid online/dag" data-lang-en="Average time online/day">Genomsnittlig tid online/dag</div>
+    <div class="text-orange-200 text-xs mt-2" data-lang-sv="Per person globalt" data-lang-en="Per person globally">Per person globalt</div>
+    </div>
+    </div>
+    </div>
+    </section>
+    
+    <!-- Impact Areas -->
+    <section class="py-20 bg-gray-50 dark:bg-gray-800/50">
+    <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-16" data-aos="fade-up">
+    <h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="Webbens påverkan på samhället" data-lang-en="The Web's Impact on Society">
+    Webbens påverkan på samhället
+    </h2>
+    <p class="text-xl text-gray-600 dark:text-gray-400" data-lang-sv="Hur webben har transformerat olika sektorer" data-lang-en="How the web has transformed different sectors">
+    Hur webben har transformerat olika sektorer
+    </p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 gap-8">
+    <!-- Education -->
+    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8" data-aos="fade-right">
+    <div class="flex items-start gap-4 mb-6">
+      <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center flex-shrink-0">
+        <span class="text-4xl">📚</span>
+      </div>
+      <div>
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" data-lang-sv="Utbildning" data-lang-en="Education">Utbildning</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Digital transformation av lärande" data-lang-en="Digital transformation of learning">Digital transformation av lärande</p>
+      </div>
+    </div>
+    <ul class="space-y-3 text-gray-600 dark:text-gray-300">
+      <li class="flex items-start gap-2">
+        <span class="text-blue-500 mt-1">•</span>
+        <span data-lang-sv="E-lärande och MOOCs (Massive Open Online Courses) ger tillgång till utbildning för miljoner" data-lang-en="E-learning and MOOCs provide access to education for millions">E-lärande och MOOCs (Massive Open Online Courses) ger tillgång till utbildning för miljoner</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-blue-500 mt-1">•</span>
+        <span data-lang-sv="Digitala läromedel och interaktiva verktyg förbättrar inlärningen" data-lang-en="Digital learning materials and interactive tools improve learning">Digitala läromedel och interaktiva verktyg förbättrar inlärningen</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-blue-500 mt-1">•</span>
+        <span data-lang-sv="Distansundervisning möjliggör utbildning oavsett geografisk plats" data-lang-en="Distance learning enables education regardless of location">Distansundervisning möjliggör utbildning oavsett geografisk plats</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-blue-500 mt-1">•</span>
+        <span data-lang-sv="Forskningsdatabaser och vetenskapliga artiklar tillgängliga online" data-lang-en="Research databases and scientific articles available online">Forskningsdatabaser och vetenskapliga artiklar tillgängliga online</span>
+      </li>
+    </ul>
+    </div>
+    
+    <!-- Economy -->
+    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8" data-aos="fade-left">
+    <div class="flex items-start gap-4 mb-6">
+      <div class="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-2xl flex items-center justify-center flex-shrink-0">
+        <span class="text-4xl">💼</span>
+      </div>
+      <div>
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" data-lang-sv="Ekonomi & Handel" data-lang-en="Economy & Commerce">Ekonomi & Handel</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Digital ekonomi och e-handel" data-lang-en="Digital economy and e-commerce">Digital ekonomi och e-handel</p>
+      </div>
+    </div>
+    <ul class="space-y-3 text-gray-600 dark:text-gray-300">
+      <li class="flex items-start gap-2">
+        <span class="text-green-500 mt-1">•</span>
+        <span data-lang-sv="E-handel har revolutionerat detaljhandeln och skapt nya affärsmodeller" data-lang-en="E-commerce has revolutionized retail and created new business models">E-handel har revolutionerat detaljhandeln och skapt nya affärsmodeller</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-green-500 mt-1">•</span>
+        <span data-lang-sv="Digitala betalningar och fintech-lösningar förenklar transaktioner" data-lang-en="Digital payments and fintech solutions simplify transactions">Digitala betalningar och fintech-lösningar förenklar transaktioner</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-green-500 mt-1">•</span>
+        <span data-lang-sv="Gig-ekonomi och distansarbete har skapat nya jobbmöjligheter" data-lang-en="Gig economy and remote work have created new job opportunities">Gig-ekonomi och distansarbete har skapat nya jobbmöjligheter</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-green-500 mt-1">•</span>
+        <span data-lang-sv="Små företag kan nå globala marknader via webben" data-lang-en="Small businesses can reach global markets via the web">Små företag kan nå globala marknader via webben</span>
+      </li>
+    </ul>
+    </div>
+    
+    <!-- Communication -->
+    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8" data-aos="fade-right">
+    <div class="flex items-start gap-4 mb-6">
+      <div class="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center flex-shrink-0">
+        <span class="text-4xl">💬</span>
+      </div>
+      <div>
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" data-lang-sv="Kommunikation" data-lang-en="Communication">Kommunikation</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Global uppkoppling och social interaktion" data-lang-en="Global connectivity and social interaction">Global uppkoppling och social interaktion</p>
+      </div>
+    </div>
+    <ul class="space-y-3 text-gray-600 dark:text-gray-300">
+      <li class="flex items-start gap-2">
+        <span class="text-purple-500 mt-1">•</span>
+        <span data-lang-sv="Sociala medier förenar människor över hela världen" data-lang-en="Social media connects people worldwide">Sociala medier förenar människor över hela världen</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-purple-500 mt-1">•</span>
+        <span data-lang-sv="Video- och röstsamtal i realtid oavsett avstånd" data-lang-en="Real-time video and voice calls regardless of distance">Video- och röstsamtal i realtid oavsett avstånd</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-purple-500 mt-1">•</span>
+        <span data-lang-sv="Instant messaging och e-post för snabb kommunikation" data-lang-en="Instant messaging and email for fast communication">Instant messaging och e-post för snabb kommunikation</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-purple-500 mt-1">•</span>
+        <span data-lang-sv="Samarbetsverktyg möjliggör teamwork på distans" data-lang-en="Collaboration tools enable remote teamwork">Samarbetsverktyg möjliggör teamwork på distans</span>
+      </li>
+    </ul>
+    </div>
+    
+    <!-- Healthcare -->
+    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8" data-aos="fade-left">
+    <div class="flex items-start gap-4 mb-6">
+      <div class="w-16 h-16 bg-red-100 dark:bg-red-900/30 rounded-2xl flex items-center justify-center flex-shrink-0">
+        <span class="text-4xl">🏥</span>
+      </div>
+      <div>
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" data-lang-sv="Hälsovård" data-lang-en="Healthcare">Hälsovård</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Digital hälsa och telemedicin" data-lang-en="Digital health and telemedicine">Digital hälsa och telemedicin</p>
+      </div>
+    </div>
+    <ul class="space-y-3 text-gray-600 dark:text-gray-300">
+      <li class="flex items-start gap-2">
+        <span class="text-red-500 mt-1">•</span>
+        <span data-lang-sv="Telemedicin ger tillgång till vård på distans" data-lang-en="Telemedicine provides access to remote healthcare">Telemedicin ger tillgång till vård på distans</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-red-500 mt-1">•</span>
+        <span data-lang-sv="Digitala hälsoapplikationer för träning och välmående" data-lang-en="Digital health apps for fitness and wellness">Digitala hälsoapplikationer för träning och välmående</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-red-500 mt-1">•</span>
+        <span data-lang-sv="Elektroniska patientjournaler förbättrar vård coordination" data-lang-en="Electronic health records improve care coordination">Elektroniska patientjournaler förbättrar vård coordination</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-red-500 mt-1">•</span>
+        <span data-lang-sv="Medicinsk forskning och information tillgänglig för alla" data-lang-en="Medical research and information available to all">Medicinsk forskning och information tillgänglig för alla</span>
+      </li>
+    </ul>
+    </div>
+    </section>
+
+<!-- Positive & Negative Aspects -->
+<section class="py-20 px-4">
+<div class="max-w-6xl mx-auto">
+<div class="text-center mb-16" data-aos="fade-up">
+<h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white mt-12" data-lang-sv="Ljus och skuggor" data-lang-en="Light and Shadows">
+Ljus och skuggor
+</h2>
+<p class="text-xl text-gray-600 dark:text-gray-400" data-lang-sv="Webben har både positiva och negativa effekter på samhället" data-lang-en="The web has both positive and negative effects on society">
+Webben har både positiva och negativa effekter på samhället
+</p>
+</div>
+
+<div class="grid md:grid-cols-2 gap-8">
+<!-- Positive -->
+<div class="bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 rounded-2xl p-8" data-aos="fade-right">
+<div class="flex items-center gap-3 mb-6">
+  <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center">
+    <span class="text-2xl">✅</span>
+  </div>
+  <h3 class="text-2xl font-bold text-gray-900 dark:text-white" data-lang-sv="Positiva effekter" data-lang-en="Positive Effects">Positiva effekter</h3>
+</div>
+<ul class="space-y-4">
+  <li class="flex items-start gap-3">
+    <span class="text-green-600 dark:text-green-400 text-xl mt-1">+</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Demokratisering av information" data-lang-en="Democratization of Information">Demokratisering av information</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Kunskap är inte längre begränsad till de med resurser" data-lang-en="Knowledge is no longer limited to those with resources">Kunskap är inte längre begränsad till de med resurser</p>
+    </div>
+  </li>
+  <li class="flex items-start gap-3">
+    <span class="text-green-600 dark:text-green-400 text-xl mt-1">+</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Global uppkoppling" data-lang-en="Global Connectivity">Global uppkoppling</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Människor kan hålla kontakten över hela världen" data-lang-en="People can stay connected across the world">Människor kan hålla kontakten över hela världen</p>
+    </div>
+  </li>
+  <li class="flex items-start gap-3">
+    <span class="text-green-600 dark:text-green-400 text-xl mt-1">+</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Innovation och entreprenörskap" data-lang-en="Innovation and Entrepreneurship">Innovation och entreprenörskap</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Låga inträdesbarriärer för att starta verksamhet" data-lang-en="Low barriers to entry for starting businesses">Låga inträdesbarriärer för att starta verksamhet</p>
+    </div>
+  </li>
+  <li class="flex items-start gap-3">
+    <span class="text-green-600 dark:text-green-400 text-xl mt-1">+</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Tillgänglighet" data-lang-en="Accessibility">Tillgänglighet</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Personer med funktionsnedsättningar får bättre möjligheter" data-lang-en="People with disabilities get better opportunities">Personer med funktionsnedsättningar får bättre möjligheter</p>
+    </div>
+  </li>
+  <li class="flex items-start gap-3">
+    <span class="text-green-600 dark:text-green-400 text-xl mt-1">+</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Effektivitet" data-lang-en="Efficiency">Effektivitet</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Automatisering och digitalisering sparar tid och resurser" data-lang-en="Automation and digitalization save time and resources">Automatisering och digitalisering sparar tid och resurser</p>
+    </div>
+  </li>
+</ul>
+</div>
+
+<!-- Negative -->
+<div class="bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 rounded-2xl p-8" data-aos="fade-left">
+<div class="flex items-center gap-3 mb-6">
+  <div class="w-12 h-12 bg-red-500 rounded-xl flex items-center justify-center">
+    <span class="text-2xl">⚠️</span>
+  </div>
+  <h3 class="text-2xl font-bold text-gray-900 dark:text-white" data-lang-sv="Negativa effekter" data-lang-en="Negative Effects">Negativa effekter</h3>
+</div>
+<ul class="space-y-4">
+  <li class="flex items-start gap-3">
+    <span class="text-red-600 dark:text-red-400 text-xl mt-1">−</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Digital klyfta" data-lang-en="Digital Divide">Digital klyfta</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Ojämlik tillgång till internet skapar nya ojämlikheter" data-lang-en="Unequal access to internet creates new inequalities">Ojämlik tillgång till internet skapar nya ojämlikheter</p>
+    </div>
+  </li>
+  <li class="flex items-start gap-3">
+    <span class="text-red-600 dark:text-red-400 text-xl mt-1">−</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Integritetsproblem" data-lang-en="Privacy Issues">Integritetsproblem</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Övervakning och datainsamling hotar personlig integritet" data-lang-en="Surveillance and data collection threaten personal privacy">Övervakning och datainsamling hotar personlig integritet</p>
+    </div>
+  </li>
+  <li class="flex items-start gap-3">
+    <span class="text-red-600 dark:text-red-400 text-xl mt-1">−</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Desinformation" data-lang-en="Disinformation">Desinformation</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Falska nyheter och propaganda sprids snabbt" data-lang-en="Fake news and propaganda spread quickly">Falska nyheter och propaganda sprids snabbt</p>
+    </div>
+  </li>
+  <li class="flex items-start gap-3">
+    <span class="text-red-600 dark:text-red-400 text-xl mt-1">−</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Cyberbrottslighet" data-lang-en="Cybercrime">Cyberbrottslighet</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Bedrägerier, hacking och nätmobbning är ökande problem" data-lang-en="Fraud, hacking and cyberbullying are growing problems">Bedrägerier, hacking och nätmobbning är ökande problem</p>
+    </div>
+  </li>
+  <li class="flex items-start gap-3">
+    <span class="text-red-600 dark:text-red-400 text-xl mt-1">−</span>
+    <div>
+      <strong class="text-gray-900 dark:text-white" data-lang-sv="Beroende och mental hälsa" data-lang-en="Addiction and Mental Health">Beroende och mental hälsa</strong>
+      <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Överanvändning kan leda till stress och isolering" data-lang-en="Overuse can lead to stress and isolation">Överanvändning kan leda till stress och isolering</p>
+    </div>
+  </li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Future Impact -->
+<section class="py-20 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
+<div class="max-w-6xl mx-auto px-4">
+<div class="text-center mb-16" data-aos="fade-up">
+<h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="Framtidens webb" data-lang-en="The Future Web">
+Framtidens webb
+</h2>
+<p class="text-xl text-gray-600 dark:text-gray-400" data-lang-sv="Hur kommer webben att fortsätta förändra världen?" data-lang-en="How will the web continue to change the world?">
+Hur kommer webben att fortsätta förändra världen?
+</p>
+</div>
+
+<div class="grid md:grid-cols-3 gap-6">
+<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 text-center" data-aos="zoom-in" data-aos-delay="100">
+  <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
+    <span class="text-3xl">🤖</span>
+  </div>
+  <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3" data-lang-sv="AI & Maskininlärning" data-lang-en="AI & Machine Learning">AI & Maskininlärning</h3>
+  <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="AI kommer att personalisera webbupplevelser och automatisera komplexa uppgifter" data-lang-en="AI will personalize web experiences and automate complex tasks">AI kommer att personalisera webbupplevelser och automatisera komplexa uppgifter</p>
+</div>
+
+<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 text-center" data-aos="zoom-in" data-aos-delay="200">
+  <div class="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
+    <span class="text-3xl">🥽</span>
+  </div>
+  <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3" data-lang-sv="VR & AR" data-lang-en="VR & AR">VR & AR</h3>
+  <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Virtuell och förstärkt verklighet kommer att skapa immersiva webbupplevelser" data-lang-en="Virtual and augmented reality will create immersive web experiences">Virtuell och förstärkt verklighet kommer att skapa immersiva webbupplevelser</p>
+</div>
+
+<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 text-center" data-aos="zoom-in" data-aos-delay="300">
+  <div class="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
+    <span class="text-3xl">🌐</span>
+  </div>
+  <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3" data-lang-sv="Web 3.0" data-lang-en="Web 3.0">Web 3.0</h3>
+  <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Decentraliserad webb med blockchain och ökad användarkontroll över data" data-lang-en="Decentralized web with blockchain and increased user control over data">Decentraliserad webb med blockchain och ökad användarkontroll över data</p>
+</div>
+
+<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 text-center" data-aos="zoom-in" data-aos-delay="400">
+  <div class="w-16 h-16 bg-orange-100 dark:bg-orange-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
+    <span class="text-3xl">📱</span>
+  </div>
+  <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3" data-lang-sv="IoT" data-lang-en="IoT">IoT</h3>
+  <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Internet of Things - allt från kylskåp till bilar kommer att vara uppkopplade" data-lang-en="Internet of Things - everything from refrigerators to cars will be connected">Internet of Things - allt från kylskåp till bilar kommer att vara uppkopplade</p>
+</div>
+
+<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 text-center" data-aos="zoom-in" data-aos-delay="500">
+  <div class="w-16 h-16 bg-pink-100 dark:bg-pink-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
+    <span class="text-3xl">⚡</span>
+  </div>
+  <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3" data-lang-sv="5G & 6G" data-lang-en="5G & 6G">5G & 6G</h3>
+  <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Snabbare nätverk möjliggör nya användningsområden och realtidsapplikationer" data-lang-en="Faster networks enable new use cases and real-time applications">Snabbare nätverk möjliggör nya användningsområden och realtidsapplikationer</p>
+</div>
+
+<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 text-center" data-aos="zoom-in" data-aos-delay="600">
+  <div class="w-16 h-16 bg-indigo-100 dark:bg-indigo-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
+    <span class="text-3xl">🌱</span>
+  </div>
+  <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3" data-lang-sv="Hållbarhet" data-lang-en="Sustainability">Hållbarhet</h3>
+  <p class="text-gray-600 dark:text-gray-300 text-sm" data-lang-sv="Grön webb och energieffektiva lösningar för klimatets skull" data-lang-en="Green web and energy-efficient solutions for the climate">Grön webb och energieffektiva lösningar för klimatets skull</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-20 px-4">
+<div class="max-w-4xl mx-auto">
+<div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-12 text-white text-center shadow-2xl" data-aos="zoom-in">
+<h2 class="text-3xl md:text-4xl font-bold mb-6" data-lang-sv="Var en del av webbens framtid" data-lang-en="Be Part of the Web's Future">
+Var en del av webbens framtid
+</h2>
+<p class="text-xl mb-8 opacity-90" data-lang-sv="Webben fortsätter att utvecklas och förändra världen. Som webbutvecklare har du möjligheten att forma framtiden och skapa positiv förändring." data-lang-en="The web continues to evolve and change the world. As a web developer, you have the opportunity to shape the future and create positive change.">
+Webben fortsätter att utvecklas och förändra världen. Som webbutvecklare har du möjligheten att forma framtiden och skapa positiv förändring.
+</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<a href="/html/funktionalitet.html" class="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition-all duration-300 hover:scale-105 shadow-lg" data-lang-sv="Lär dig mer om webbteknologi" data-lang-en="Learn more about web technology">
+Lär dig mer om webbteknologi
+</a>
+<a href="/html/lagar.html" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl font-bold hover:bg-white hover:text-blue-600 transition-all duration-300 hover:scale-105" data-lang-sv="Utforska lagar & regler" data-lang-en="Explore laws & regulations">
+Utforska lagar & regler
+</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Navigation -->
+<section class="py-12 px-4">
+  <div class="max-w-5xl mx-auto flex flex-col sm:flex-row justify-between gap-4">
+    <a href="/html/historia.html" class="group flex items-center gap-2 px-8 py-4 bg-gray-600 hover:bg-gray-700 text-white rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-lg">
+      <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+      </svg>
+      <span>Föregående: Historia</span>
+    </a>
+    <a href="/html/funktionalitet.html" class="group flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-green-600 via-blue-600 to-purple-700 hover:from-green-700 hover:via-blue-700 hover:to-purple-800 text-white rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-lg">
+      <span>Nästa: Funktionalitet</span>
+      <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+      </svg>
+    </a>
+  </div>
+</section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-gray-900 dark:bg-black text-white py-16 transition-colors duration-300">
+<div class="max-w-6xl mx-auto px-4">
+<div class="grid md:grid-cols-4 gap-8 mb-12">
+<div class="col-span-2 md:col-span-1">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold">
+  <img src="relogo.png" alt="">
+</div>
+<div>
+  <h3 class="font-bold text-lg">Webben som plattform</h3>
+  <p class="text-sm text-gray-400">Utbildningsprojekt</p>
+</div>
+</div>
+</div>
+
+<div>
+<h4 class="font-semibold mb-4" data-lang-sv="Navigation" data-lang-en="Navigation">Navigation</h4>
+<ul class="space-y-2 text-sm">
+<li><a href="/html/syfte.html" class="text-gray-400 hover:text-white transition-colors">Syfte & krav</a></li>
+<li><a href="/html/historia.html" class="text-gray-400 hover:text-white transition-colors">Historia</a></li>
+<li><a href="/html/betydelse.html" class="text-gray-400 hover:text-white transition-colors">Betydelse</a></li>
+<li><a href="/html/betydelse.html" class="text-gray-400 hover:text-white transition-colors">Funktionalitet</a></li>
+</ul>
+</div>
+
+<div>
+<h4 class="font-semibold mb-4" data-lang-sv="Resurser" data-lang-en="Resources">Resurser</h4>
+<ul class="space-y-2 text-sm">
+<li><a href="/projektplan/" class="text-gray-400 hover:text-white transition-colors">Projektplan</a></li>
+<li><a href="/tester/" class="text-gray-400 hover:text-white transition-colors">Tester</a></li>
+<li><a href="/html/dokumentation.html" class="text-gray-400 hover:text-white transition-colors">Dokumentation</a></li>
+<li><a href="/html/analys.html" class="text-gray-400 hover:text-white transition-colors">Analys</a></li>
+</ul>
+</div>
+
+<div>
+  <h4 class="font-semibold mb-4" data-lang-sv="Upptäcka" data-lang-en="Discover">Upptäcka</h4>
+  <ul class="space-y-2 text-sm">
+    <li><a href="/projektplan/" class="text-gray-400 hover:text-white transition-colors">Projektplan</a></li>
+    <li><a href="/tester/" class="text-gray-400 hover:text-white transition-colors">Tester</a></li>
+    <li><a href="/html/dokumentation.html" class="text-gray-400 hover:text-white transition-colors">Dokumentation</a></li>
+    <li><a href="/html/analys.html" class="text-gray-400 hover:text-white transition-colors">Analys</a></li>
+    </ul>
+</div>
+</div>
+</div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+// AOS
+if (typeof AOS !== 'undefined') {
+AOS.init({ once: true, duration: 800, easing: 'ease-out-cubic' });
+}
+
+// Mobile menu
+const mobileToggle = document.getElementById('mobileToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+
+if (mobileToggle && mobileMenu) {
+mobileToggle.addEventListener('click', () => {
+mobileMenu.classList.toggle('hidden');
+const expanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+mobileToggle.setAttribute('aria-expanded', !expanded);
+});
+}
+
+// Dark mode
+const themeToggle = document.getElementById('theme-toggle');
+const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+if (savedTheme === 'dark') {
+document.documentElement.classList.add('dark');
+}
+
+if (themeToggle) {
+themeToggle.addEventListener('click', () => {
+document.documentElement.classList.toggle('dark');
+const isDark = document.documentElement.classList.contains('dark');
+localStorage.setItem('theme', isDark ? 'dark' : 'light');
+
+themeToggle.style.transform = 'scale(0.9)';
+setTimeout(() => themeToggle.style.transform = 'scale(1)', 150);
+});
+}
+
+// Language toggle
+const btnSv = document.getElementById('btnSv');
+const btnEn = document.getElementById('btnEn');
+const elements = document.querySelectorAll('[data-lang-sv]');
+
+function setLanguage(lang) {
+elements.forEach(element => {
+const text = element.getAttribute(`data-lang-${lang}`);
+if (text) {
+  if (element.tagName === 'INPUT' && element.type === 'text') {
+    element.placeholder = text;
+  } else if (element.hasAttribute('aria-label')) {
+    element.setAttribute('aria-label', text);
+  } else {
+    element.textContent = text;
+  }
+}
+});
+
+document.documentElement.lang = lang;
+
+if (lang === 'sv') {
+btnSv.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+btnSv.classList.remove('text-gray-600', 'dark:text-gray-300');
+btnEn.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+btnEn.classList.add('text-gray-600', 'dark:text-gray-300');
+} else {
+btnEn.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+btnEn.classList.remove('text-gray-600', 'dark:text-gray-300');
+btnSv.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+btnSv.classList.add('text-gray-600', 'dark:text-gray-300');
+}
+
+localStorage.setItem('language', lang);
+setTimeout(() => { if (typeof AOS !== 'undefined') AOS.refresh(); }, 100);
+}
+
+if (btnSv && btnEn) {
+btnSv.addEventListener('click', () => {
+setLanguage('sv');
+btnSv.style.transform = 'scale(0.95)';
+setTimeout(() => btnSv.style.transform = 'scale(1)', 150);
+});
+
+btnEn.addEventListener('click', () => {
+setLanguage('en');
+btnEn.style.transform = 'scale(0.95)';
+setTimeout(() => btnEn.style.transform = 'scale(1)', 150);
+});
+
+const savedLanguage = localStorage.getItem('language') || 'sv';
+setLanguage(savedLanguage);
+}
+
+// Close mobile menu on outside click
+document.addEventListener('click', (e) => {
+if (mobileMenu && mobileToggle && 
+!mobileMenu.contains(e.target) && 
+!mobileToggle.contains(e.target) && 
+!mobileMenu.classList.contains('hidden')) {
+mobileMenu.classList.add('hidden');
+mobileToggle.setAttribute('aria-expanded', 'false');
+}
+});
+
+// Escape key to close mobile menu
+document.addEventListener('keydown', (e) => {
+if (e.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+mobileMenu.classList.add('hidden');
+mobileToggle.setAttribute('aria-expanded', 'false');
+mobileToggle.focus();
+}
+});
+
+// Smooth scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', e => {
+const target = document.querySelector(anchor.getAttribute('href'));
+if (target) {
+e.preventDefault();
+const offset = 100;
+const pos = target.getBoundingClientRect().top + window.pageYOffset - offset;
+window.scrollTo({ top: pos, behavior: 'smooth' });
+}
+});
+});
+
+// Intersection Observer for fade-in animations
+const observerOptions = {
+threshold: 0.1,
+rootMargin: '0px 0px -50px 0px'
+};
+
+const fadeObserver = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.style.opacity = '1';
+entry.target.style.transform = 'translateY(0)';
+}
+});
+}, observerOptions);
+
+// Observe cards for staggered animations
+document.querySelectorAll('.card-hover').forEach((card, index) => {
+card.style.opacity = '0';
+card.style.transform = 'translateY(30px)';
+card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+card.style.transitionDelay = `${index * 50}ms`;
+fadeObserver.observe(card);
+});
+
+// Counter animation for statistics
+const counters = document.querySelectorAll('.text-5xl.font-bold');
+const counterObserver = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+const target = entry.target;
+const text = target.textContent;
+
+// Only animate if it contains numbers
+if (/\d/.test(text)) {
+target.style.opacity = '0';
+setTimeout(() => {
+target.style.transition = 'opacity 0.5s ease';
+target.style.opacity = '1';
+}, 100);
+}
+counterObserver.unobserve(target);
+}
+});
+}, { threshold: 0.5 });
+
+counters.forEach(counter => {
+counterObserver.observe(counter);
+});
+
+// Performance monitoring
+if (window.PerformanceObserver) {
+const perfObserver = new PerformanceObserver((list) => {
+list.getEntries().forEach(entry => {
+if (entry.entryType === 'largest-contentful-paint') {
+console.log('LCP:', entry.startTime);
+}
+});
+});
+
+try {
+perfObserver.observe({ entryTypes: ['largest-contentful-paint'] });
+} catch (e) {
+// Browser might not support this
+}
+}
+</script>
+</body>
+</html>
+
