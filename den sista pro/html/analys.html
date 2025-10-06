@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analys & utvärdering | Webben som plattform</title>
+  <meta name="description" content="Analys av webbprojektet: planering, utveckling, testning och lärdomar från skapandet av Webben som plattform.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="/analys/">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            'sans': ['Inter', 'system-ui', 'sans-serif'],
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-20px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .glass-effect {
+      backdrop-filter: blur(20px);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .dark .glass-effect {
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .nav-blur {
+      backdrop-filter: blur(20px) saturate(180%);
+      background: rgba(255, 255, 255, 0.8);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .dark .nav-blur {
+      background: rgba(0, 0, 0, 0.8);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .text-gradient {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .image-placeholder {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: 3px dashed rgba(255, 255, 255, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      text-align: center;
+      padding: 2rem;
+      border-radius: 1rem;
+      min-height: 300px;
+    }
+  </style>
+</head>
+
+<body class="font-sans text-gray-800 bg-gray-50 dark:bg-gray-900 dark:text-gray-100 overflow-x-hidden">
+
+  <!-- Decorative background -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute -top-40 -right-40 w-80 h-80 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float"></div>
+    <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: 2s;"></div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="fixed inset-x-0 top-0 z-50 nav-blur">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="/" class="flex items-center gap-3 group">
+          <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+            <img src="/img/relogo.png" alt="">
+          </div>
+          <div>
+            <h1 class="text-xl font-bold text-gradient">Webben som plattform</h1>
+            <p class="text-xs text-gray-500 dark:text-gray-400">Utbildningswebb</p>
+          </div>
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-8 text-sm font-medium" aria-label="Primary">
+          <a href="/html/index.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group">
+            Hem
+            <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+          </a>
+          <a href="/projektplan/" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group">
+            Projektplan
+            <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+          </a>
+          <a href="/tester/" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group">
+            Tester
+            <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+          </a>
+          <a href="/html/dokumentation.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group">
+            Dokumentation
+            <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+          </a>
+          <a href="/html/analys.html" class="text-blue-600 dark:text-blue-400 transition-colors duration-200 relative group">
+            Analys
+            <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-100 transition-transform duration-200"></span>
+          </a>
+        </nav>
+
+        <div class="flex items-center gap-4">
+          <button id="theme-toggle" class="p-2 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 hover:scale-105" aria-label="Växla mörkt läge">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path class="dark:hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+              <path class="hidden dark:block" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+          </button>
+
+          <div class="flex items-center bg-gray-100 dark:bg-gray-800 rounded-xl p-1">
+            <button id="btnSv" class="px-3 py-1 text-sm font-semibold rounded-lg transition-all duration-200 bg-blue-600 text-white shadow-md">SV</button>
+            <button id="btnEn" class="px-3 py-1 text-sm font-semibold rounded-lg transition-all duration-200 text-gray-600 dark:text-gray-300">EN</button>
+          </div>
+
+          <button id="mobileToggle" class="lg:hidden p-2 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300" aria-expanded="false" aria-label="Öppna meny">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="lg:hidden hidden glass-effect border-t">
+      <div class="px-4 py-6 space-y-4">
+        <a href="/html/index.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 transition-colors">Hem</a>
+        <a href="/projektplan/" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 transition-colors">Projektplan</a>
+        <a href="/tester/" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 transition-colors">Tester</a>
+        <a href="/html/dokumentation.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 transition-colors">Dokumentation</a>
+        <a href="/html/analys.html" class="block py-3 px-4 rounded-xl bg-blue-600 text-white">Analys</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-[70vh] flex items-center justify-center text-white overflow-hidden pt-20">
+    <div class="absolute inset-0 bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700"></div>
+    <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+    
+    <div class="relative z-10 text-center px-4 max-w-5xl mx-auto py-20" data-aos="fade-up">
+      <div class="inline-block mb-6">
+        <div class="w-20 h-20 bg-white/10 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto animate-float">
+          <span class="text-5xl">📊</span>
+        </div>
+      </div>
+      <h1 class="text-5xl md:text-6xl font-bold mb-6">
+        Analys & utvärdering
+      </h1>
+      <p class="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto mb-8">
+        En djupgående reflektion över mitt webbprojekt - från planering till färdig produkt
+      </p>
+      
+      <!-- Breadcrumbs -->
+      <nav class="flex justify-center items-center gap-2 text-sm text-white/80">
+        <a href="/html/index.html" class="hover:text-white transition-colors">Hem</a>
+        <span>›</span>
+        <span class="text-white">Analys</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="relative bg-white dark:bg-gray-900">
+    
+    <!-- Inledning -->
+    <section class="py-20 px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-800 rounded-2xl p-8 mb-12" data-aos="fade-up">
+          <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white">🎯 Inledning</h2>
+          <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+            Mitt projekt i kursen <strong>Webbutveckling 2</strong> gick ut på att skapa en egen webbsida som förklarar webbens historia, funktion och betydelse, samt visar kursens syfte och mål.
+          </p>
+          <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+            Jag planerade, byggde, testade och utvärderade webbsidan under flera veckor, enligt en projektplan jag skrev i början. I den här analysen berättar jag hur jag arbetade, vilka tekniker jag använde, hur jag löste problem, och vad jag lärde mig om både webbutveckling och samhället.
+          </p>
+        </div>
+
+        <!-- Planering och idéer -->
+        <div class="mb-16" data-aos="fade-up">
+          <h2 class="text-4xl font-bold mb-8 text-gray-900 dark:text-white">💡 Planering och idéer</h2>
+          
+          <div class="prose prose-lg dark:prose-invert max-w-none mb-8">
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+              Innan jag började koda gjorde jag <strong>wireframes</strong> (skisser) för att se hur jag ville att webbsidan skulle se ut. Jag tänkte på att strukturen skulle vara tydlig, att texten skulle vara lätt att läsa och att designen skulle kännas lugn och modern.
+            </p>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              Jag hämtade inspiration till headern och menyn från <strong>Apple hemsida</strong> och moderna utbildningssidor som <strong>W3Schools</strong> och <strong>MDN Web Docs</strong>, där menyerna är tydliga och alltid syns högst upp.
+            </p>
+          </div>
+
+          <!-- 📍 BILD 1: INSPIRATION FRÅN APPLE/W3SCHOOLS -->
+          <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 mb-8">
+            <h3 class="text-xl font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-2">
+              <span>🖼️</span>
+              <span>Inspiration för header och navigation</span>
+            </h3>
+              <div>
+                <img src="/img/apple.png" alt="">
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mt-4 italic">
+              Bildtext: Inspiration från Apples rena header-design och W3Schools tydliga navigation
+            </p>
+          </div>
+
+          <div class="prose prose-lg dark:prose-invert max-w-none mb-8">
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              När det gällde färgval ville jag ha färger som kändes professionella men ändå trevliga. Jag valde <strong class="text-blue-600">blått</strong>, <strong class="text-gray-600">grått</strong> och <strong>vitt</strong> eftersom blått symboliserar teknik och förtroende, medan grått och vitt ger en ren och lugn känsla.
+            </p>
+          </div>
+
+          <!-- 📍 BILD 2: FÄRGPALETT -->
+          <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 mb-8">
+            <h3 class="text-xl font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-2">
+              <span>🎨</span>
+              <span>Färgpalett och designval</span>
+            </h3>
+              <img src="/img/Skärmbild 2025-10-06 195344.png" alt="">
+            <p class="text-sm text-gray-600 dark:text-gray-400 mt-4 italic">
+              Bildtext: Den färgpalett jag valde för webbsidan - blått för teknik, grått och vitt för renhet
+            </p>
+          </div>
+        </div>
+
+        <!-- Beskrivning och teknik -->
+        <div class="mb-16" data-aos="fade-up">
+          <h2 class="text-4xl font-bold mb-8 text-gray-900 dark:text-white">⚙️ Beskrivning och teknik</h2>
+          
+          <div class="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-800 rounded-2xl p-8 mb-8">
+            <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+              Jag byggde hela webbsidan med <strong class="text-blue-600">HTML</strong> och <strong class="text-purple-600">CSS</strong>.
+            </p>
+            
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+              <div class="bg-white dark:bg-gray-700 rounded-xl p-6">
+                <h3 class="text-xl font-bold mb-3 text-blue-600">HTML</h3>
+                <p class="text-gray-700 dark:text-gray-300">Användes för strukturen: rubriker, text, länkar och navigering.</p>
+              </div>
+              
+              <div class="bg-white dark:bg-gray-700 rounded-xl p-6">
+                <h3 class="text-xl font-bold mb-3 text-purple-600">CSS</h3>
+                <p class="text-gray-700 dark:text-gray-300">Användes för designen: färger, typsnitt, layout och responsivitet.</p>
+              </div>
+            </div>
+            
+            <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+              Jag använde semantiska taggar som <code class="bg-white dark:bg-gray-700 px-2 py-1 rounded">&lt;header&gt;</code>, <code class="bg-white dark:bg-gray-700 px-2 py-1 rounded">&lt;nav&gt;</code>, <code class="bg-white dark:bg-gray-700 px-2 py-1 rounded">&lt;main&gt;</code> och <code class="bg-white dark:bg-gray-700 px-2 py-1 rounded">&lt;footer&gt;</code> för att koden skulle vara tydlig och följa webbstandarder. Jag använde också <strong>flexbox</strong> och <strong>grid</strong> för att placera innehållet på ett bra sätt och för att sidan skulle fungera på olika skärmar.
+            </p>
+          </div>
+
+          <!-- 📍 BILD 3: WIREFRAMES/SKISSER -->
+          <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 mb-8">
+            <h3 class="text-xl font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-2">
+              <span>✏️</span>
+              <span>Wireframes och skisser</span>
+            </h3>
+               <img src="/img/Skärmbild 2025-10-04 002237.png" alt="">
+            <p class="text-sm text-gray-600 dark:text-gray-400 mt-4 italic">
+              Bildtext: Tidiga wireframes som visar planeringen av webbsidans struktur och layout
+            </p>
+          </div>
+
+          <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 p-6 rounded-r-xl">
+            <h3 class="text-lg font-bold mb-2 text-yellow-800 dark:text-yellow-300">⚠️ Utmaning: Mobile-first</h3>
+            <p class="text-gray-700 dark:text-gray-300">
+              Jag började med en första version som fungerade bra på dator, men inte på mobil. När jag testade i <strong>vecka 38</strong> såg jag att innehållet hamnade på varandra i små fönster. Därför byggde jag om designen till en <strong>mobile-first-version</strong> med bättre struktur och enklare layout.
+            </p>
+          </div>
+        </div>
+
+        <!-- Innehåll -->
+        <div class="mb-16" data-aos="fade-up">
+          <h2 class="text-4xl font-bold mb-8 text-gray-900 dark:text-white">📄 Innehåll</h2>
+          
+          <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+            Webbsidan innehåller flera sidor med olika teman:
+          </p>
+          
+          <div class="grid md:grid-cols-2 gap-4 mb-6">
+            <div class="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6">
+              <h3 class="text-xl font-bold mb-2 text-blue-600">📜 Webbens historia</h3>
+              <p class="text-gray-700 dark:text-gray-300">Från Web 1.0 till modern webb</p>
+            </div>
+            
+            <div class="bg-purple-50 dark:bg-purple-900/20 rounded-xl p-6">
+              <h3 class="text-xl font-bold mb-2 text-purple-600">⚙️ Webbens funktion</h3>
+              <p class="text-gray-700 dark:text-gray-300">Teknisk funktionalitet förklarad</p>
+            </div>
+            
+            <div class="bg-green-50 dark:bg-green-900/20 rounded-xl p-6">
+              <h3 class="text-xl font-bold mb-2 text-green-600">🌍 Webbens betydelse</h3>
+              <p class="text-gray-700 dark:text-gray-300">Samhällspåverkan och kultur</p>
+            </div>
+            
+            <div class="bg-orange-50 dark:bg-orange-900/20 rounded-xl p-6">
+              <h3 class="text-xl font-bold mb-2 text-orange-600">🎯 Syfte och krav</h3>
+              <p class="text-gray-700 dark:text-gray-300">Kursens mål och bedömning</p>
+            </div>
+          </div>
+          
+          <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+            Eftersom jag ville fokusera på text och tillgänglighet använde jag inte många bilder, utan skrev alla texter själv. Jag delade upp texten i stycken och rubriker för att den skulle vara lätt att läsa.
+          </p>
+        </div>
+
+        <!-- Design och användbarhet -->
+        <div class="mb-16" data-aos="fade-up">
+          <h2 class="text-4xl font-bold mb-8 text-gray-900 dark:text-white">🎨 Design och användbarhet</h2>
+          
+          <div class="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-gray-800 dark:to-gray-800 rounded-2xl p-8">
+            <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+              Jag tänkte mycket på att webben skulle vara <strong>enkel att förstå</strong> och <strong>lätt att navigera</strong>. Menyn i headern gör att användaren snabbt hittar mellan sidorna, och jag använde hover-effekter för att visa när man håller musen över en länk.
+            </p>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="bg-white dark:bg-gray-700 rounded-xl p-6">
+                <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">🎯 Kontraster</h3>
+                <p class="text-gray-700 dark:text-gray-300">Mörk text på ljus bakgrund för bättre läsbarhet</p>
+              </div>
+              
+              <div class="bg-white dark:bg-gray-700 rounded-xl p-6">
+                <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">📝 Typografi</h3>
+                <p class="text-gray-700 dark:text-gray-300">Enkla typsnitt som fungerar på alla enheter</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Funktionalitet med AOS -->
+        <div class="mb-16" data-aos="fade-up">
+          <h2 class="text-4xl font-bold mb-8 text-gray-900 dark:text-white">✨ Funktionalitet</h2>
+          
+          <div class="prose prose-lg dark:prose-invert max-w-none mb-8">
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+              Jag använde <strong>HTML</strong>, <strong>CSS</strong> och lite <strong>JavaScript</strong> för att skapa struktur och interaktivitet. Menyn i toppen gör att man enkelt kan navigera mellan sidorna. Jag lade också till hover-effekter på länkar så att användaren ser var muspekaren är.
+            </p>
+          </div>
+          
+          <div class="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 border-2 border-yellow-400 dark:border-yellow-600 rounded-2xl p-8">
+            <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-2">
+              <span>🎬</span>
+              <span>AOS (Animate On Scroll)</span>
+            </h3>
+            <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+              Under arbetet lärde jag mig hur man använder <strong>AOS (Animate On Scroll)</strong> – ett bibliotek som gör att element får små animationer när man bläddrar på sidan. Det gör sidan mer levande och modern, utan att bli rörig.
+            </p>
+            <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+              Jag använde AOS för att ge mjuk in- och uttoning på vissa sektioner när man skrollar, vilket förbättrar användarupplevelsen och gör sidan mer professionell. Jag tyckte det var roligt att lära mig detta, eftersom det visade hur man kan använda JavaScript-bibliotek för att förbättra design och funktion utan att skriva all kod själv.
+            </p>
+          </div>
+        </div>
+               <!-- Testning och förbättring -->
+        <div class="mb-16" data-aos="fade-up">
+            <h2 class="text-4xl font-bold mb-8 text-gray-900 dark:text-white">🧪 Testning och förbättring</h2>
+            
+            <div class="prose prose-lg dark:prose-invert max-w-none mb-8">
+              <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+                Jag testade webbsidan i min dator på olika fönsterstorlekar. Jag använde webbläsarens utvecklingsverktyg för att se hur sidan såg ut på olika upplösningar. När jag upptäckte problemen med mobilvy (vecka 38) ändrade jag hela layouten och förbättrade koden.
+              </p>
+              <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                Jag använde verktyget <strong>Lighthouse</strong> för att testa tillgänglighet och prestanda. Resultatet blev bra – sidan laddar snabbt och fungerar utan problem.
+              </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6 border-2 border-blue-200 dark:border-blue-800">
+                <h3 class="text-xl font-bold mb-3 text-blue-600 dark:text-blue-400">🔍 Utvecklingsverktyg</h3>
+                <p class="text-gray-700 dark:text-gray-300">Testade responsivitet på olika skärmstorlekar</p>
+              </div>
+              
+              <div class="bg-green-50 dark:bg-green-900/20 rounded-xl p-6 border-2 border-green-200 dark:border-green-800">
+                <h3 class="text-xl font-bold mb-3 text-green-600 dark:text-green-400">⚡ Lighthouse</h3>
+                <p class="text-gray-700 dark:text-gray-300">Kontrollerade prestanda och tillgänglighet</p>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Tillgänglighet -->
+          <div class="mb-16" data-aos="fade-up">
+            <h2 class="text-4xl font-bold mb-8 text-gray-900 dark:text-white">♿ Tillgänglighet</h2>
+            
+            <div class="bg-gradient-to-r from-green-50 to-teal-50 dark:from-gray-800 dark:to-gray-800 rounded-2xl p-8 mb-8">
+              <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+                Jag har tänkt på att webben ska vara <strong>tillgänglig för alla</strong>. Jag använde:
+              </p>
+              
+              <div class="grid md:grid-cols-2 gap-4">
+                <div class="bg-white dark:bg-gray-700 rounded-xl p-5 flex items-start gap-3">
+                  <span class="text-2xl">📋</span>
+                  <div>
+                    <h3 class="font-bold mb-1 text-gray-900 dark:text-white">Semantisk HTML</h3>
+                    <p class="text-sm text-gray-700 dark:text-gray-300">För tydlig struktur</p>
+                  </div>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-700 rounded-xl p-5 flex items-start gap-3">
+                  <span class="text-2xl">🎨</span>
+                  <div>
+                    <h3 class="font-bold mb-1 text-gray-900 dark:text-white">Bra kontraster</h3>
+                    <p class="text-sm text-gray-700 dark:text-gray-300">Mellan text och bakgrund</p>
+                  </div>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-700 rounded-xl p-5 flex items-start gap-3">
+                  <span class="text-2xl">⏭️</span>
+                  <div>
+                    <h3 class="font-bold mb-1 text-gray-900 dark:text-white">Skip-länk</h3>
+                    <p class="text-sm text-gray-700 dark:text-gray-300">För skärmläsare</p>
+                  </div>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-700 rounded-xl p-5 flex items-start gap-3">
+                  <span class="text-2xl">💬</span>
+                  <div>
+                    <h3 class="font-bold mb-1 text-gray-900 dark:text-white">Enkelt språk</h3>
+                    <p class="text-sm text-gray-700 dark:text-gray-300">Så fler kan förstå</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Lagar och etik -->
+          <div class="mb-16" data-aos="fade-up">
+            <h2 class="text-4xl font-bold mb-8 text-gray-900 dark:text-white">⚖️ Lagar och etik</h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+              <div class="bg-purple-50 dark:bg-purple-900/20 rounded-2xl p-6">
+                <h3 class="text-xl font-bold mb-3 text-purple-600 dark:text-purple-400">©️ Upphovsrätt</h3>
+                <p class="text-gray-700 dark:text-gray-300">Jag använde bara eget material, så jag behövde inte tänka på upphovsrätt.</p>
+              </div>
+              
+              <div class="bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-6">
+                <h3 class="text-xl font-bold mb-3 text-blue-600 dark:text-blue-400">🔒 GDPR</h3>
+                <p class="text-gray-700 dark:text-gray-300">Jag samlade inte in några personuppgifter, vilket gör att sidan följer GDPR.</p>
+              </div>
+              
+              <div class="bg-green-50 dark:bg-green-900/20 rounded-2xl p-6">
+                <h3 class="text-xl font-bold mb-3 text-green-600 dark:text-green-400">✅ Etik</h3>
+                <p class="text-gray-700 dark:text-gray-300">Webben ska vara trygg, informativ och inte vilseleda.</p>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Säkerhet -->
+          <div class="mb-16" data-aos="fade-up">
+            <h2 class="text-4xl font-bold mb-8 text-gray-900 dark:text-white">🔐 Säkerhet</h2>
+            
+            <div class="bg-gradient-to-r from-red-50 to-orange-50 dark:from-gray-800 dark:to-gray-800 rounded-2xl p-8">
+              <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+                Eftersom sidan inte har formulär eller inloggning är den säker. Jag använde inga osäkra skript eller externa resurser.
+              </p>
+              <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                Om sidan publiceras online fungerar den bra med <strong>HTTPS</strong> och har låg risk för attacker.
+              </p>
+            </div>
+          </div>
+  
+          <!-- Samhällsperspektiv -->
+          <div class="mb-16" data-aos="fade-up">
+            <h2 class="text-4xl font-bold mb-8 text-gray-900 dark:text-white">🌍 Samhällsperspektiv</h2>
+            
+            <div class="bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-gray-800 dark:to-gray-800 rounded-2xl p-8">
+              <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+                Jag lärde mig att webben påverkar hela samhället. Den gör det möjligt att dela kunskap, kommunicera och arbeta var som helst.
+              </p>
+              <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                Jag tycker att det är viktigt att webbutvecklare bygger sidor som <strong>alla kan använda</strong> – oavsett språk, funktionsnedsättning eller enhet.
+              </p>
+            </div>
+          </div>
+  
+          <!-- Lärdomar -->
+          <div class="mb-16" data-aos="fade-up">
+            <h2 class="text-4xl font-bold mb-8 text-gray-900 dark:text-white">🧠 Lärdomar</h2>
+            
+            <div class="space-y-6">
+              <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
+                <h3 class="text-2xl font-bold mb-4 text-blue-600 dark:text-blue-400">Planering och testning</h3>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                  Jag lärde mig hur viktigt det är att planera noga, testa ofta och tänka på användbarhet. När jag fick problem med mobildesignen i vecka 38 förstod jag värdet av <strong>mobile-first-utveckling</strong> och tidig testning.
+                </p>
+              </div>
+              
+              <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
+                <h3 class="text-2xl font-bold mb-4 text-purple-600 dark:text-purple-400">Bibliotek och ramverk</h3>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                  Jag lärde mig också att det finns bibliotek och ramverk som kan spara tid och göra webben mer interaktiv. Ett exempel är <strong>AOS</strong>, som jag använde för att skapa animationer på sidan. Det fick mig att förstå hur JavaScript och CSS kan samarbeta för att förbättra upplevelsen för användaren.
+                </p>
+              </div>
+              
+              <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
+                <h3 class="text-2xl font-bold mb-4 text-green-600 dark:text-green-400">Tillgänglighet och etik</h3>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                  Dessutom fick jag bättre förståelse för tillgänglighet, lagar och etik. En webbsida måste vara både snygg och säker, och fungera för alla. Jag insåg att webbutveckling inte bara handlar om att skriva kod – det handlar om att skapa något som är <strong>användbart, tillgängligt och tryggt</strong> för människor.
+                </p>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Sammanfattning -->
+          <div class="mb-16" data-aos="fade-up">
+            <h2 class="text-4xl font-bold mb-8 text-gray-900 dark:text-white">📝 Sammanfattning</h2>
+            
+            <div class="bg-gradient-to-br from-blue-500 via-purple-600 to-indigo-700 rounded-3xl p-10 text-white shadow-2xl">
+              <p class="text-xl leading-relaxed mb-6">
+                Jag är nöjd med min webbsida. Den följer webbstandarder, fungerar på olika skärmar och har tydlig struktur. Jag lärde mig att <strong>enkla lösningar ofta fungerar bäst</strong> – tydlig kod, bra planering och fokus på användaren.
+              </p>
+              <p class="text-xl leading-relaxed mb-6">
+                Om jag skulle fortsätta utveckla sidan skulle jag vilja lägga till fler bilder, kanske små animationer och lite mer interaktivitet med JavaScript.
+              </p>
+              <p class="text-xl leading-relaxed">
+                Men för det här projektet tycker jag att jag har lyckats uppnå kursens syfte: att <strong>planera, skapa, testa och analysera</strong> en webbsida på ett självständigt och genomtänkt sätt.
+              </p>
+            </div>
+          </div>
+  
+        </div>
+      </section>
+  
+    </main>
+  
+    <!-- FOOTER -->
+    <footer class="relative bg-gradient-to-br from-gray-900 to-gray-800 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-3 gap-12 mb-12">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold">
+                <img src="/img/relogo.png" alt="">
+              </div>
+              <h3 class="text-xl font-bold">Webben som plattform</h3>
+            </div>
+            <p class="text-gray-400 leading-relaxed">
+              Ett utbildningsprojekt i Webbutveckling 2
+            </p>
+          </div>
+  
+          <div>
+            <h3 class="text-lg font-bold mb-4">Snabblänkar</h3>
+            <ul class="space-y-2">
+              <li><a href="/html/index.html" class="text-gray-400 hover:text-white transition-colors">Hem</a></li>
+              <li><a href="/projektplan/" class="text-gray-400 hover:text-white transition-colors">Projektplan</a></li>
+              <li><a href="/tester/" class="text-gray-400 hover:text-white transition-colors">Tester</a></li>
+              <li><a href="/html/dokumentation.html" class="text-gray-400 hover:text-white transition-colors">Dokumentation</a></li>
+              <li><a href="/html/analys.html" class="text-white font-semibold">Analys</a></li>
+            </ul>
+          </div>
+  
+          <div>
+            <h3 class="text-lg font-bold mb-4">Om projektet</h3>
+            <p class="text-gray-400 leading-relaxed">
+              Skapad som ett skolprojekt för att lära mig mer om webbutveckling, design och användarupplevelse.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Main Script -->
+    <script>
+      // Initialize AOS
+      AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100
+      });
+  
+      // Dark mode toggle
+      const themeToggle = document.getElementById('theme-toggle');
+      const htmlElement = document.documentElement;
+      
+      // Check for saved theme preference or default to light mode
+      const currentTheme = localStorage.getItem('theme') || 'light';
+      htmlElement.classList.toggle('dark', currentTheme === 'dark');
+      
+      themeToggle.addEventListener('click', () => {
+        htmlElement.classList.toggle('dark');
+        const newTheme = htmlElement.classList.contains('dark') ? 'dark' : 'light';
+        localStorage.setItem('theme', newTheme);
+      });
+  
+      // Mobile menu toggle
+      const mobileToggle = document.getElementById('mobileToggle');
+      const mobileMenu = document.getElementById('mobileMenu');
+      
+      mobileToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        const isExpanded = !mobileMenu.classList.contains('hidden');
+        mobileToggle.setAttribute('aria-expanded', isExpanded);
+      });
+  
+      // Language toggle (placeholder functionality)
+      const btnSv = document.getElementById('btnSv');
+      const btnEn = document.getElementById('btnEn');
+      
+      btnSv.addEventListener('click', () => {
+        btnSv.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+        btnSv.classList.remove('text-gray-600', 'dark:text-gray-300');
+        btnEn.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+        btnEn.classList.add('text-gray-600', 'dark:text-gray-300');
+      });
+      
+      btnEn.addEventListener('click', () => {
+        btnEn.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+        btnEn.classList.remove('text-gray-600', 'dark:text-gray-300');
+        btnSv.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+        btnSv.classList.add('text-gray-600', 'dark:text-gray-300');
+        // Add language switching functionality here
+      });
+  
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+  </html>

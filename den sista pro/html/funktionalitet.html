@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Webbens funktionalitet | Webben som plattform</title>
+<meta name="description" content="Lär dig hur webben fungerar tekniskt: klient-server, DNS, HTTP/HTTPS, HTML/CSS/JavaScript och responsiv design. Omfattande guide till webbteknologi.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="/funktionalitet/">
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- AOS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script>
+tailwind.config = {
+darkMode: 'class',
+theme: {
+extend: {
+fontFamily: {
+'sans': ['Inter', 'system-ui', 'sans-serif'],
+},
+animation: {
+'float': 'float 6s ease-in-out infinite',
+'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+},
+keyframes: {
+float: {
+  '0%, 100%': { transform: 'translateY(0px)' },
+  '50%': { transform: 'translateY(-20px)' },
+}
+}
+}
+}
+}
+</script>
+
+<style>
+.glass-effect {
+backdrop-filter: blur(20px);
+background: rgba(255, 255, 255, 0.1);
+border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass-effect {
+background: rgba(0, 0, 0, 0.2);
+border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-blur {
+backdrop-filter: blur(20px) saturate(180%);
+background: rgba(255, 255, 255, 0.8);
+border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+transition: all 0.3s ease;
+}
+
+.dark .nav-blur {
+background: rgba(0, 0, 0, 0.8);
+border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.text-gradient {
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+.card-hover {
+transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+transform: translateY(-8px) scale(1.02);
+}
+
+.code-block {
+background: #1e293b;
+border-radius: 12px;
+overflow: hidden;
+}
+
+.dark .code-block {
+background: #0f172a;
+}
+
+/* Smooth transitions for dark mode */
+* {
+transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+</style>
+</head>
+
+<body class="font-sans text-gray-800 bg-gray-50 dark:bg-gray-900 dark:text-gray-100 overflow-x-hidden">
+
+<!-- Decorative background -->
+<div class="fixed inset-0 overflow-hidden pointer-events-none">
+<div class="absolute -top-40 -right-40 w-80 h-80 bg-blue-300 dark:bg-blue-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float"></div>
+<div class="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-300 dark:bg-purple-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: 2s;"></div>
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-pink-300 dark:bg-pink-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: 4s;"></div>
+</div>
+
+<!-- HEADER -->
+<header class="fixed inset-x-0 top-0 z-50 nav-blur">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-20">
+<a href="/html/index.html" class="flex items-center gap-3 group">
+<div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+<img src="/img/relogo.png" alt="">
+</div>
+<div>
+<h1 class="text-xl font-bold text-gradient">Waleeds web</h1>
+<p class="text-xs text-gray-500 dark:text-gray-400">Utbildningswebb</p>
+</div>
+</a>
+
+<nav class="hidden lg:flex items-center gap-8 text-sm font-medium" aria-label="Primary">
+<a href="/html/index.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Hem" data-lang-en="Home">
+Hem
+<span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+</a>
+<a href="/html/syfte.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Syfte & krav" data-lang-en="Purpose">
+Syfte & krav
+<span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+</a>
+<a href="/html/historia.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Historia" data-lang-en="History">
+Historia
+<span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+</a>
+<a href="/html/betydelse.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Betydelse" data-lang-en="Significance">
+Betydelse
+<span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+</a>
+<a href="/html/funktionalitet.html" class="text-blue-600 dark:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Funktionalitet" data-lang-en="Functionality">
+Funktionalitet
+<span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-100 transition-transform duration-200"></span>
+</a>
+</nav>
+
+<div class="flex items-center gap-4">
+<button id="theme-toggle" class="p-2 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 hover:scale-105" aria-label="Växla mörkt läge">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <path class="dark:hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+  <path class="hidden dark:block" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+</svg>
+</button>
+
+<div class="flex items-center bg-gray-100 dark:bg-gray-800 rounded-xl p-1">
+<button id="btnSv" class="px-3 py-1 text-sm font-semibold rounded-lg transition-all duration-200 bg-blue-600 text-white shadow-md">SV</button>
+<button id="btnEn" class="px-3 py-1 text-sm font-semibold rounded-lg transition-all duration-200 text-gray-600 dark:text-gray-300">EN</button>
+</div>
+
+<button id="mobileToggle" class="lg:hidden p-2 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300" aria-expanded="false" aria-label="Öppna meny">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+</svg>
+</button>
+</div>
+</div>
+</div>
+
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="lg:hidden hidden glass-effect border-t border-gray-200 dark:border-gray-700">
+<div class="px-4 py-6 space-y-4">
+<a href="/html/index.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 dark:hover:bg-black/10 transition-colors" data-lang-sv="Hem" data-lang-en="Home">Hem</a>
+<a href="/html/syfte.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 dark:hover:bg-black/10 transition-colors" data-lang-sv="Syfte & krav" data-lang-en="Purpose">Syfte & krav</a>
+<a href="/html/historia.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 dark:hover:bg-black/10 transition-colors" data-lang-sv="Historia" data-lang-en="History">Historia</a>
+<a href="/html/betydelse.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 dark:hover:bg-black/10 transition-colors" data-lang-sv="Betydelse" data-lang-en="Significance">Betydelse</a>
+<a href="/html/funktionalitet.html" class="block py-3 px-4 rounded-xl bg-blue-600 text-white" data-lang-sv="Funktionalitet" data-lang-en="Functionality">Funktionalitet</a>
+</div>
+</div>
+</header>
+
+<!-- Hero Section -->
+<section class="relative min-h-[70vh] flex items-center justify-center text-white overflow-hidden pt-20">
+<div class="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700"></div>
+<div class="absolute inset-0 bg-black bg-opacity-20"></div>
+
+<div class="relative z-10 text-center px-4 max-w-5xl mx-auto py-20" data-aos="fade-up">
+<div class="inline-block mb-6">
+<div class="w-20 h-20 bg-white/10 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto animate-float">
+<span class="text-5xl">⚙️</span>
+</div>
+</div>
+<h1 class="text-5xl md:text-6xl font-bold mb-6" data-lang-sv="Webbens funktionalitet" data-lang-en="Web Functionality">
+Webbens funktionalitet
+</h1>
+<p class="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto mb-8" data-lang-sv="Förstå de tekniska grunderna som driver det moderna internet - från klient-server till responsiv design" data-lang-en="Understand the technical foundations that power the modern internet - from client-server to responsive design">
+Förstå de tekniska grunderna som driver det moderna internet - från klient-server till responsiv design
+</p>
+
+<!-- Breadcrumbs -->
+<nav class="flex justify-center items-center gap-2 text-sm text-white/80">
+<a href="/html/index.html" class="hover:text-white transition-colors" data-lang-sv="Hem" data-lang-en="Home">Hem</a>
+<span>›</span>
+<span class="text-white" data-lang-sv="Funktionalitet" data-lang-en="Functionality">Funktionalitet</span>
+</nav>
+</div>
+</section>
+
+<!-- Main Content -->
+<main class="relative bg-white dark:bg-gray-900">
+<!-- Introduction -->
+<section class="py-20 px-4">
+<div class="max-w-6xl mx-auto">
+<div class="text-center mb-16" data-aos="fade-up">
+<h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="Hur fungerar webben?" data-lang-en="How does the web work?">
+Hur fungerar webben?
+</h2>
+<p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto" data-lang-sv="Webben är ett komplext system av sammankopplade teknologier som arbetar tillsammans för att leverera innehåll till miljardtals användare världen över." data-lang-en="The web is a complex system of interconnected technologies that work together to deliver content to billions of users worldwide.">
+Webben är ett komplext system av sammankopplade teknologier som arbetar tillsammans för att leverera innehåll till miljardtals användare världen över.
+</p>
+</div>
+
+<!-- Core Concepts Grid -->
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Klient-Server -->
+<div class="card-hover bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border-t-4 border-blue-500" data-aos="fade-up" data-aos-delay="100">
+<div class="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center mb-6">
+  <span class="text-4xl">🖥️</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white" data-lang-sv="Klient-Server" data-lang-en="Client-Server">
+  Klient-Server
+</h3>
+<p class="text-gray-600 dark:text-gray-300 mb-4" data-lang-sv="Din webbläsare (klient) skickar förfrågningar till servrar som lagrar webbsidor och svarar med innehåll." data-lang-en="Your browser (client) sends requests to servers that store web pages and respond with content.">
+  Din webbläsare (klient) skickar förfrågningar till servrar som lagrar webbsidor och svarar med innehåll.
+</p>
+<div class="flex items-center gap-2 text-sm text-blue-600 dark:text-blue-400 font-medium">
+  <span data-lang-sv="Request → Response" data-lang-en="Request → Response">Request → Response</span>
+</div>
+</div>
+
+<!-- DNS -->
+<div class="card-hover bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border-t-4 border-purple-500" data-aos="fade-up" data-aos-delay="200">
+<div class="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center mb-6">
+  <span class="text-4xl">🌐</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white" data-lang-sv="DNS" data-lang-en="DNS">
+  DNS
+</h3>
+<p class="text-gray-600 dark:text-gray-300 mb-4" data-lang-sv="Domain Name System översätter läsbara domännamn (google.com) till IP-adresser som datorer kan förstå." data-lang-en="Domain Name System translates readable domain names (google.com) into IP addresses that computers can understand.">
+  Domain Name System översätter läsbara domännamn (google.com) till IP-adresser som datorer kan förstå.
+</p>
+<div class="flex items-center gap-2 text-sm text-purple-600 dark:text-purple-400 font-medium">
+  <span data-lang-sv="example.com → 192.0.2.1" data-lang-en="example.com → 192.0.2.1">example.com → 192.0.2.1</span>
+</div>
+</div>
+
+<!-- HTTP/HTTPS -->
+<div class="card-hover bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border-t-4 border-green-500" data-aos="fade-up" data-aos-delay="300">
+<div class="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-2xl flex items-center justify-center mb-6">
+  <span class="text-4xl">🔒</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white" data-lang-sv="HTTP/HTTPS" data-lang-en="HTTP/HTTPS">
+  HTTP/HTTPS
+</h3>
+<p class="text-gray-600 dark:text-gray-300 mb-4" data-lang-sv="Protokoll som definierar hur meddelanden skickas mellan klient och server. HTTPS lägger till kryptering för säkerhet." data-lang-en="Protocols that define how messages are sent between client and server. HTTPS adds encryption for security.">
+  Protokoll som definierar hur meddelanden skickas mellan klient och server. HTTPS lägger till kryptering för säkerhet.
+</p>
+<div class="flex items-center gap-2 text-sm text-green-600 dark:text-green-400 font-medium">
+  <span data-lang-sv="🔒 Säker kommunikation" data-lang-en="🔒 Secure communication">🔒 Säker kommunikation</span>
+</div>
+</div>
+
+<!-- HTML -->
+<div class="card-hover bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border-t-4 border-orange-500" data-aos="fade-up" data-aos-delay="400">
+<div class="w-16 h-16 bg-orange-100 dark:bg-orange-900/30 rounded-2xl flex items-center justify-center mb-6">
+  <span class="text-4xl">📄</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white" data-lang-sv="HTML" data-lang-en="HTML">
+  HTML
+</h3>
+<p class="text-gray-600 dark:text-gray-300 mb-4" data-lang-sv="HyperText Markup Language definierar strukturen och innehållet på webbsidor med taggar och element." data-lang-en="HyperText Markup Language defines the structure and content of web pages with tags and elements.">
+  HyperText Markup Language definierar strukturen och innehållet på webbsidor med taggar och element.
+</p>
+<div class="flex items-center gap-2 text-sm text-orange-600 dark:text-orange-400 font-medium">
+  <span data-lang-sv="Struktur & innehåll" data-lang-en="Structure & content">Struktur & innehåll</span>
+</div>
+</div>
+
+<!-- CSS -->
+<div class="card-hover bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border-t-4 border-pink-500" data-aos="fade-up" data-aos-delay="500">
+<div class="w-16 h-16 bg-pink-100 dark:bg-pink-900/30 rounded-2xl flex items-center justify-center mb-6">
+  <span class="text-4xl">🎨</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white" data-lang-sv="CSS" data-lang-en="CSS">
+  CSS
+</h3>
+<p class="text-gray-600 dark:text-gray-300 mb-4" data-lang-sv="Cascading Style Sheets styr hur webbsidor ser ut - färger, typografi, layout och responsiv design." data-lang-en="Cascading Style Sheets control how web pages look - colors, typography, layout and responsive design.">
+  Cascading Style Sheets styr hur webbsidor ser ut - färger, typografi, layout och responsiv design.
+</p>
+<div class="flex items-center gap-2 text-sm text-pink-600 dark:text-pink-400 font-medium">
+  <span data-lang-sv="Design & layout" data-lang-en="Design & layout">Design & layout</span>
+</div>
+</div>
+
+<!-- JavaScript -->
+<div class="card-hover bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border-t-4 border-yellow-500" data-aos="fade-up" data-aos-delay="600">
+<div class="w-16 h-16 bg-yellow-100 dark:bg-yellow-900/30 rounded-2xl flex items-center justify-center mb-6">
+  <span class="text-4xl">⚡</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white" data-lang-sv="JavaScript" data-lang-en="JavaScript">
+  JavaScript
+</h3>
+<p class="text-gray-600 dark:text-gray-300 mb-4" data-lang-sv="Programmeringsspråk som gör webbsidor interaktiva och dynamiska med animationer, validering och uppdateringar." data-lang-en="Programming language that makes web pages interactive and dynamic with animations, validation and updates.">
+  Programmeringsspråk som gör webbsidor interaktiva och dynamiska med animationer, validering och uppdateringar.
+</p>
+<div class="flex items-center gap-2 text-sm text-yellow-600 dark:text-yellow-400 font-medium">
+  <span data-lang-sv="Interaktivitet & logik" data-lang-en="Interactivity & logic">Interaktivitet & logik</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- How It Works Diagram -->
+<section class="py-20 bg-gray-50 dark:bg-gray-800/50">
+<div class="max-w-6xl mx-auto px-4">
+<div class="text-center mb-16" data-aos="fade-up">
+<h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="Webbförfrågans resa" data-lang-en="The Web Request Journey">
+Webbförfrågans resa
+</h2>
+<p class="text-xl text-gray-600 dark:text-gray-400" data-lang-sv="Vad händer när du skriver in en URL i webbläsaren?" data-lang-en="What happens when you type a URL in your browser?">
+Vad händer när du skriver in en URL i webbläsaren?
+</p>
+</div>
+
+<div class="space-y-6" data-aos="fade-up" data-aos-delay="200">
+<!-- Step 1 -->
+<div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl flex items-start gap-6">
+<div class="flex-shrink-0">
+  <div class="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold text-xl">
+    1
+  </div>
+</div>
+<div class="flex-1">
+  <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white" data-lang-sv="Du skriver URL" data-lang-en="You type URL">
+    Du skriver URL
+  </h3>
+  <p class="text-gray-600 dark:text-gray-300" data-lang-sv="Du skriver en adress som example.com i webbläsarens adressfält." data-lang-en="You type an address like example.com in the browser's address bar.">
+    Du skriver en adress som example.com i webbläsarens adressfält.
+  </p>
+</div>
+</div>
+
+<!-- Step 2 -->
+<div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl flex items-start gap-6">
+<div class="flex-shrink-0">
+  <div class="w-12 h-12 bg-purple-500 text-white rounded-full flex items-center justify-center font-bold text-xl">
+    2
+  </div>
+</div>
+<div class="flex-1">
+  <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white" data-lang-sv="DNS-uppslagning" data-lang-en="DNS Lookup">
+    DNS-uppslagning
+  </h3>
+  <p class="text-gray-600 dark:text-gray-300" data-lang-sv="Webbläsaren kontaktar en DNS-server för att översätta domännamnet till en IP-adress (t.ex. 93.184.216.34)." data-lang-en="The browser contacts a DNS server to translate the domain name to an IP address (e.g. 93.184.216.34).">
+    Webbläsaren kontaktar en DNS-server för att översätta domännamnet till en IP-adress (t.ex. 93.184.216.34).
+  </p>
+</div>
+</div>
+
+<!-- Step 3 -->
+<div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl flex items-start gap-6">
+<div class="flex-shrink-0">
+  <div class="w-12 h-12 bg-green-500 text-white rounded-full flex items-center justify-center font-bold text-xl">
+    3
+  </div>
+</div>
+<div class="flex-1">
+  <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white" data-lang-sv="TCP-anslutning" data-lang-en="TCP Connection">
+    TCP-anslutning
+  </h3>
+  <p class="text-gray-600 dark:text-gray-300" data-lang-sv="En TCP-anslutning etableras mellan din dator och servern via den tre-vägs handskakning." data-lang-en="A TCP connection is established between your computer and the server via the three-way handshake.">
+    En TCP-anslutning etableras mellan din dator och servern via den tre-vägs handskakning.
+  </p>
+</div>
+</div>
+
+<!-- Step 4 -->
+<div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl flex items-start gap-6">
+<div class="flex-shrink-0">
+  <div class="w-12 h-12 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold text-xl">
+    4
+  </div>
+</div>
+<div class="flex-1">
+  <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white" data-lang-sv="HTTP-förfrågan" data-lang-en="HTTP Request">
+    HTTP-förfrågan
+  </h3>
+  <p class="text-gray-600 dark:text-gray-300" data-lang-sv="Webbläsaren skickar en HTTP GET-förfrågan till servern för att be om webbsidan." data-lang-en="The browser sends an HTTP GET request to the server to request the web page.">
+    Webbläsaren skickar en HTTP GET-förfrågan till servern för att be om webbsidan.
+  </p>
+</div>
+</div>
+
+<!-- Step 5 -->
+<div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl flex items-start gap-6">
+<div class="flex-shrink-0">
+  <div class="w-12 h-12 bg-pink-500 text-white rounded-full flex items-center justify-center font-bold text-xl">
+    5
+  </div>
+</div>
+<div class="flex-1">
+  <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white" data-lang-sv="Server svarar" data-lang-en="Server Responds">
+    Server svarar
+  </h3>
+  <p class="text-gray-600 dark:text-gray-300" data-lang-sv="Servern bearbetar förfrågan och skickar tillbaka HTML, CSS, JavaScript och andra resurser." data-lang-en="The server processes the request and sends back HTML, CSS, JavaScript and other resources.">
+    Servern bearbetar förfrågan och skickar tillbaka HTML, CSS, JavaScript och andra resurser.
+  </p>
+</div>
+</div>
+
+<!-- Step 6 -->
+<div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl flex items-start gap-6">
+<div class="flex-shrink-0">
+  <div class="w-12 h-12 bg-indigo-500 text-white rounded-full flex items-center justify-center font-bold text-xl">
+    6
+  </div>
+</div>
+<div class="flex-1">
+  <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white" data-lang-sv="Rendering" data-lang-en="Rendering">
+    Rendering
+  </h3>
+  <p class="text-gray-600 dark:text-gray-300" data-lang-sv="Webbläsaren tolkar HTML, tillämpar CSS-styling och kör JavaScript för att visa den färdiga sidan." data-lang-en="The browser interprets HTML, applies CSS styling and runs JavaScript to display the finished page.">
+    Webbläsaren tolkar HTML, tillämpar CSS-styling och kör JavaScript för att visa den färdiga sidan.
+  </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Code Examples -->
+<section class="py-20 px-4">
+<div class="max-w-6xl mx-auto">
+<div class="text-center mb-16" data-aos="fade-up">
+<h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="Kodexempel" data-lang-en="Code Examples">
+Kodexempel
+</h2>
+<p class="text-xl text-gray-600 dark:text-gray-400" data-lang-sv="Se hur grundläggande webbteknologier ser ut i praktiken" data-lang-en="See what basic web technologies look like in practice">
+Se hur grundläggande webbteknologier ser ut i praktiken
+</p>
+</div>
+
+<div class="grid lg:grid-cols-2 gap-8">
+<!-- HTML Example -->
+<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden" data-aos="fade-right">
+<div class="bg-gradient-to-r from-orange-500 to-red-500 px-6 py-4">
+  <div class="flex items-center gap-3">
+    <span class="text-3xl">📄</span>
+    <div>
+      <h3 class="text-xl font-bold text-white" data-lang-sv="HTML - Struktur" data-lang-en="HTML - Structure">HTML - Struktur</h3>
+      <p class="text-white/80 text-sm" data-lang-sv="Definierar innehåll" data-lang-en="Defines content">Definierar innehåll</p>
+    </div>
+  </div>
+</div>
+<div class="code-block p-6">
+  <pre class="text-green-400 text-sm overflow-x-auto"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="sv"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Min Webbsida&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Välkommen!&lt;/h1&gt;
+    &lt;nav&gt;
+      &lt;a href="#hem"&gt;Hem&lt;/a&gt;
+      &lt;a href="#om"&gt;Om&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+  &lt;main&gt;
+    &lt;p&gt;Innehåll här...&lt;/p&gt;
+  &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+</div>
+
+<!-- CSS Example -->
+<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden" data-aos="fade-left">
+<div class="bg-gradient-to-r from-pink-500 to-purple-500 px-6 py-4">
+  <div class="flex items-center gap-3">
+    <span class="text-3xl">🎨</span>
+    <div>
+      <h3 class="text-xl font-bold text-white" data-lang-sv="CSS - Design" data-lang-en="CSS - Design">CSS - Design</h3>
+      <p class="text-white/80 text-sm" data-lang-sv="Styr utseende" data-lang-en="Controls appearance">Styr utseende</p>
+    </div>
+  </div>
+</div>
+<div class="code-block p-6">
+  <pre class="text-green-400 text-sm overflow-x-auto"><code>body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f5f5f5;
+}
+
+header {
+  background: linear-gradient(
+    135deg, #667eea 0%, #764ba2 100%
+  );
+  padding: 2rem;
+  color: white;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}</code></pre>
+</div>
+</div>
+
+<!-- JavaScript Example -->
+<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden lg:col-span-2" data-aos="fade-up">
+<div class="bg-gradient-to-r from-yellow-500 to-orange-500 px-6 py-4">
+  <div class="flex items-center gap-3">
+    <span class="text-3xl">⚡</span>
+    <div>
+      <h3 class="text-xl font-bold text-white" data-lang-sv="JavaScript - Interaktivitet" data-lang-en="JavaScript - Interactivity">JavaScript - Interaktivitet</h3>
+      <p class="text-white/80 text-sm" data-lang-sv="Skapar dynamiskt beteende" data-lang-en="Creates dynamic behavior">Skapar dynamiskt beteende</p>
+    </div>
+  </div>
+</div>
+<div class="code-block p-6">
+  <pre class="text-green-400 text-sm overflow-x-auto"><code>// Event listener för knappklick
+document.querySelector('#myButton').addEventListener('click', function() {
+  // Hämta data från API
+  fetch('https://api.example.com/data')
+    .then(response => response.json())
+    .then(data => {
+      // Uppdatera DOM med ny data
+      document.querySelector('#content').innerHTML = data.message;
+      console.log('Data laddad:', data);
+    })
+    .catch(error => console.error('Fel:', error));
+});</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Responsive Design -->
+<section class="py-20 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900">
+<div class="max-w-6xl mx-auto px-4">
+<div class="text-center mb-16" data-aos="fade-up">
+<h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="Responsiv design" data-lang-en="Responsive Design">
+Responsiv design
+</h2>
+<p class="text-xl text-gray-600 dark:text-gray-400" data-lang-sv="En webbsida som anpassar sig till alla skärmstorlekar" data-lang-en="A web page that adapts to all screen sizes">
+En webbsida som anpassar sig till alla skärmstorlekar
+</p>
+</div>
+
+<div class="grid lg:grid-cols-3 gap-8">
+<!-- Mobile -->
+<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 text-center" data-aos="zoom-in" data-aos-delay="100">
+<div class="w-20 h-32 bg-gradient-to-b from-blue-500 to-purple-500 rounded-xl mx-auto mb-6 flex items-center justify-center">
+  <span class="text-white text-3xl">📱</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white" data-lang-sv="Mobil" data-lang-en="Mobile">Mobil</h3>
+<p class="text-gray-600 dark:text-gray-300 mb-4" data-lang-sv="Optimerad för pekskärm och små skärmar (320-480px)" data-lang-en="Optimized for touch and small screens (320-480px)">
+  Optimerad för pekskärm och små skärmar (320-480px)
+</p>
+<div class="text-sm text-blue-600 dark:text-blue-400 font-mono">
+  max-width: 480px
+</div>
+</div>
+
+<!-- Tablet -->
+<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 text-center" data-aos="zoom-in" data-aos-delay="200">
+<div class="w-24 h-32 bg-gradient-to-b from-purple-500 to-pink-500 rounded-xl mx-auto mb-6 flex items-center justify-center">
+  <span class="text-white text-3xl">📱</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white" data-lang-sv="Surfplatta" data-lang-en="Tablet">Surfplatta</h3>
+<p class="text-gray-600 dark:text-gray-300 mb-4" data-lang-sv="Mellanformat för surfplattor (768-1024px)" data-lang-en="Medium format for tablets (768-1024px)">
+  Mellanformat för surfplattor (768-1024px)
+</p>
+<div class="text-sm text-purple-600 dark:text-purple-400 font-mono">
+  max-width: 1024px
+</div>
+</div>
+
+<!-- Desktop -->
+<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 text-center" data-aos="zoom-in" data-aos-delay="300">
+<div class="w-32 h-24 bg-gradient-to-r from-pink-500 to-orange-500 rounded-xl mx-auto mb-6 flex items-center justify-center">
+  <span class="text-white text-3xl">💻</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white" data-lang-sv="Desktop" data-lang-en="Desktop">Desktop</h3>
+<p class="text-gray-600 dark:text-gray-300 mb-4" data-lang-sv="Full bredd för stora skärmar (1200px+)" data-lang-en="Full width for large screens (1200px+)">
+  Full bredd för stora skärmar (1200px+)
+</p>
+<div class="text-sm text-orange-600 dark:text-orange-400 font-mono">
+  max-width: 1920px
+</div>
+</div>
+</div>
+
+<!-- Media Query Example -->
+<div class="mt-12 bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden" data-aos="fade-up">
+<div class="bg-gradient-to-r from-indigo-500 to-purple-500 px-6 py-4">
+<h3 class="text-xl font-bold text-white" data-lang-sv="CSS Media Queries" data-lang-en="CSS Media Queries">CSS Media Queries</h3>
+</div>
+<div class="code-block p-6">
+<pre class="text-green-400 text-sm overflow-x-auto"><code>/* Mobile First Approach */
+.container {
+  width: 100%;
+  padding: 1rem;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 960px;
+    padding: 2rem;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1200px;
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Performance Tips -->
+<section class="py-20 px-4">
+<div class="max-w-6xl mx-auto">
+<div class="text-center mb-16" data-aos="fade-up">
+<h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white" data-lang-sv="Prestandaoptimering" data-lang-en="Performance Optimization">
+Prestandaoptimering
+</h2>
+<p class="text-xl text-gray-600 dark:text-gray-400" data-lang-sv="Viktiga tekniker för snabbare webbsidor" data-lang-en="Important techniques for faster web pages">
+Viktiga tekniker för snabbare webbsidor
+</p>
+</div>
+
+<div class="grid md:grid-cols-2 gap-6">
+<!-- Tip 1 -->
+<div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl" data-aos="fade-up" data-aos-delay="100">
+<div class="flex items-start gap-4">
+  <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center flex-shrink-0">
+    <span class="text-2xl">🖼️</span>
+  </div>
+  <div>
+    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white" data-lang-sv="Optimera bilder" data-lang-en="Optimize images">
+      Optimera bilder
+    </h3>
+    <p class="text-gray-600 dark:text-gray-300" data-lang-sv="Använd moderna format som WebP/AVIF, lazy loading och responsiva bilder med srcset." data-lang-en="Use modern formats like WebP/AVIF, lazy loading and responsive images with srcset.">
+      Använd moderna format som WebP/AVIF, lazy loading och responsiva bilder med srcset.
+    </p>
+  </div>
+</div>
+</div>
+
+<!-- Tip 2 -->
+<div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl" data-aos="fade-up" data-aos-delay="200">
+<div class="flex items-start gap-4">
+  <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center flex-shrink-0">
+    <span class="text-2xl">📦</span>
+  </div>
+  <div>
+    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white" data-lang-sv="Minifiera kod" data-lang-en="Minify code">
+      Minifiera kod
+    </h3>
+    <p class="text-gray-600 dark:text-gray-300" data-lang-sv="Ta bort onödiga mellanslag och kommentarer från CSS och JavaScript för mindre filstorlekar." data-lang-en="Remove unnecessary spaces and comments from CSS and JavaScript for smaller file sizes.">
+      Ta bort onödiga mellanslag och kommentarer från CSS och JavaScript för mindre filstorlekar.
+    </p>
+  </div>
+</div>
+</div>
+
+<!-- Tip 3 -->
+<div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl" data-aos="fade-up" data-aos-delay="300">
+<div class="flex items-start gap-4">
+  <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center flex-shrink-0">
+    <span class="text-2xl">⚡</span>
+  </div>
+  <div>
+    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white" data-lang-sv="Använd caching" data-lang-en="Use caching">
+      Använd caching
+    </h3>
+    <p class="text-gray-600 dark:text-gray-300" data-lang-sv="Spara resurser lokalt i webbläsaren med Service Workers och HTTP cache-headers." data-lang-en="Save resources locally in the browser with Service Workers and HTTP cache headers.">
+      Spara resurser lokalt i webbläsaren med Service Workers och HTTP cache-headers.
+    </p>
+  </div>
+</div>
+</div>
+
+<!-- Tip 4 -->
+<div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl" data-aos="fade-up" data-aos-delay="400">
+<div class="flex items-start gap-4">
+  <div class="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-xl flex items-center justify-center flex-shrink-0">
+    <span class="text-2xl">🚀</span>
+  </div>
+  <div>
+    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white" data-lang-sv="CDN och komprimering" data-lang-en="CDN and compression">
+      CDN och komprimering
+    </h3>
+    <p class="text-gray-600 dark:text-gray-300" data-lang-sv="Använd Content Delivery Networks och Gzip/Brotli-komprimering för snabbare leverans." data-lang-en="Use Content Delivery Networks and Gzip/Brotli compression for faster delivery.">
+      Använd Content Delivery Networks och Gzip/Brotli-komprimering för snabbare leverans.
+    </p>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Navigation -->
+    <section class="py-12 px-4">
+      <div class="max-w-5xl mx-auto flex flex-col sm:flex-row justify-between gap-4">
+        <a href="/html/betydelse.html" class="group flex items-center gap-2 px-8 py-4 bg-gray-600 hover:bg-gray-700 text-white rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-lg">
+          <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          <span>Föregående: Webbens betydelse</span>
+        </a>
+        <a href="/html/app.html" class="group flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-lg">
+          <span>Nästa: App vs Webb</span>
+          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-gray-900 dark:bg-black text-white py-16 transition-colors duration-300">
+<div class="max-w-6xl mx-auto px-4">
+<div class="grid md:grid-cols-4 gap-8 mb-12">
+<div class="col-span-2 md:col-span-1">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold">
+  <img src="/img/relogo.png" alt="">
+</div>
+<div>
+  <h3 class="font-bold text-lg">Webben som plattform</h3>
+  <p class="text-sm text-gray-400">Utbildningsprojekt</p>
+</div>
+</div>
+</div>
+
+<div>
+<h4 class="font-semibold mb-4" data-lang-sv="Navigation" data-lang-en="Navigation">Navigation</h4>
+<ul class="space-y-2 text-sm">
+<li><a href="/html/syfte.html" class="text-gray-400 hover:text-white transition-colors">Syfte & krav</a></li>
+<li><a href="/html/historia.html" class="text-gray-400 hover:text-white transition-colors">Historia</a></li>
+<li><a href="/html/betydelse.html" class="text-gray-400 hover:text-white transition-colors">Betydelse</a></li>
+<li><a href="/html/funktionalitet/" class="text-gray-400 hover:text-white transition-colors">Funktionalitet</a></li>
+</ul>
+</div>
+
+<div>
+<h4 class="font-semibold mb-4" data-lang-sv="Resurser" data-lang-en="Resources">Resurser</h4>
+<ul class="space-y-2 text-sm">
+<li><a href="/projektplan/" class="text-gray-400 hover:text-white transition-colors">Projektplan</a></li>
+<li><a href="/tester/" class="text-gray-400 hover:text-white transition-colors">Tester</a></li>
+<li><a href="/html/dokumentation.html" class="text-gray-400 hover:text-white transition-colors">Dokumentation</a></li>
+<li><a href="/html/analys.html" class="text-gray-400 hover:text-white transition-colors">Analys</a></li>
+</ul>
+</div>
+
+<div>
+<h4 class="font-semibold mb-4" data-lang-sv="Juridik" data-lang-en="Legal">Juridik</h4>
+<ul class="space-y-2 text-sm">
+<li><a href="/html/lagar.html" class="text-gray-400 hover:text-white transition-colors">Lagar & regler</a></li>
+</ul>
+</div>
+</div>
+</div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+// AOS
+if (typeof AOS !== 'undefined') {
+AOS.init({ once: true, duration: 800, easing: 'ease-out-cubic' });
+}
+
+// Mobile menu
+const mobileToggle = document.getElementById('mobileToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+
+if (mobileToggle && mobileMenu) {
+mobileToggle.addEventListener('click', () => {
+mobileMenu.classList.toggle('hidden');
+const expanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+mobileToggle.setAttribute('aria-expanded', !expanded);
+});
+}
+
+// Dark mode
+const themeToggle = document.getElementById('theme-toggle');
+const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+if (savedTheme === 'dark') {
+document.documentElement.classList.add('dark');
+}
+
+if (themeToggle) {
+themeToggle.addEventListener('click', () => {
+document.documentElement.classList.toggle('dark');
+const isDark = document.documentElement.classList.contains('dark');
+localStorage.setItem('theme', isDark ? 'dark' : 'light');
+
+themeToggle.style.transform = 'scale(0.9)';
+setTimeout(() => themeToggle.style.transform = 'scale(1)', 150);
+});
+}
+
+// Language toggle
+const btnSv = document.getElementById('btnSv');
+const btnEn = document.getElementById('btnEn');
+const elements = document.querySelectorAll('[data-lang-sv]');
+
+function setLanguage(lang) {
+elements.forEach(element => {
+const text = element.getAttribute(`data-lang-${lang}`);
+if (text) {
+  if (element.tagName === 'INPUT' && element.type === 'text') {
+    element.placeholder = text;
+  } else if (element.hasAttribute('aria-label')) {
+    element.setAttribute('aria-label', text);
+  } else {
+    element.textContent = text;
+  }
+}
+});
+
+document.documentElement.lang = lang;
+
+if (lang === 'sv') {
+btnSv.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+btnSv.classList.remove('text-gray-600', 'dark:text-gray-300');
+btnEn.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+btnEn.classList.add('text-gray-600', 'dark:text-gray-300');
+} else {
+btnEn.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+btnEn.classList.remove('text-gray-600', 'dark:text-gray-300');
+btnSv.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+btnSv.classList.add('text-gray-600', 'dark:text-gray-300');
+}
+
+localStorage.setItem('language', lang);
+setTimeout(() => { if (typeof AOS !== 'undefined') AOS.refresh(); }, 100);
+}
+
+if (btnSv && btnEn) {
+btnSv.addEventListener('click', () => {
+setLanguage('sv');
+btnSv.style.transform = 'scale(0.95)';
+setTimeout(() => btnSv.style.transform = 'scale(1)', 150);
+});
+
+btnEn.addEventListener('click', () => {
+setLanguage('en');
+btnEn.style.transform = 'scale(0.95)';
+setTimeout(() => btnEn.style.transform = 'scale(1)', 150);
+});
+
+const savedLanguage = localStorage.getItem('language') || 'sv';
+setLanguage(savedLanguage);
+}
+
+// Close mobile menu on outside click
+document.addEventListener('click', (e) => {
+if (mobileMenu && mobileToggle && 
+!mobileMenu.contains(e.target) && 
+!mobileToggle.contains(e.target) && 
+!mobileMenu.classList.contains('hidden')) {
+mobileMenu.classList.add('hidden');
+mobileToggle.setAttribute('aria-expanded', 'false');
+}
+});
+
+// Escape key to close mobile menu
+document.addEventListener('keydown', (e) => {
+if (e.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+mobileMenu.classList.add('hidden');
+mobileToggle.setAttribute('aria-expanded', 'false');
+mobileToggle.focus();
+}
+});
+
+// Smooth scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', e => {
+const target = document.querySelector(anchor.getAttribute('href'));
+if (target) {
+e.preventDefault();
+const offset = 100;
+const pos = target.getBoundingClientRect().top + window.pageYOffset - offset;
+window.scrollTo({ top: pos, behavior: 'smooth' });
+}
+});
+});
+
+// Interactive step highlighting
+const steps = document.querySelectorAll('.bg-white.dark\\:bg-gray-800.rounded-2xl.p-8.shadow-xl');
+steps.forEach((step) => {
+step.addEventListener('mouseenter', () => {
+step.style.transform = 'scale(1.02)';
+step.style.boxShadow = '0 20px 60px rgba(0, 0, 0, 0.15)';
+});
+
+step.addEventListener('mouseleave', () => {
+step.style.transform = 'scale(1)';
+step.style.boxShadow = '';
+});
+});
+
+// Interactive tech cards pulse effect
+const techCards = document.querySelectorAll('.border-t-4');
+techCards.forEach(card => {
+card.addEventListener('mouseenter', () => {
+const icon = card.querySelector('.w-16.h-16');
+if (icon) {
+icon.style.transform = 'scale(1.1) rotate(5deg)';
+icon.style.transition = 'transform 0.3s ease';
+}
+});
+
+card.addEventListener('mouseleave', () => {
+const icon = card.querySelector('.w-16.h-16');
+if (icon) {
+icon.style.transform = 'scale(1) rotate(0deg)';
+}
+});
+});
+
+// Intersection Observer for fade-in animations
+const observerOptions = {
+threshold: 0.1,
+rootMargin: '0px 0px -50px 0px'
+};
+
+const fadeObserver = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.style.opacity = '1';
+entry.target.style.transform = 'translateY(0)';
+}
+});
+}, observerOptions);
+
+// Observe cards for staggered animations
+document.querySelectorAll('.card-hover').forEach((card, index) => {
+card.style.opacity = '0';
+card.style.transform = 'translateY(30px)';
+card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+card.style.transitionDelay = `${index * 50}ms`;
+fadeObserver.observe(card);
+});
+
+// Add animation to code blocks on scroll
+const codeBlocks = document.querySelectorAll('.code-block');
+const codeObserver = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.style.animation = 'fadeIn 0.6s ease-out forwards';
+}
+});
+}, { threshold: 0.2 });
+
+codeBlocks.forEach(block => {
+codeObserver.observe(block);
+});
+
+// Performance monitoring
+if (window.PerformanceObserver) {
+const perfObserver = new PerformanceObserver((list) => {
+list.getEntries().forEach(entry => {
+if (entry.entryType === 'largest-contentful-paint') {
+console.log('LCP:', entry.startTime);
+}
+});
+});
+
+try {
+perfObserver.observe({ entryTypes: ['largest-contentful-paint'] });
+} catch (e) {
+// Browser might not support this
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web 1.0 - Den statiska webben | Webbens historia</title>
+  <meta name="description" content="Utforska Web 1.0 eran (1990-2004): statiska HTML-sidor, begränsad interaktivitet och grundläggande webbteknologier som lade grunden för moderna internet.">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            'sans': ['Inter', 'system-ui', 'sans-serif'],
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'glow': 'glow 2s ease-in-out infinite alternate',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-20px)' },
+            },
+            glow: {
+              '0%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.4)' },
+              '100%': { boxShadow: '0 0 30px rgba(59, 130, 246, 0.8)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .glass-effect {
+      backdrop-filter: blur(20px);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .dark .glass-effect {
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .hero-gradient {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+    }
+    
+    .card-hover {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-8px) scale(1.02);
+    }
+    
+    .text-gradient {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .nav-blur {
+      backdrop-filter: blur(20px) saturate(180%);
+      background: rgba(255, 255, 255, 0.8);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .dark .nav-blur {
+      background: rgba(0, 0, 0, 0.8);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+
+<body class="font-sans text-gray-800 bg-gray-50 dark:bg-gray-900 dark:text-gray-100 overflow-x-hidden">
+
+  <!-- Decorative background -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute -top-40 -right-40 w-80 h-80 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float"></div>
+    <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: 2s;"></div>
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: 4s;"></div>
+  </div>
+
+   <!-- HEADER -->
+   <header class="fixed inset-x-0 top-0 z-50 nav-blur">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="/html/index.html" class="flex items-center gap-3 group">
+          <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+            <img src="/img/relogo.png" alt="">
+          </div>
+          <div>
+            <h1 class="text-xl font-bold text-gradient">Waleeds Web</h1>
+            <p class="text-xs text-gray-500 dark:text-gray-400">Utbildningswebb</p>
+            </div>
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-8 text-sm font-medium" aria-label="Primary">
+          <a href="/html/index.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Hem" data-lang-en="Home">
+            Hem
+            <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+          </a>
+          <a href="/html/syfte.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Syfte & krav" data-lang-en="Purpose & Requirements">
+            Syfte & krav
+            <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+          </a>
+          <a href="/html/historia.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Historia" data-lang-en="History">
+            Historia
+            <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+          </a>
+          <a href="/html/web.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Web" data-lang-en="Web">
+            Web
+            <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+          </a>
+          <a href="/html/funktionalitet.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 relative group" data-lang-sv="Funktionalitet" data-lang-en="Functionality">
+            Funktionalitet
+            <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+          </a>
+        </nav>
+
+        <div class="flex items-center gap-4">
+          <!-- Dark Mode Toggle -->
+          <button id="theme-toggle" class="p-2 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 hover:scale-105" aria-label="Växla mörkt läge">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path class="dark:hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+              <path class="hidden dark:block" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+          </button>
+
+          <!-- Language Toggle -->
+          <div class="flex items-center bg-gray-100 dark:bg-gray-800 rounded-xl p-1">
+            <button id="btnSv" class="px-3 py-1 text-sm font-semibold rounded-lg transition-all duration-200 bg-blue-600 text-white shadow-md" aria-label="Svenska">SV</button>
+            <button id="btnEn" class="px-3 py-1 text-sm font-semibold rounded-lg transition-all duration-200 text-gray-600 dark:text-gray-300" aria-label="English">EN</button>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobileToggle" class="lg:hidden p-2 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200" aria-expanded="false" aria-controls="mobileMenu" aria-label="Öppna meny">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="lg:hidden hidden glass-effect border-t">
+      <div class="px-4 py-6 space-y-4">
+        <a href="/html/index.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 transition-colors" data-lang-sv="Hem" data-lang-en="Home">Hem</a>
+        <a href="/html/syfte.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 transition-colors" data-lang-sv="Syfte & krav" data-lang-en="Purpose & Requirements">Syfte & krav</a>
+        <a href="/html/historia.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 transition-colors" data-lang-sv="Historia" data-lang-en="History">Historia</a>
+        <a href="/html/web.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 transition-colors" data-lang-sv="Web" data-lang-en="Web">Web</a>
+        <a href="/html/funktionalitet.html" class="block py-3 px-4 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-white/10 transition-colors" data-lang-sv="Funktionalitet" data-lang-en="Functionality">Funktionalitet</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-screen flex items-center justify-center text-white overflow-hidden pt-20">
+    <div class="absolute inset-0 hero-gradient"></div>
+    <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+    
+    <div class="absolute top-20 left-10 w-4 h-4 bg-white bg-opacity-20 rounded-full animate-float"></div>
+    <div class="absolute top-40 right-20 w-6 h-6 bg-white bg-opacity-15 rounded-full animate-float" style="animation-delay: 1s;"></div>
+    <div class="absolute bottom-40 left-20 w-8 h-8 bg-white bg-opacity-10 rounded-full animate-float" style="animation-delay: 3s;"></div>
+
+    <div class="relative z-10 text-center px-4 max-w-5xl mx-auto" data-aos="fade-up">
+      <div class="text-6xl mb-6">📄</div>
+      <h1 class="text-5xl md:text-7xl font-light mb-6 leading-tight">
+        Web 1.0
+      </h1>
+      <p class="text-2xl md:text-3xl mb-4 opacity-90">Den statiska webben</p>
+      <div class="inline-block bg-white/20 px-6 py-3 rounded-full text-lg mb-8">
+        1990 - 2004
+      </div>
+      <p class="text-xl opacity-90 max-w-3xl mx-auto">
+        En era av enkelhet, grundläggande funktionalitet och begränsade möjligheter
+      </p>
+    </div>
+
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div class="w-6 h-10 border-2 border-white border-opacity-30 rounded-full flex justify-center">
+        <div class="w-1 h-3 bg-white bg-opacity-60 rounded-full mt-2 animate-pulse"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="relative bg-white dark:bg-gray-900">
+    
+    <!-- Overview Cards -->
+    <section class="py-20 px-4">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-3 gap-8">
+          
+          <article class="card-hover bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+            <div class="h-2 bg-gradient-to-r from-blue-500 to-blue-600"></div>
+            <div class="p-8">
+              <div class="text-5xl mb-4">📄</div>
+              <h2 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Kännetecken</h2>
+              <ul class="space-y-3 text-gray-600 dark:text-gray-300">
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-500 mt-1">→</span>
+                  <span>Statiska HTML-sidor utan interaktivitet</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-500 mt-1">→</span>
+                  <span>En-till-många kommunikation</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-500 mt-1">→</span>
+                  <span>Grundläggande länkstrukturer</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-500 mt-1">→</span>
+                  <span>Begränsad design och layout</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-500 mt-1">→</span>
+                  <span>Enkel navigering mellan sidor</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-500 mt-1">→</span>
+                  <span>Minimalt JavaScript-användning</span>
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="card-hover bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+            <div class="h-2 bg-gradient-to-r from-purple-500 to-purple-600"></div>
+            <div class="p-8">
+              <div class="text-5xl mb-4">🛠️</div>
+              <h2 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Teknologier</h2>
+              <ul class="space-y-3 text-gray-600 dark:text-gray-300">
+                <li class="flex items-start gap-2">
+                  <span class="text-purple-500 mt-1">→</span>
+                  <span>HTML (HyperText Markup Language)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-purple-500 mt-1">→</span>
+                  <span>HTTP (HyperText Transfer Protocol)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-purple-500 mt-1">→</span>
+                  <span>URL:er för adressering</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-purple-500 mt-1">→</span>
+                  <span>Grundläggande CSS (från 1996)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-purple-500 mt-1">→</span>
+                  <span>Enkel JavaScript (från 1995)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-purple-500 mt-1">→</span>
+                  <span>GIF och JPEG bilder</span>
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="card-hover bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+            <div class="h-2 bg-gradient-to-r from-green-500 to-green-600"></div>
+            <div class="p-8">
+              <div class="text-5xl mb-4">🌐</div>
+              <h2 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Webbläsare</h2>
+              <ul class="space-y-3 text-gray-600 dark:text-gray-300">
+                <li class="flex items-start gap-2">
+                  <span class="text-green-500 mt-1">→</span>
+                  <span>WorldWideWeb (1990)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-green-500 mt-1">→</span>
+                  <span>Mosaic (1993)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-green-500 mt-1">→</span>
+                  <span>Netscape Navigator (1994)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-green-500 mt-1">→</span>
+                  <span>Internet Explorer (1995)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-green-500 mt-1">→</span>
+                  <span>Opera (1996)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-green-500 mt-1">→</span>
+                  <span>Webbläsarkriget (1995-2001)</span>
+                </li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- What was Web 1.0 -->
+    <section class="py-20 bg-gray-50 dark:bg-gray-800/50">
+      <div class="max-w-4xl mx-auto px-4" data-aos="fade-up">
+        <h2 class="text-4xl font-bold mb-8 text-center text-gray-900 dark:text-white">
+          Vad var Web 1.0?
+        </h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mb-12 rounded-full"></div>
+        
+        <div class="prose prose-lg max-w-none text-gray-600 dark:text-gray-300 space-y-6">
+          <p class="text-xl leading-relaxed">
+            Web 1.0, ofta kallad den "statiska webben", representerar internets första era från början av 1990-talet till cirka 2004. Denna tid kännetecknades av enkla, statiska webbsidor som huvudsakligen fungerade som digitala broschyrer eller informationskällor.
+          </p>
+          
+          <p class="text-xl leading-relaxed">
+            Webben var då en envägskommunikationsmedium där webbplatsägare publicerade innehåll som besökarna endast kunde läsa. Det fanns mycket begränsad interaktivitet, och användare kunde inte bidra med eget innehåll på ett meningsfullt sätt.
+          </p>
+          
+          <p class="text-xl leading-relaxed">
+            Trots sina begränsningar var Web 1.0 revolutionerande för sin tid. Den demokratiserade informationsåtkomst på ett sätt som världen aldrig tidigare upplevt och lade grunden för allt som följde.
+          </p>
+        </div>
+
+        <div class="mt-12 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-700 dark:to-gray-800 border-l-4 border-blue-500 p-8 rounded-r-2xl">
+          <p class="text-xl italic text-gray-700 dark:text-gray-300 mb-4">
+            "Webben var designad för att vara decentraliserad så att alla kunde delta genom att dela information och vara del av ett globalt informationsområde."
+          </p>
+          <p class="text-right text-gray-600 dark:text-gray-400 font-semibold">
+            — Tim Berners-Lee, skaparen av World Wide Web
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technologies -->
+    <section class="py-20 px-4">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-4xl font-bold mb-4 text-center text-gray-900 dark:text-white" data-aos="fade-up">
+          Grundläggande teknologier
+        </h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mb-16 rounded-full"></div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          
+          <div class="card-hover bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl" data-aos="fade-up" data-aos-delay="100">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="text-4xl">🏷️</div>
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white">HTML</h3>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+              HyperText Markup Language var det grundläggande märkspråket för att strukturera webbsidor. Tidiga versioner var mycket enkla och saknade många av dagens funktioner.
+            </p>
+            <div class="bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-sm overflow-x-auto">
+&lt;html&gt;<br>
+&lt;head&gt;<br>
+&nbsp;&nbsp;&lt;title&gt;Min första webbsida&lt;/title&gt;<br>
+&lt;/head&gt;<br>
+&lt;body&gt;<br>
+&nbsp;&nbsp;&lt;h1&gt;Välkommen!&lt;/h1&gt;<br>
+&nbsp;&nbsp;&lt;p&gt;Detta är en enkel webbsida.&lt;/p&gt;<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;
+            </div>
+          </div>
+
+          <div class="card-hover bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl" data-aos="fade-up" data-aos-delay="200">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="text-4xl">🔗</div>
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white">HTTP</h3>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+              HyperText Transfer Protocol möjliggjorde kommunikation mellan webbläsare och servrar. Den ursprungliga versionen var mycket enkel jämfört med dagens HTTP/2 och HTTP/3.
+            </p>
+            <div class="bg-gray-900 text-blue-400 p-4 rounded-lg font-mono text-sm overflow-x-auto">
+GET /index.html HTTP/1.0<br>
+Host: www.example.com<br><br>
+HTTP/1.0 200 OK<br>
+Content-Type: text/html<br>
+Content-Length: 1024
+            </div>
+          </div>
+
+          <div class="card-hover bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl" data-aos="fade-up" data-aos-delay="300">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="text-4xl">🎨</div>
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white">CSS (från 1996)</h3>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+              Cascading Style Sheets introducerades för att separera presentation från innehåll. Tidiga CSS-versioner var mycket begränsade jämfört med dagens kraftfulla CSS3.
+            </p>
+            <div class="bg-gray-900 text-yellow-400 p-4 rounded-lg font-mono text-sm overflow-x-auto">
+body {<br>
+&nbsp;&nbsp;font-family: Times, serif;<br>
+&nbsp;&nbsp;background-color: white;<br>
+}<br>
+h1 { color: blue; }<br>
+p { margin: 10px; }
+            </div>
+          </div>
+
+          <div class="card-hover bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl" data-aos="fade-up" data-aos-delay="400">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="text-4xl">⚡</div>
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white">JavaScript (från 1995)</h3>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+              JavaScript introducerades av Netscape för att lägga till grundläggande interaktivitet. Användningen var mycket begränsad och mestadels för enkla validering och effekter.
+            </p>
+            <div class="bg-gray-900 text-orange-400 p-4 rounded-lg font-mono text-sm overflow-x-auto">
+function showAlert() {<br>
+&nbsp;&nbsp;alert("Välkommen till min webbsida!");<br>
+}<br><br>
+&lt;button onclick="showAlert()"&gt;<br>
+&nbsp;&nbsp;Klicka här<br>
+&lt;/button&gt;
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Browser Mockup -->
+    <section class="py-20 bg-gray-50 dark:bg-gray-800/50">
+      <div class="max-w-5xl mx-auto px-4" data-aos="fade-up">
+        <h2 class="text-4xl font-bold mb-8 text-center text-gray-900 dark:text-white">
+          Så såg en typisk Web 1.0-sida ut
+        </h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mb-12 rounded-full"></div>
+
+        <div class="bg-gray-200 dark:bg-gray-700 border-4 border-gray-400 dark:border-gray-600 rounded-xl overflow-hidden shadow-2xl">
+          <div class="bg-gray-400 dark:bg-gray-600 px-4 py-2 flex items-center gap-2">
+            <div class="flex gap-2">
+              <div class="w-3 h-3 rounded-full bg-red-500"></div>
+              <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+              <div class="w-3 h-3 rounded-full bg-green-500"></div>
+            </div>
+            <div class="text-sm text-white ml-4 font-mono">Netscape Navigator - http://www.example.com/</div>
+          </div>
+          <div class="bg-white dark:bg-gray-800 p-6 font-mono text-sm text-gray-800 dark:text-gray-300 overflow-x-auto">
+<span class="text-red-600">&lt;HTML&gt;</span><br>
+<span class="text-red-600">&lt;HEAD&gt;</span><br>
+&nbsp;&nbsp;<span class="text-red-600">&lt;TITLE&gt;</span>Företaget ABC - Startsida<span class="text-red-600">&lt;/TITLE&gt;</span><br>
+<span class="text-red-600">&lt;/HEAD&gt;</span><br>
+<span class="text-red-600">&lt;BODY BGCOLOR="#FFFFFF"&gt;</span><br>
+&nbsp;&nbsp;<span class="text-red-600">&lt;CENTER&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-red-600">&lt;H1&gt;&lt;FONT COLOR="blue"&gt;</span>Välkommen till Företaget ABC<span class="text-red-600">&lt;/FONT&gt;&lt;/H1&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-red-600">&lt;IMG SRC="logo.gif" ALT="Logotype"&gt;</span><br>
+&nbsp;&nbsp;<span class="text-red-600">&lt;/CENTER&gt;</span><br>
+&nbsp;&nbsp;<span class="text-red-600">&lt;P&gt;</span>Vi är ett ledande företag inom vår bransch.<span class="text-red-600">&lt;/P&gt;</span><br>
+&nbsp;&nbsp;<span class="text-red-600">&lt;P&gt;&lt;A HREF="om-oss.html"&gt;</span>Om oss<span class="text-red-600">&lt;/A&gt;</span> | <span class="text-red-600">&lt;A HREF="produkter.html"&gt;</span>Produkter<span class="text-red-600">&lt;/A&gt;&lt;/P&gt;</span><br>
+&nbsp;&nbsp;<span class="text-red-600">&lt;HR&gt;</span><br>
+&nbsp;&nbsp;<span class="text-red-600">&lt;P&gt;&lt;I&gt;</span>Senast uppdaterad: 15 mars 1999<span class="text-red-600">&lt;/I&gt;&lt;/P&gt;</span><br>
+<span class="text-red-600">&lt;/BODY&gt;</span><br>
+<span class="text-red-600">&lt;/HTML&gt;</span>
+          </div>
+        </div>
+        <p class="text-center text-gray-500 dark:text-gray-400 text-sm mt-6 italic">
+          Typisk Web 1.0-kod med inline styling, centrerad layout och grundläggande HTML-struktur
+        </p>
+      </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="py-20 px-4">
+      <div class="max-w-6xl mx-auto" data-aos="fade-up">
+        <h2 class="text-4xl font-bold mb-8 text-center text-gray-900 dark:text-white">
+          Web 1.0 vs Modern Webb
+        </h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mb-12 rounded-full"></div>
+
+        <div class="overflow-x-auto bg-white dark:bg-gray-800 rounded-2xl shadow-xl">
+          <table class="w-full">
+            <thead class="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+              <tr>
+                <th class="px-6 py-4 text-left font-semibold">Aspekt</th>
+                <th class="px-6 py-4 text-left font-semibold">Web 1.0 (1990-2004)</th>
+                <th class="px-6 py-4 text-left font-semibold">Modern webb (2020+)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+              <tr class="hover:bg-blue-50 dark:hover:bg-gray-700/50 transition-colors">
+                <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">Interaktivitet</td>
+                <td class="px-6 py-4 text-gray-600 dark:text-gray-300">Mycket begränsad, mest klickbara länkar</td>
+                <td class="px-6 py-4 text-gray-600 dark:text-gray-300">Hög interaktivitet, realtidsuppdateringar, komplexa gränssnitt</td>
+              </tr>
+              <tr class="hover:bg-blue-50 dark:hover:bg-gray-700/50 transition-colors">
+                <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">Innehållsproduktion</td>
+                <td class="px-6 py-4 text-gray-600 dark:text-gray-300">Endast webbplatsägare kunde publicera</td>
+                <td class="px-6 py-4 text-gray-600 dark:text-gray-300">Alla användare kan skapa och dela innehåll</td>
+              </tr>
+              <tr class="hover:bg-blue-50 dark:hover:bg-gray-700/50 transition-colors">
+                <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">Design</td>
+                <td class="px-6 py-4 text-gray-600 dark:text-gray-300">Enkla tabellbaserade layouter, begränsad styling</td>
+                <td class="px-6 py-4 text-gray-600 dark:text-gray-300">Avancerad CSS, responsiv design, animationer</td>
+              </tr>
+              <tr class="hover:bg-blue-50 dark:hover:bg-gray-700/50 transition-colors">
+                <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">Funktionalitet</td>
+                <td class="px-6 py-4 text-gray-600 dark:text-gray-300">Statisk informationsvisning</td>
+                <td class="px-6 py-4 text-gray-600 dark:text-gray-300">Fullständiga applikationer, offline-stöd, AI-integration</td>
+              </tr>
+              <tr class="hover:bg-blue-50 dark:hover:bg-gray-700/50 transition-colors">
+                <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">Uppdateringar</td>
+                <td class="px-6 py-4 text-gray-600 dark:text-gray-300">Manuell redigering av HTML-filer</td>
+                <td class="px-6 py-4 text-gray-600 dark:text-gray-300">Dynamiska CMS, realtidsuppdateringar</td>
+              </tr>
+              <tr class="hover:bg-blue-50 dark:hover:bg-gray-700/50 transition-colors">
+                <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">Multimedia</td>
+                <td class="px-6 py-4 text-gray-600 dark:text-gray-300">Grundläggande bilder (GIF/JPEG), enkel ljud</td>
+                <td class="px-6 py-4 text-gray-600 dark:text-gray-300">Video, interaktiv grafik, VR/AR, livestreaming</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Limitations -->
+    <section class="py-20 bg-gray-50 dark:bg-gray-800/50">
+      <div class="max-w-5xl mx-auto px-4" data-aos="fade-up">
+        <h2 class="text-4xl font-bold mb-8 text-center text-gray-900 dark:text-white">
+          Begränsningar och utmaningar
+        </h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mb-12 rounded-full"></div>
+
+        <div class="bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 border-l-4 border-yellow-500 rounded-r-2xl p-8 shadow-xl">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="text-4xl">⚠️</span>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Tekniska begränsningar</h3>
+          </div>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
+              <span class="text-yellow-600 dark:text-yellow-400 text-xl mt-1">⚠️</span>
+              <span>Ingen databaskoppling för dynamiskt innehåll</span>
+            </li>
+            <li class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
+              <span class="text-yellow-600 dark:text-yellow-400 text-xl mt-1">⚠️</span>
+              <span>Begränsad styling-möjligheter innan CSS</span>
+            </li>
+            <li class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
+              <span class="text-yellow-600 dark:text-yellow-400 text-xl mt-1">⚠️</span>
+              <span>Långsam uppkoppling (modem 56k var standard)</span>
+            </li>
+            <li class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
+              <span class="text-yellow-600 dark:text-yellow-400 text-xl mt-1">⚠️</span>
+              <span>Inkompatibilitet mellan olika webbläsare</span>
+            </li>
+            <li class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
+              <span class="text-yellow-600 dark:text-yellow-400 text-xl mt-1">⚠️</span>
+              <span>Ingen sökmotoroptimering eller analysverktyg</span>
+            </li>
+            <li class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
+              <span class="text-yellow-600 dark:text-yellow-400 text-xl mt-1">⚠️</span>
+              <span>Svårt att underhålla stora webbplatser</span>
+            </li>
+            <li class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
+              <span class="text-yellow-600 dark:text-yellow-400 text-xl mt-1">⚠️</span>
+              <span>Ingen mobil optimering (mobiler fanns knappt)</span>
+            </li>
+            <li class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
+              <span class="text-yellow-600 dark:text-yellow-400 text-xl mt-1">⚠️</span>
+              <span>Begränsad säkerhet och användarautentisering</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="mt-12 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-gray-700 dark:to-gray-800 border-l-4 border-purple-500 p-8 rounded-r-2xl">
+          <p class="text-xl italic text-gray-700 dark:text-gray-300 mb-4">
+            "Web 1.0 var som ett enormt bibliotek där du kunde läsa böcker, men inte skriva egna eller diskutera dem med andra besökare."
+          </p>
+          <p class="text-right text-gray-600 dark:text-gray-400 font-semibold">
+            — Tim O'Reilly, förespråkare för Web 2.0
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Milestones -->
+    <section class="py-20 px-4">
+      <div class="max-w-5xl mx-auto" data-aos="fade-up">
+        <h2 class="text-4xl font-bold mb-8 text-center text-gray-900 dark:text-white">
+          Viktiga milstolpar under Web 1.0-eran
+        </h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mb-12 rounded-full"></div>
+
+        <div class="space-y-6">
+          <div class="card-hover bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border-l-4 border-blue-500">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">1990</h3>
+            <p class="text-gray-600 dark:text-gray-300">Tim Berners-Lee skapar den första webbsidan och webbläsaren WorldWideWeb vid CERN.</p>
+          </div>
+
+          <div class="card-hover bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border-l-4 border-purple-500">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">1993</h3>
+            <p class="text-gray-600 dark:text-gray-300">Mosaic webbläsare lanseras och gör webben tillgänglig för allmänheten med grafiska bilder.</p>
+          </div>
+
+          <div class="card-hover bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border-l-4 border-green-500">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">1994</h3>
+            <p class="text-gray-600 dark:text-gray-300">Netscape Navigator lanseras och blir den dominerande webbläsaren. W3C (World Wide Web Consortium) grundas för att standardisera webteknologier.</p>
+          </div>
+
+          <div class="card-hover bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border-l-4 border-yellow-500">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">1995</h3>
+            <p class="text-gray-600 dark:text-gray-300">JavaScript skapas av Brendan Eich för att lägga till grundläggande interaktivitet. Internet Explorer lanseras och "webbläsarkriget" börjar.</p>
+          </div>
+
+          <div class="card-hover bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border-l-4 border-red-500">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">1996</h3>
+            <p class="text-gray-600 dark:text-gray-300">CSS1 blir en W3C-rekommendation och möjliggör separation av innehåll och presentation.</p>
+          </div>
+
+          <div class="card-hover bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border-l-4 border-indigo-500">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">1998</h3>
+            <p class="text-gray-600 dark:text-gray-300">Google grundas och revolutionerar sökmotorteknik med sin PageRank-algoritm.</p>
+          </div>
+
+          <div class="card-hover bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border-l-4 border-pink-500">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">2000</h3>
+            <p class="text-gray-600 dark:text-gray-300">Dotcom-bubblan spricker, men webben fortsätter att växa och utvecklas mot mer interaktiva lösningar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Legacy -->
+    <section class="py-20 bg-gray-50 dark:bg-gray-800/50">
+      <div class="max-w-4xl mx-auto px-4" data-aos="fade-up">
+        <h2 class="text-4xl font-bold mb-8 text-center text-gray-900 dark:text-white">
+          Web 1.0:s arv
+        </h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mb-12 rounded-full"></div>
+
+        <div class="prose prose-lg max-w-none text-gray-600 dark:text-gray-300 space-y-6">
+          <p class="text-xl leading-relaxed">
+            Trots sina begränsningar lade Web 1.0 den avgörande grunden för allt som följde. De grundläggande principerna som introducerades - HTML för struktur, HTTP för kommunikation och URL:er för adressering - är fortfarande centrala i dagens webb.
+          </p>
+
+          <p class="text-xl leading-relaxed">
+            Web 1.0 lärde oss vikten av öppna standarder och decentraliserad information. Den visade världen kraften i att kunna dela kunskap globalt och lade grunden för den informationsrevolution vi lever i idag.
+          </p>
+
+          <p class="text-xl leading-relaxed">
+            Många av de designprinciper som etablerades under denna tid - som tydlig navigation, läsbar typografi och logisk informationsstruktur - är fortfarande relevanta och viktiga för god användarupplevelse.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="py-12 px-4">
+      <div class="max-w-5xl mx-auto flex flex-col sm:flex-row justify-between gap-4">
+        <a href="/html/historia.html" class="group flex items-center gap-2 px-8 py-4 bg-gray-600 hover:bg-gray-700 text-white rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-lg">
+          <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          <span>Föregående: App vs Web</span>
+        </a>
+        <a href="/html/web2.html" class="group flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-lg">
+          <span>Nästa: Web 2.0 - Den sociala webben</span>
+          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 dark:bg-gray-800 text-white py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8 mb-12">
+        <div class="col-span-2 md:col-span-1">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold">
+              <img src="/img/relogo.png" alt="">
+            </div>
+            <div>
+              <h3 class="font-bold text-lg">Webben som plattform</h3>
+              <p class="text-sm text-gray-400">Utbildningsprojekt</p>
+            </div>
+          </div>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            En omfattande guide till webbens utveckling och betydelse för det moderna samhället.
+          </p>
+        </div>
+        
+        <div>
+          <h4 class="font-semibold mb-4">Navigation</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/html/syfte.html" class="text-gray-400 hover:text-white transition-colors">Syfte & krav</a></li>
+            <li><a href="/html/historia.html" class="text-gray-400 hover:text-white transition-colors">Historia</a></li>
+            <li><a href="/html/betydelse.html" class="text-gray-400 hover:text-white transition-colors">Betydelse</a></li>
+            <li><a href="/html/funktionalitet.html" class="text-gray-400 hover:text-white transition-colors">Funktionalitet</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-semibold mb-4">Resurser</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/projektplan/" class="text-gray-400 hover:text-white transition-colors">Projektplan</a></li>
+            <li><a href="/tester/" class="text-gray-400 hover:text-white transition-colors">Tester</a></li>
+            <li><a href="/html/dokumentation.html" class="text-gray-400 hover:text-white transition-colors">Dokumentation</a></li>
+            <li><a href="/html/analys.html" class="text-gray-400 hover:text-white transition-colors">Analys</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-semibold mb-4">Juridisk information</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/html/lagar.html" class="text-gray-400 hover:text-white transition-colors">Lagar & regler</a></li>
+            <li><a href="/terminologi/" class="text-gray-400 hover:text-white transition-colors">Terminologi</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // AOS initialization
+    if (typeof AOS !== 'undefined') {
+      AOS.init({ 
+        once: true, 
+        duration: 800, 
+        easing: 'ease-out-cubic',
+        offset: 50
+      });
+    }
+
+    // Mobile menu
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    if (mobileToggle && mobileMenu) {
+      mobileToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    // Dark mode toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    
+    if (themeToggle) {
+      const savedTheme = window.localStorage.getItem('theme') || 
+                        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      
+      if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+      
+      themeToggle.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+        const isDark = document.documentElement.classList.contains('dark');
+        window.localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        
+        themeToggle.style.transform = 'scale(0.9)';
+        setTimeout(() => {
+          themeToggle.style.transform = 'scale(1)';
+        }, 150);
+      });
+    }
+
+    // Enhanced language toggle functionality
+  const btnSv = document.getElementById('btnSv');
+  const btnEn = document.getElementById('btnEn');
+  const elements = document.querySelectorAll('[data-lang-sv]');
+
+  function setLanguage(lang) {
+    // Update all elements with language data attributes
+    elements.forEach(element => {
+      const text = element.getAttribute(`data-lang-${lang}`);
+      if (text) {
+        // Handle different types of elements
+        if (element.tagName === 'INPUT' && element.type === 'text') {
+          element.placeholder = text;
+        } else if (element.hasAttribute('aria-label')) {
+          element.setAttribute('aria-label', text);
+        } else {
+          element.textContent = text;
+        }
+      }
+    });
+    
+    // Update document language and direction
+    document.documentElement.lang = lang;
+    
+    // Update button styles with smooth transition
+    if (lang === 'sv') {
+      btnSv.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+      btnSv.classList.remove('text-gray-600', 'dark:text-gray-300');
+      btnEn.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+      btnEn.classList.add('text-gray-600', 'dark:text-gray-300');
+    } else {
+      btnEn.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+      btnEn.classList.remove('text-gray-600', 'dark:text-gray-300');
+      btnSv.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+      btnSv.classList.add('text-gray-600', 'dark:text-gray-300');
+    }
+    
+    // Save language preference
+    localStorage.setItem('language', lang);
+    
+    // Refresh AOS animations after language change
+    setTimeout(() => { 
+      if (typeof AOS !== 'undefined') AOS.refresh(); 
+    }, 100);
+  }
+
+  // Event listeners for language buttons
+  if (btnSv && btnEn) {
+    btnSv.addEventListener('click', () => {
+      setLanguage('sv');
+      btnSv.style.transform = 'scale(0.95)';
+      setTimeout(() => btnSv.style.transform = 'scale(1)', 150);
+    });
+    
+    btnEn.addEventListener('click', () => {
+      setLanguage('en');
+      btnEn.style.transform = 'scale(0.95)';
+      setTimeout(() => btnEn.style.transform = 'scale(1)', 150);
+    });
+    
+    // Load saved language preference or default to Swedish
+    const savedLanguage = localStorage.getItem('language') || 'sv';
+    setLanguage(savedLanguage);
+  }
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', e => {
+        const target = document.querySelector(anchor.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        const offset = 100;
+        const pos = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ 
+          top: pos, 
+          behavior: 'smooth' 
+        });
+      });
+    });
+  </script>
+</body>
+</html>

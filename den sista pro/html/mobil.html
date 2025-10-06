@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobil & PWA - Mobilrevolutionen | Webbens historia | Webben som plattform</title>
+    <meta name="description" content="Från iPhone-revolutionen 2007 till Progressive Web Apps: hur mobilteknologi förändrade webben för alltid och skapade framtidens applikationsplattform.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="/historia/mobil-pwa/">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Mobil & PWA - Mobilrevolutionen | Webbens historia">
+    <meta property="og:description" content="Från iPhone-revolutionen 2007 till Progressive Web Apps: hur mobilteknologi förändrade webben för alltid.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="/historia/mobil-pwa/">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Mobil & PWA - Mobilrevolutionen">
+    <meta name="twitter:description" content="Från iPhone-revolutionen 2007 till Progressive Web Apps och framtidens webb.">
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png">
+    
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        /* Skip link for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 1000;
+        }
+        
+        .skip-link:focus {
+            top: 6px;
+        }
+        
+        /* Header and navigation */
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .header__container {
+            max-width: 72rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header__logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .nav__list {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav__link {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .nav__link:hover,
+        .nav__link:focus {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        .nav__link--current {
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        /* Mobile menu toggle */
+        .nav__toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Breadcrumbs */
+        .breadcrumbs {
+            background: #ecf0f1;
+            padding: 1rem 0;
+        }
+        
+        .breadcrumbs__container {
+            max-width: 72rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .breadcrumbs__list {
+            list-style: none;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        
+        .breadcrumbs__link {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .breadcrumbs__link:hover {
+            text-decoration: underline;
+        }
+        
+        .breadcrumbs__separator {
+            color: #7f8c8d;
+        }
+        
+        .breadcrumbs__current {
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        
+        /* Main content */
+        .main {
+            max-width: 72rem;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            background: white;
+            border-radius: 12px;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        /* Page header */
+        .page-header {
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            margin: -2rem -1rem 3rem -1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="none"><path d="M0,0 Q250,50 500,0 T1000,0 V100 H0 Z" fill="rgba(255,255,255,0.1)"/></svg>') no-repeat center bottom;
+            background-size: 100% 50px;
+        }
+        
+        .page-header__title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .page-header__subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .page-header__period {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin-top: 1rem;
+            font-size: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Mobile revolution intro */
+        .mobile-intro {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mobile-intro::before {
+            content: '📱';
+            position: absolute;
+            font-size: 10rem;
+            top: -3rem;
+            right: -3rem;
+            opacity: 0.1;
+            transform: rotate(15deg);
+        }
+        
+        .mobile-intro__title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .mobile-intro__text {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            line-height: 1.8;
+        }
+        
+        /* Timeline visualization */
+        .mobile-timeline {
+            position: relative;
+            padding: 3rem 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+            margin: 3rem 0;
+        }
+        
+        .mobile-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, #e74c3c 0%, #f39c12 50%, #27ae60 100%);
+            border-radius: 2px;
+        }
+        
+        .timeline-event {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 120px;
+        }
+        
+        .timeline-date {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 80px;
+            background: #2c3e50;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            left: 40px;
+            top: 0.5rem;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            border: 4px solid #e74c3c;
+            z-index: 2;
+        }
+        
+        .timeline-marker--iphone { border-color: #e74c3c; }
+        .timeline-marker--responsive { border-color: #f39c12; }
+        .timeline-marker--pwa { border-color: #27ae60; }
+        
+        .timeline-content {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid #e74c3c;
+        }
+        
+        .timeline-content--responsive { border-left-color: #f39c12; }
+        .timeline-content--pwa { border-left-color: #27ae60; }
+        
+        .timeline-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 0.8rem;
+        }
+        
+        .timeline-description {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        
+        .timeline-impact {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 4px;
+            border-left: 4px solid #e74c3c;
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+        
+        /* Device evolution showcase */
+        .device-evolution {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+        
+        .device {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .device:hover {
+            transform: translateY(-6px);
+        }
+        
+        .device__icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .device__name {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .device__year {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .device__impact {
+            font-size: 0.85rem;
+            color: #555;
+            line-height: 1.5;
+        }
+        
+        /* PWA features showcase */
+        .pwa-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .pwa-feature {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-top: 5px solid #27ae60;
+            transition: all 0.3s ease;
+        }
+        
+        .pwa-feature:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+        
+        .pwa-feature__header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .pwa-feature__icon {
+            font-size: 2.5rem;
+        }
+        
+        .pwa-feature__title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+        }
+        
+        .pwa-feature__description {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        
+        .pwa-feature__example {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 4px solid #27ae60;
+            font-size: 0.9rem;
+            color: #2c3e50;
+        }
+        
+        /* Responsive design principles */
+        .responsive-principles {
+            background: #f8f9fa;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            margin: 4rem 0;
+        }
+        
+        .responsive-principles__title {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .principle {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .principle__number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #f39c12;
+            color: white;
+            border-radius: 50%;
+            line-height: 40px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .principle__title {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .principle__description {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        /* Statistics showcase */
+        .mobile-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .stat {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-top: 5px solid #e74c3c;
+        }
+        
+        .stat__number {
+            font-size: 3rem;
+            font-weight: 300;
+            color: #e74c3c;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat__label {
+            font-size: 1.1rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat__description {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            line-height: 1.5;
+        }
+        
+        /* Future trends */
+        .future-trends {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            margin: 4rem 0;
+        }
+        
+        .future-trends__title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .trend {
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .trend__icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .trend__title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .trend__description {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        /* Section styles */
+        .section {
+            margin-bottom: 4rem;
+        }
+        
+        .section__title {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section__title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #e74c3c;
+            border-radius: 2px;
+        }
+        
+        .section__content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Quote/citation blocks */
+        .quote {
+            background: #f8f9fa;
+            border-left: 5px solid #e74c3c;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+            position: relative;
+        }
+        
+        .quote::before {
+            content: '"';
+            font-size: 4rem;
+            color: #e74c3c;
+            position: absolute;
+            top: -0.5rem;
+            left: 1rem;
+            opacity: 0.3;
+        }
+        
+        .quote__text {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
+        
+        .quote__author {
+            text-align: right;
+            color: #7f8c8d;
+            font-weight: 500;
+        }
+        
+        /* Navigation buttons */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 4rem;
+            gap: 1rem;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn--primary {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .btn--primary:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+        
+        .btn--secondary {
+            background: #95a5a6;
+            color: white;
+        }
+        
+        .btn--secondary:hover {
+            background: #7f8c8d;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+        
+        .footer__container {
+            max-width: 72rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+            text-align: center;
+        }
+        
+        .footer__links {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer__link {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer__link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .nav__list {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #2c3e50;
+                padding: 1rem;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            
+            .nav__list.nav__list--open {
+                display: flex;
+            }
+            
+            .nav__toggle {
+                display: block;
+            }
+            
+            .page-header__title {
+                font-size: 2rem;
+            }
+            
+            .mobile-intro__title,
+            .future-trends__title,
+            .responsive-principles__title {
+                font-size: 2rem;
+            }
+            
+            .section__title {
+                font-size: 2rem;
+            }
+            
+            .mobile-timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-event {
+                padding-left: 60px;
+            }
+            
+            .timeline-date {
+                width: 50px;
+                font-size: 0.8rem;
+                padding: 0.3rem;
+            }
+            
+            .timeline-marker {
+                left: 10px;
+                width: 16px;
+                height: 16px;
+                border-width: 3px;
+            }
+            
+            .device-evolution,
+            .pwa-features,
+            .principles-grid,
+            .mobile-stats,
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+            }
+        }
+        
+        /* Print styles */
+        @media print {
+            .header, .footer, .nav-buttons, .breadcrumbs {
+                display: none;
+            }
+            
+            .main {
+                box-shadow: none;
+                margin: 0;
+                padding: 1rem;
+            }
+            
+            .page-header,
+            .mobile-intro,
+            .future-trends {
+                background: #f0f0f0 !important;
+                color: #333 !important;
+            }
+        }
+        
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+                animation: none !important;
+            }
+        }
+        
+        /* High contrast support */
+        @media (prefers-contrast: high) {
+            .device,
+            .pwa-feature,
+            .principle,
+            .stat,
+            .trend {
+                border: 2px solid #000;
+            }
+        }
+    </style>
+    
+    <!-- JSON-LD structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Start",
+                "item": "/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Webbens historia",
+                "item": "/historia/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Mobil & PWA - Mobilrevolutionen",
+                "item": "/historia/mobil-pwa/"
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Hoppa till huvudinnehåll</a>
+    
+    <header class="header">
+        <div class="header__container">
+            <div class="header__logo">
+                <a href="/" style="color: white; text-decoration: none;">Webben som plattform</a>
+            </div>
+            <nav class="nav">
+                <button class="nav__toggle" aria-label="Öppna/stäng meny" aria-expanded="false">☰</button>
+                <ul class="nav__list">
+                    <li><a href="/" class="nav__link">Start</a></li>
+                    <li><a href="/syfte-krav/" class="nav__link">Syfte & krav</a></li>
+                    <li><a href="/historia/" class="nav__link nav__link--current" aria-current="page">Historia</a></li>
+                    <li><a href="/betydelse/" class="nav__link">Betydelse</a></li>
+                    <li><a href="/funktionalitet/" class="nav__link">Funktionalitet</a></li>
+                    <li><a href="/webb-vs-appar/" class="nav__link">Webb vs Appar</a></li>
+                    <li><a href="/lagar-regler/" class="nav__link">Lagar</a></li>
+                    <li><a href="/terminologi/" class="nav__link">Terminologi</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <nav class="breadcrumbs" aria-label="Brödsmulor">
+        <div class="breadcrumbs__container">
+            <ol class="breadcrumbs__list">
+                <li><a href="/" class="breadcrumbs__link">Start</a></li>
+                <li><span class="breadcrumbs__separator" aria-hidden="true">›</span></li>
+                <li><a href="/historia/" class="breadcrumbs__link">Webbens historia</a></li>
+                <li><span class="breadcrumbs__separator" aria-hidden="true">›</span></li>
+                <li><span class="breadcrumbs__current" aria-current="page">Mobil & PWA</span></li>
+            </ol>
+        </div>
+    </nav>
+    
+    <main id="main-content" class="main">
+        <header class="page-header">
+            <h1 class="page-header__title">Mobil & PWA</h1>
+            <p class="page-header__subtitle">Mobilrevolutionen som förändrade webben och skapade framtidens applikationsplattform</p>
+            <span class="page-header__period">2007 - Idag</span>
+        </header>
+        
+        <section class="mobile-intro">
+            <h2 class="mobile-intro__title">iPhone-revolutionen 2007</h2>
+            <p class="mobile-intro__text">
+                När Steve Jobs presenterade iPhone den 9 januari 2007 förändrades inte bara telefonivärlden - 
+                hela webben fick en ny riktning. För första gången kunde användare surfa på en fullständig webb 
+                i fickan, vilket tvingade utvecklare att tänka om kring design, prestanda och användarupplevelse.
+            </p>
+        </section>
+        
+        <section class="mobile-timeline">
+            <h2 class="sr-only">Mobilwebbens utveckling</h2>
+            
+            <article class="timeline-event">
+                <div class="timeline-date">2007</div>
+                <div class="timeline-marker timeline-marker--iphone"></div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title">iPhone och Mobile Safari</h3>
+                    <p class="timeline-description">
+                        Apple lanserade iPhone med Mobile Safari - den första riktiga webbläsaren för mobiler. 
+                        Pekskärmsgränssnittet och full HTML-support revolutionerade mobil webbsurfning.
+                    </p>
+                    <div class="timeline-impact">
+                        💥 Påverkan: Slutet på WAP och mobiloptimerade webbplatser. Början på mobile-first tänk.
+                    </div>
+                </div>
+            </article>
+            
+            <article class="timeline-event">
+                <div class="timeline-date">2008</div>
+                <div class="timeline-marker timeline-marker--iphone"></div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title">Android och Chrome Mobile</h3>
+                    <p class="timeline-description">
+                        Google lanserade Android med en kraftfull webbläsare baserad på WebKit. 
+                        Detta skapade konkurrens och drev innovation inom mobilwebb.
+                    </p>
+                    <div class="timeline-impact">
+                        🚀 Påverkan: Öppnade mobilmarknaden och accelererade webbutveckling för mobila enheter.
+                    </div>
+                </div>
+            </article>
+            
+            <article class="timeline-event">
+                <div class="timeline-date">2010</div>
+                <div class="timeline-marker timeline-marker--responsive"></div>
+                <div class="timeline-content timeline-content--responsive">
+                    <h3 class="timeline-title">Responsiv webbdesign</h3>
+                    <p class="timeline-description">
+                        Ethan Marcotte myntade begreppet "responsiv webbdesign" och introducerade CSS Media Queries 
+                        som lösning för att skapa webbsidor som fungerar på alla skärmstorlekar.
+                    </p>
+                    <div class="timeline-impact">
+                        📐 Påverkan: En webbsida för alla enheter istället för separata mobil- och desktop-versioner.
+                    </div>
+                </div>
+            </article>
+            
+            <article class="timeline-event">
+                <div class="timeline-date">2012</div>
+                <div class="timeline-marker timeline-marker--responsive"></div>
+                <div class="timeline-content timeline-content--responsive">
+                    <h3 class="timeline-title">Mobile-First Design</h3>
+                    <p class="timeline-description">
+                        Luke Wroblewski populariserade "Mobile First" - att designa för mobil först, sedan skala upp. 
+                        Mobiltrafik började överstiga desktop-användning globalt.
+                    </p>
+                    <div class="timeline-impact">
+                        📱 Påverkan: Designparadigmskifte från desktop-först till mobile-först filosofi.
+                    </div>
+                </div>
+            </article>
+            
+            <article class="timeline-event">
+                <div class="timeline-date">2015</div>
+                <div class="timeline-marker timeline-marker--pwa"></div>
+                <div class="timeline-content timeline-content--pwa">
+                    <h3 class="timeline-title">Progressive Web Apps introduceras</h3>
+                    <p class="timeline-description">
+                        Google introducerade PWA-konceptet med Service Workers, Web App Manifests och andra 
+                        teknologier som gjorde webbappar lika kraftfulla som native appar.
+                    </p>
+                    <div class="timeline-impact">
+                        🔮 Påverkan: Webben blev en fullvärdigt applikationsplattform med offline-stöd och push-notiser.
+                    </div>
+                </div>
+            </article>
+            
+            <article class="timeline-event">
+                <div class="timeline-date">2020</div>
+                <div class="timeline-marker timeline-marker--pwa"></div>
+                <div class="timeline-content timeline-content--pwa">
+                    <h3 class="timeline-title">PWA:er i mainstream</h3>
+                    <p class="timeline-description">
+                        Stora företag som Twitter, Pinterest och Starbucks lanserade PWA:er som huvudplattform. 
+                        App stores började acceptera PWA:er som riktiga appar.
+                    </p>
+                    <div class="timeline-impact">
+                        🏆 Påverkan: PWA:er blev accepterade som alternativ till traditionella mobilappar.
+                    </div>
+                </div>
+            </article>
+        </section>
+        
+        <section class="section">
+            <h2 class="section__title">Enhetsutvecklingens påverkan</h2>
+            <div class="device-evolution">
+                <article class="device">
+                    <span class="device__icon" aria-hidden="true">💻</span>
+                    <h3 class="device__name">Desktop</h3>
+                    <p class="device__year">1990-2007</p>
+                    <p class="device__impact">Stor skärm, mus och tangentbord. Webbsidor designades för 1024x768 pixlar och uppåt.</p>
+                </article>
+                
+                <article class="device">
+                    <span class="device__icon" aria-hidden="true">📱</span>
+                    <h3 class="device__name">Smartphone</h3>
+                    <p class="device__year">2007-</p>
+                    <p class="device__impact">Pekskärm, små skärmar (320-414px bredd). Kräver touch-vänliga gränssnitt och mobil-optimering.</p>
+                </article>
+                
+                <article class="device">
+                    <span class="device__icon" aria-hidden="true">📱</span>
+                    <h3 class="device__name">Tablet</h3>
+                    <p class="device__year">2010-</p>
+                    <p class="device__impact">Mellanformat mellan mobil och desktop. iPad skapade ny kategori av touch-baserad surfning.</p>
+                </article>
+                
+                <article class="device">
+                    <span class="device__icon" aria-hidden="true">⌚</span>
+                    <h3 class="device__name">Smartwatch</h3>
+                    <p class="device__year">2015-</p>
+                    <p class="device__impact">Extremt små skärmar. Kräver minimalistisk design och micro-interactions.</p>
+                </article>
+                
+                <article class="device">
+                    <span class="device__icon" aria-hidden="true">📺</span>
+                    <h3 class="device__name">Smart TV</h3>
+                    <p class="device__year">2012-</p>
+                    <p class="device__impact">Stora skärmar med fjärrkontroll. Webbappar designade för "10-foot experience".</p>
+                </article>
+                
+                <article class="device">
+                    <span class="device__icon" aria-hidden="true">🥽</span>
+                    <h3 class="device__name">VR/AR</h3>
+                    <p class="device__year">2016-</p>
+                    <p class="device__impact">3D-miljöer och rumslig interaktion. WebXR möjliggör VR/AR-upplevelser i webbläsaren.</p>
+                </article>
+            </div>
+        </section>
+        
+        <section class="responsive-principles">
+            <h2 class="responsive-principles__title">Responsiv designs grundprinciper</h2>
+            <div class="principles-grid">
+                <article class="principle">
+                    <span class="principle__number">1</span>
+                    <h3 class="principle__title">Flexibel layout</h3>
+                    <p class="principle__description">
+                        Använd relativa enheter (%, em, rem) istället för absoluta pixlar för att skapa layouter som anpassar sig.
+                    </p>
+                </article>
+                
+                <article class="principle">
+                    <span class="principle__number">2</span>
+                    <h3 class="principle__title">Flexibla bilder</h3>
+                    <p class="principle__description">
+                        Bilder ska skala med sin container. max-width: 100% säkerställer att bilder aldrig överskrider behållarens bredd.
+                    </p>
+                </article>
+                
+                <article class="principle">
+                    <span class="principle__number">3</span>
+                    <h3 class="principle__title">Media Queries</h3>
+                    <p class="principle__description">
+                        CSS Media Queries möjliggör olika stilar baserat på enhetens egenskaper som skärmbredd, höjd och orientation.
+                    </p>
+                </article>
+                
+                <article class="principle">
+                    <span class="principle__number">4</span>
+                    <h3 class="principle__title">Mobile First</h3>
+                    <p class="principle__description">
+                        Designa för mobil först, sedan utöka för större skärmar. Detta säkerställer prestanda och fokus på essentiellt innehåll.
+                    </p>
+                </article>
+                
+                <article class="principle">
+                    <span class="principle__number">5</span>
+                    <h3 class="principle__title">Touch-vänligt</h3>
+                    <p class="principle__description">
+                        Klickbara element ska vara minst 44px stora och ha tillräckligt avstånd för att undvika fel-tryckningar.
+                    </p>
+                </article>
+                
+                <article class="principle">
+                    <span class="principle__number">6</span>
+                    <h3 class="principle__title">Prestanda</h3>
+                    <p class="principle__description">
+                        Optimera för långsamma mobilnät med komprimerade bilder, minimal CSS/JS och kritisk CSS-inladdning.
+                    </p>
+                </article>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section__title">Progressive Web Apps (PWA)</h2>
+            <div class="pwa-features">
+                <article class="pwa-feature">
+                    <div class="pwa-feature__header">
+                        <span class="pwa-feature__icon" aria-hidden="true">📴</span>
+                        <h3 class="pwa-feature__title">Offline-funktionalitet</h3>
+                    </div>
+                    <p class="pwa-feature__description">
+                        Service Workers möjliggör caching av resurser så att webbappar fungerar även utan internetanslutning.
+                    </p>
+                    <div class="pwa-feature__example">
+                        <strong>Exempel:</strong> Twitter Lite sparar tweets lokalt så användare kan läsa även offline.
+                    </div>
+                </article>
+                
+                <article class="pwa-feature">
+                    <div class="pwa-feature__header">
+                        <span class="pwa-feature__icon" aria-hidden="true">📲</span>
+                        <h3 class="pwa-feature__title">Installerbara</h3>
+                    </div>
+                    <p class="pwa-feature__description">
+                        Web App Manifest gör att PWA:er kan installeras direkt från webbläsaren utan app store.
+                    </p>
+                    <div class="pwa-feature__example">
+                        <strong>Exempel:</strong> Pinterest PWA kan "läggas till hemskärmen" och startas som en native app.
+                    </div>
+                </article>
+                
+                <article class="pwa-feature">
+                    <div class="pwa-feature__icon" aria-hidden="true">🔔</span>
+                    <h3 class="pwa-feature__title">Push-notifieringar</h3>
+                </div>
+                <p class="pwa-feature__description">
+                    PWA:er kan skicka push-notifieringar även när appen inte är öppen, precis som native appar.
+                </p>
+                <div class="pwa-feature__example">
+                    <strong>Exempel:</strong> Nyhetswebbplatser kan skicka breaking news-notiser direkt till användare.
+                </div>
+            </article>
+            
+            <article class="pwa-feature">
+                <div class="pwa-feature__header">
+                    <span class="pwa-feature__icon" aria-hidden="true">🚀</span>
+                    <h3 class="pwa-feature__title">App-liknande UX</h3>
+                </div>
+                <p class="pwa-feature__description">
+                    Single Page Application-arkitektur med snabb navigation och smooth animationer.
+                </p>
+                <div class="pwa-feature__example">
+                    <strong>Exempel:</strong> Starbucks PWA känns som en native app med instant-laddning mellan sidor.
+                </div>
+            </article>
+            
+            <article class="pwa-feature">
+                <div class="pwa-feature__header">
+                    <span class="pwa-feature__icon" aria-hidden="true">🔒</span>
+                    <h3 class="pwa-feature__title">Säkerhet</h3>
+                </div>
+                <p class="pwa-feature__description">
+                    PWA:er kräver HTTPS och har samma säkerhetsmodell som webbläsaren med sandboxing.
+                </p>
+                <div class="pwa-feature__example">
+                    <strong>Exempel:</strong> Bankappar som PWA:er har samma säkerhetsnivå som deras webbversioner.
+                </div>
+            </article>
+            
+            <article class="pwa-feature">
+                <div class="pwa-feature__header">
+                    <span class="pwa-feature__icon" aria-hidden="true">🌐</span>
+                    <h3 class="pwa-feature__title">Plattformsoberoende</h3>
+                </div>
+                <p class="pwa-feature__description">
+                    En kodbas fungerar på alla plattformar - iOS, Android, Windows, macOS och Linux.
+                </p>
+                <div class="pwa-feature__example">
+                    <strong>Exempel:</strong> Spotify Web Player fungerar identiskt oavsett operativsystem eller enhet.
+                </div>
+            </article>
+        </div>
+    </section>
+    
+    <section class="section">
+        <h2 class="section__title">Mobilwebbens statistik</h2>
+        <div class="mobile-stats">
+            <article class="stat">
+                <div class="stat__number">59%</div>
+                <div class="stat__label">Mobil webbtrafik</div>
+                <p class="stat__description">Över hälften av all webbtrafik kommer från mobila enheter (2024)</p>
+            </article>
+            
+            <article class="stat">
+                <div class="stat__number">3.2s</div>
+                <div class="stat__label">Förväntad laddningstid</div>
+                <p class="stat__description">Användare förväntar sig att sidor laddar på under 3 sekunder på mobil</p>
+            </article>
+            
+            <article class="stat">
+                <div class="stat__number">53%</div>
+                <div class="stat__label">Överger långsam sida</div>
+                <p class="stat__description">Användare lämnar webbplatser som tar mer än 3 sekunder att ladda</p>
+            </article>
+            
+            <article class="stat">
+                <div class="stat__number">44px</div>
+                <div class="stat__label">Minsta touch-target</div>
+                <p class="stat__description">Apples och Googles rekommendation för klickbara element på mobil</p>
+            </article>
+        </div>
+    </section>
+    
+    <div class="quote">
+        <p class="quote__text">The mobile web is not just about smaller screens. It's about rethinking the entire user experience for a connected world where computing is ubiquitous.</p>
+        <p class="quote__author">— Luke Wroblewski, Mobile First expert</p>
+    </div>
+    
+    <section class="section">
+        <h2 class="section__title">Utmaningar och lösningar</h2>
+        <div class="section__content">
+            <p><strong>Prestanda på mobil:</strong> Mobilenheter har begränsad processorkraft och minneskapacitet. Lösningar inkluderar lazy loading, kod-splitting och optimerade bildformat som WebP.</p>
+            
+            <p><strong>Fragmentering:</strong> Tusentals olika enheter med olika skärmstorlekar och kapaciteter. Responsiv design och progressive enhancement hanterar denna komplexitet.</p>
+            
+            <p><strong>Touch-interaktion:</strong> Pekskärmar kräver andra designprinciper än mus och tangentbord. Större klickområden, swipe-gester och haptic feedback blev viktigt.</p>
+            
+            <p><strong>Batteritid:</strong> Webbappar kan dränera batteriet snabbt. Tekniker som Service Worker-caching, CSS containment och batteristatus-API hjälper optimera energiförbrukning.</p>
+            
+            <p><strong>Nätverksvariation:</strong> Mobila nätverk varierar kraftigt i hastighet och stabilitet. Offline-first design och intelligient caching blev kritiska strategier.</p>
+        </div>
+    </section>
+    
+    <section class="future-trends">
+        <h2 class="future-trends__title">Framtidens mobilwebb</h2>
+        <div class="trends-grid">
+            <article class="trend">
+                <span class="trend__icon" aria-hidden="true">🤖</span>
+                <h3 class="trend__title">AI-integrering</h3>
+                <p class="trend__description">
+                    WebAI och machine learning-modeller direkt i webbläsaren för personaliserad UX, 
+                    språköversättning och smart content-optimering.
+                </p>
+            </article>
+            
+            <article class="trend">
+                <span class="trend__icon" aria-hidden="true">🥽</span>
+                <h3 class="trend__title">WebXR och AR</h3>
+                <p class="trend__description">
+                    WebXR API möjliggör VR och AR-upplevelser direkt i webbläsaren utan separata appar, 
+                    speciellt kraftfullt på mobila enheter.
+                </p>
+            </article>
+            
+            <article class="trend">
+                <span class="trend__icon" aria-hidden="true">⚡</span>
+                <h3 class="trend__title">Edge Computing</h3>
+                <p class="trend__description">
+                    Beräkningar flyttas närmare användaren för snabbare responstider och bättre 
+                    prestanda på mobila nätverk.
+                </p>
+            </article>
+            
+            <article class="trend">
+                <span class="trend__icon" aria-hidden="true">🔋</span>
+                <h3 class="trend__title">Energioptimering</h3>
+                <p class="trend__description">
+                    Ny CSS-funktioner och JavaScript-API:er för att minimera energiförbrukning 
+                    och förlänga batteritid på mobila enheter.
+                </p>
+            </article>
+            
+            <article class="trend">
+                <span class="trend__icon" aria-hidden="true">📶</span>
+                <h3 class="trend__title">5G och Edge</h3>
+                <p class="trend__description">
+                    5G-nätverk möjliggör rika, realtids-webbapplikationer med minimal latens, 
+                    närmre native app-prestanda.
+                </p>
+            </article>
+            
+            <article class="trend">
+                <span class="trend__icon" aria-hidden="true">🎮</span>
+                <h3 class="trend__title">WebAssembly Gaming</h3>
+                <p class="trend__description">
+                    WASM möjliggör high-performance spel och applikationer direkt i mobila webbläsare 
+                    utan installation eller app stores.
+                </p>
+            </article>
+        </div>
+    </section>
+    
+    <section class="section">
+        <h2 class="section__title">Mobilrevolutionens arv</h2>
+        <div class="section__content">
+            <p>Mobilrevolutionen har fundamentalt förändrat hur vi tänker kring webbdesign och utveckling. <strong>Mobile-first</strong> är inte längre bara en trend - det är standard för modern webbutveckling.</p>
+            
+            <p><strong>Progressive Web Apps</strong> representerar webens framtid som applikationsplattform. De kombinerar det bästa från webb och native appar: universell tillgänglighet, enkla uppdateringar och plattformsoberoende.</p>
+            
+            <p>Teknologier som introducerades för mobil - Service Workers, Web App Manifests, CSS Grid - används nu överallt för att skapa bättre användarupplevelser oavsett enhet.</p>
+            
+            <p>Viktigast av allt: mobilrevolutionen lärde oss att sätta <strong>användaren i centrum</strong>. Prestanda, tillgänglighet och användarupplevelse blev viktigare än visuell komplexitet.</p>
+        </div>
+    </section>
+    
+    <nav class="nav-buttons" aria-label="Sidnavigation">
+        <a href="/historia/web2-0/" class="btn btn--secondary">← Föregående: Web 2.0 - Den sociala webben</a>
+        <a href="/betydelse/" class="btn btn--primary">Nästa: Webbens betydelse →</a>
+    </nav>
+</main>
+
+<footer class="footer">
+    <div class="footer__container">
+        <ul class="footer__links">
+            <li><a href="/projektplan/" class="footer__link">Projektplan</a></li>
+            <li><a href="/tester/" class="footer__link">Tester</a></li>
+            <li><a href="/html/dokumentation.html" class="footer__link">Dokumentation</a></li>
+            <li><a href="/html/analys.html" class="footer__link">Analys</a></li>
+            <li><a href="/resurser/" class="footer__link">Resurser</a></li>
+        </ul>
+    </div>
+</footer>
+
+<script>
+    // Mobile navigation toggle
+    const navToggle = document.querySelector('.nav__toggle');
+    const navList = document.querySelector('.nav__list');
+    
+    if (navToggle && navList) {
+        navToggle.addEventListener('click', () => {
+            const isOpen = navList.classList.contains('nav__list--open');
+            navList.classList.toggle('nav__list--open');
+            navToggle.setAttribute('aria-expanded', !isOpen);
+        });
+    }
+    
+    // Enhanced scroll animations with stagger effect
+    if ('IntersectionObserver' in window) {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 100); // Stagger animation
+                }
+            });
+        }, observerOptions);
+        
+        // Observe various elements
+        const animatedElements = document.querySelectorAll('.device, .pwa-feature, .principle, .stat, .trend, .timeline-event');
+        animatedElements.forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(element);
+        });
+    }
+    
+    // Interactive device evolution
+    const devices = document.querySelectorAll('.device');
+    devices.forEach(device => {
+        device.addEventListener('mouseenter', () => {
+            device.style.transform = 'translateY(-6px) scale(1.05)';
+            device.style.boxShadow = '0 8px 25px rgba(0,0,0,0.2)';
+        });
+        
+        device.addEventListener('mouseleave', () => {
+            device.style.transform = 'translateY(0) scale(1)';
+            device.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)';
+        });
+    });
+    
+    // PWA feature showcase interaction
+    const pwaFeatures = document.querySelectorAll('.pwa-feature');
+    pwaFeatures.forEach(feature => {
+        feature.addEventListener('click', () => {
+            // Toggle expanded state
+            const isExpanded = feature.classList.contains('expanded');
+            
+            // Close all other expanded features
+            pwaFeatures.forEach(f => f.classList.remove('expanded'));
+            
+            if (!isExpanded) {
+                feature.classList.add('expanded');
+                feature.style.transform = 'scale(1.02)';
+                feature.style.zIndex = '10';
+            } else {
+                feature.style.transform = 'translateY(0) scale(1)';
+                feature.style.zIndex = 'auto';
+            }
+        });
+    });
+    
+    // Statistics counter animation
+    const stats = document.querySelectorAll('.stat__number');
+    const animateStats = () => {
+        stats.forEach(stat => {
+            const target = stat.textContent;
+            const isPercentage = target.includes('%');
+            const isTime = target.includes('s');
+            const isPx = target.includes('px');
+            
+            let value = parseFloat(target);
+            let current = 0;
+            const increment = value / 30; // Animate over 30 frames
+            
+            const counter = setInterval(() => {
+                current += increment;
+                if (current >= value) {
+                    current = value;
+                    clearInterval(counter);
+                }
+                
+                let displayValue = Math.floor(current);
+                if (isPercentage) displayValue += '%';
+                else if (isTime) displayValue += 's';
+                else if (isPx) displayValue += 'px';
+                else if (target.includes('.')) displayValue = current.toFixed(1) + 's';
+                
+                stat.textContent = displayValue;
+            }, 50);
+        });
+    };
+    
+    // Trigger stats animation when in view
+    const statsSection = document.querySelector('.mobile-stats');
+    if (statsSection) {
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        });
+        
+        statsObserver.observe(statsSection);
+    }
+    
+    // Timeline interaction enhancement
+    const timelineEvents = document.querySelectorAll('.timeline-event');
+    timelineEvents.forEach((event, index) => {
+        event.addEventListener('mouseenter', () => {
+            event.querySelector('.timeline-content').style.transform = 'scale(1.02)';
+        });
+        
+        event.addEventListener('mouseleave', () => {
+            event.querySelector('.timeline-content').style.transform = 'scale(1)';
+        });
+        
+        // Add keyboard navigation
+        event.setAttribute('tabindex', '0');
+        event.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                event.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                e.preventDefault();
+            }
+        });
+    });
+    
+    // Responsive principle interaction
+    const principles = document.querySelectorAll('.principle');
+    principles.forEach(principle => {
+        principle.addEventListener('click', () => {
+            principle.style.transform = 'scale(1.05)';
+            setTimeout(() => {
+                principle.style.transform = 'scale(1)';
+            }, 200);
+        });
+    });
+    
+    // Performance monitoring
+    if (window.PerformanceObserver) {
+        const observer = new PerformanceObserver((list) => {
+            const entries = list.getEntries();
+            entries.forEach(entry => {
+                if (entry.entryType === 'largest-contentful-paint') {
+                    console.log('LCP:', entry.startTime);
+                    
+                    // Show performance indicator if LCP is good
+                    if (entry.startTime < 2500) {
+                        const indicator = document.createElement('div');
+                        indicator.style.cssText = `
+                            position: fixed;
+                            top: 20px;
+                            right: 20px;
+                            background: #27ae60;
+                            color: white;
+                            padding: 10px;
+                            border-radius: 4px;
+                            font-size: 12px;
+                            z-index: 1000;
+                        `;
+                        indicator.textContent = '⚡ Snabb laddning!';
+                        document.body.appendChild(indicator);
+                        
+                        setTimeout(() => {
+                            indicator.remove();
+                        }, 3000);
+                    }
+                }
+            });
+        });
+        
+        observer.observe({ entryTypes: ['largest-contentful-paint'] });
+    }
+</script>
+</body>
+</html>
